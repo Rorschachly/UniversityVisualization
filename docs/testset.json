@@ -1,0 +1,35 @@
+{
+                "name": "TOTAL",
+                "tag": "tt",
+                "children": [
+                                {
+                                "name": "Tuition",
+                                "tag": "T",
+                                "children": [
+                                                {"name": "Top 50", "size": 48795, "tag": "t1"},
+                                                {"name": "#51 - #125", "size": 38108, "tag": "t2"},
+                                                {"name": "#126 - #230", "size": 26831, "tag": "t3"}
+                                            ]
+                                },
+                                {
+                                "name": "Student Loan",
+                                "tag": "L",
+                                "children": [
+                                                {"name": "Top 50", "size": 22730, "tag":"l1"},
+                                                {"name": "#51 - #125", "size": 32526, "tag": "l2"},
+                                                {"name": "#126 - #230", "size": 28535, "tag": "l3"}
+                                            ]
+                                
+                                },
+                                {
+                                "name": "Salary",
+                                "tag": "S",
+                                "children": [
+                                                {"name": "Top 50", "size": 65603, "tag":"s1"},
+                                                {"name": "#51 - #125", "size": 56687, "tag":"s2"},
+                                                {"name": "#126 - #230", "size": 52797, "tag":"s3"}
+                                            ] 
+                                }
+                            ]
+}
+    

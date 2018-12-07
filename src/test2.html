@@ -1,0 +1,763 @@
+<head>
+    <style>
+        body {
+            font-family: Helvetica, Sans-serif;
+            font-size: 11px;
+        }
+
+        .slice {
+            cursor: pointer;
+        }
+
+        .slice .main-arc {
+            stroke: #fff;
+            stroke-width: 5px;
+        }
+
+        .slice .hidden-arc {
+            fill: none;
+        }
+
+        .slice text {
+            pointer-events: none;
+            dominant-baseline: middle;
+            text-anchor: middle;
+        }
+        div.tooltip {
+                position: absolute;
+                width: 200px;
+                height: auto;
+                padding: 10px;
+                display: none;
+                background-color: white;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+                -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+                box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+                pointer-events: none;
+        }
+
+        #mytext {
+            position: absolute;
+            left: 42%;
+            top: 33%;
+            width: 30%;
+            font-size: 25px;
+            font-family: Helvetica, sans-serif;
+            letter-spacing: 1px;
+            color: white;
+            text-align: left;
+        }
+        #sequence text, #legend text {
+            font-weight: 600;
+            fill: white;
+        }
+                        
+        div.tooltip p {
+            margin: 0;
+            font-family: Helvetica. sans-serif;
+            font-size: 16px;
+            line-height: 20px;
+        }
+        #chart {
+            display: block;
+            text-align: center;
+        }
+        #explanation {
+            position: absolute;
+            top: 260px;
+            left: 305px;
+            width: 140px;
+            text-align: center;
+            color: #666;
+            z-index: -1;
+        }
+
+        #percentage {
+            font-size: 2.5em;
+        }
+
+        #sunburst  {
+            position: absolute;
+            left: 10%;
+            top: 30%;
+        }
+        #mytext {
+            position: absolute;
+            left: 50%;
+            top:30%;
+        }
+        #sunbar {
+            position: absolute;
+            left: 35%;
+            
+        }
+
+        #sunburst text {
+            fill: black !important;
+        }
+
+        text {
+            fill: white !important;
+        }
+
+        .tick line, .domain {
+            stroke: white !important;
+        }
+
+
+    </style>
+    <!--<script src="https://d3js.org/d3.v5.min.js"></script>-->
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+</head>
+<body>
+        <div id="sequence"></div>
+        <div>
+            <div id="chart">
+                <svg id="sunburst"></svg>
+                <svg id="sunbar"></svg>
+                <div id = 'mytext'>
+                    <p> Students who attend the Top 50 schools tend to have less student loan than other students.<br /> </p>
+                    <p>
+                    Although the tuition of Top 50 schools is generally higher than the other schools, 
+                    the students who attend Top 50 schools tend to have less loan than the other, 
+                    which implies students that attend Top 50 schools are generally richer than the others. 
+                    </p> 
+                </div>
+            </div>
+        </div>
+    <script>
+        var ifclick = false;
+        var totalclear = false;
+        let b = {
+            w: 75, h: 30, s: 3, t: 10
+        };
+        var axisExist = false;
+        let sTotalSize = 0;
+        let sWidth = 400,
+            sHeight = 400,
+            maxRadius = (Math.min(sWidth, sHeight) / 2) - 5;
+            // maxRadius = 300;
+
+        let formatNumber = d3.format(',d');
+
+        let sunx = d3.scaleLinear()
+            .range([0, 2 * Math.PI])
+            .clamp(true);
+
+        let suny = d3.scaleSqrt()
+            .range([maxRadius*.1, maxRadius]);
+
+        let sunColor = d3.scaleOrdinal(d3.schemeCategory20);
+
+        let sunPartition = d3.partition();
+
+        let arc = d3.arc()
+            .startAngle(d => sunx(d.x0))
+            .endAngle(d => sunx(d.x1))
+            .innerRadius(d => Math.max(0, suny(d.y0)))
+            .outerRadius(d => Math.max(0, suny(d.y1)));
+
+        let middleArcLine = d => {
+            let halfPi = Math.PI/2;
+            let angles = [sunx(d.x0) - halfPi, sunx(d.x1) - halfPi];
+            let r = Math.max(0, (suny(d.y0) + suny(d.y1)) / 2);
+
+            let middleAngle = (angles[1] + angles[0]) / 2;
+            let invertDirection = middleAngle > 0 && middleAngle < Math.PI; // On lower quadrants write text ccw
+            if (invertDirection) { angles.reverse(); }
+
+            let path = d3.path();
+            path.arc(0, 0, r, angles[0], angles[1], invertDirection);
+            return path.toString();
+        };
+
+        let textFits = d => {
+            let CHAR_SPACE = 6;
+
+            let deltaAngle = sunx(d.x1) - sunx(d.x0);
+            let r = Math.max(0, (suny(d.y0) + suny(d.y1)) / 2);
+            let perimeter = r * deltaAngle;
+
+            return d.data.name.length * CHAR_SPACE < perimeter;
+        };
+
+        let sunSvg = d3.select('#sunburst')
+            .attr('width', sWidth)
+            .attr('height',sHeight)
+            .append(":g")
+            // .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
+            .attr("transform", "translate(" + sWidth*0.5  + "," + 0.5*sHeight + ")")
+            .on('click', () => focusOn()); // Reset zoom on canvas click
+
+        d3.json('testset.json', (error, root) => {
+            if (error) throw error;
+            initializeBreadcrumbTrail()
+            root = d3.hierarchy(root);
+            root.sum(d => d.size);
+            let slice = sunSvg.selectAll('g.slice')
+                .data(sunPartition(root).descendants());
+            slice.exit().remove();
+            
+            sunSvg.append("svg:circle")
+                .attr("r", maxRadius)
+                .attr("opacity", 0)
+            
+            let empty = d3.scaleLinear()
+			.range([0, 0])
+			.domain([0, 0]); 
+
+            let empty_axis = d3.axisBottom().scale(empty)
+            
+
+            let newSlice = slice.enter()
+                .append('g').attr('class', 'slice')
+                .on('click', d => {
+                    // makeChart()
+                    d3.event.stopPropagation();
+                    focusOn(d);
+                    // console.log(d.data.tag);
+                    // console.log("haha")
+                    // totalclick = false;
+                    barUpdate(d.data.tag);
+                    if (d.data.tag == 'tt'){
+                        console.log("before : "+ifclick);
+                        
+                        if(ifclick) {
+                        console.log("FUCK!")
+                        d3.select(".y_axis").transition().call(empty_axis).remove();
+                                            //.remove();
+                        d3.select(".x_axis").transition().call(empty_axis).remove();
+                        }
+                        
+                        axisExist = false;
+                        console.log(axisExist);
+                        let k =  d3.select("#mytext").style("opacity", 1);
+                        ifclick = false;
+                        console.log("after : "+ifclick);
+                    } else {
+                        let l = d3.select("#mytext").style("opacity", 0);
+                        console.log("this happened");
+                        console.log(l);
+                    }
+                
+                    // sunbardataset = d.data;
+
+                });
+
+            newSlice.append('title')
+                .text(d => d.data.name + '\n' + formatNumber(d.value));
+
+            newSlice.append('path')
+                .attr('class', 'main-arc')
+                .style('fill', d => sunColor((d.children ? d : d.parent).data.name))
+                .attr('d', arc)
+                .on("mouseover", sunmouseover);
+            
+            newSlice.append('path')
+                .attr('class', 'hidden-arc')
+                .attr('id', (_, i) => `hiddenArc${i}`)
+                .attr('d', middleArcLine);
+
+            let sunText = newSlice.append('text')
+                .attr('display', d => textFits(d) ? null : 'none');
+
+            sunText.append('textPath')
+                .attr('startOffset','50%')
+                .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
+                .text(d => d.data.name);
+            sTotalSize = newSlice.selectAll("path").datum().value;
+
+            d3.select("#sunburst").on("mouseleave", sunmouseleave);
+        });
+
+        // Fade all but the current sequence, and show it in the breadcrumb trail.
+        function sunmouseover(d) {
+            // console.log("total size "+totalSize);
+            // console.log("current value "+d.value);
+            var percentage = (100 * d.value / sTotalSize).toPrecision(3);
+            var percentageString = percentage + "%";
+            // console.log("percent :"+percentage);
+            if (percentage < 0.1) {
+            percentageString = "< 0.1%";
+            }
+            d3.select("#percentage")
+                .text(percentageString);
+
+            d3.select("#explanation")
+                .style("visibility", "");
+            
+            var sequenceArray = d.ancestors().reverse();
+            sequenceArray.shift(); // remove root node from the array
+            // console.log(sequenceArray);
+            updateBreadcrumbs(sequenceArray, percentageString);
+
+            // Fade all the segments.
+            d3.selectAll("path")
+                .style("opacity", 0.3);
+
+            // Then highlight only those that are an ancestor of the current segment.
+            sunSvg.selectAll("path")
+                .filter(function(node) {
+                        return (sequenceArray.indexOf(node) >= 0);
+                        })
+                .style("opacity", 1);
+        }
+
+        // Restore everything to full opacity when moving off the visualization.
+        function sunmouseleave(d) {
+            
+            // console.log("hell")
+            // Hide the breadcrumb trail
+            d3.select("#trail")
+                .style("visibility", "hidden");
+
+            // Deactivate all segments during transition.
+            d3.selectAll("path").on("mouseover", null);
+
+            // Transition each segment to full opacity and then reactivate it.
+            d3.selectAll("path")
+                .transition()
+                .duration(1000)
+                .style("opacity", 1)
+                .on("end", function() {
+                        d3.select(this).on("mouseover", sunmouseover);
+                    });
+
+            d3.select("#explanation")
+                .style("visibility", "hidden");
+                
+        }
+        var sunTrail = d3.select("#sequence").append("svg:svg")
+            .attr("width", sWidth)
+            .attr("height", 50)
+            .attr("id", "trail");
+        // Add the label at the end, for the percentage.
+        sunTrail.append("svg:text")
+            .attr("id", "endlabel")
+            .style("fill", "white");
+        
+
+        // Generate a string that describes the points of a breadcrumb polygon.
+        function breadcrumbPoints(d, i) {
+            var points = [];
+            points.push("0,0");
+            points.push(b.w + ",0");
+            points.push(b.w + b.t + "," + (b.h / 2));
+            points.push(b.w + "," + b.h);
+            points.push("0," + b.h);
+            if (i > 0) { // Leftmost breadcrumb; don't include 6th vertex.
+                points.push(b.t + "," + (b.h / 2));
+            }
+            return points.join(" ");
+        }
+
+        // barUpdate the breadcrumb trail to show the current sequence and percentage.
+        function updateBreadcrumbs(nodeArray, percentageString) {
+
+            // Data join; key function combines name and depth (= position in sequence).
+            var trail = d3.select("#trail")
+                .selectAll("g")
+                .data(nodeArray, function(d) { return d.data.name + d.depth; });
+            
+            // console.log(trail);
+            // Remove exiting nodes.
+            trail.exit().remove();
+
+            // Add breadcrumb and label for entering nodes.
+            var entering = trail.enter().append("svg:g");
+
+            entering.append("svg:polygon")
+                .attr("points", breadcrumbPoints)
+                // .style("fill", function(d) { return colors[d.data.name]; });
+
+            entering.append("svg:text")
+                .attr("x", (b.w + b.t) / 2)
+                .attr("y", b.h / 2)
+                .attr("dy", "0.35em")
+                .attr("text-anchor", "middle")
+                .text(function(d) { return d.data.name; });
+
+            // Merge enter and barUpdate selections; set position for all nodes.
+            entering.merge(trail).attr("transform", function(d, i) {
+            return "translate(" + i * (b.w + b.s) + ", 0)";
+            });
+
+            // Now move and barUpdate the percentage at the end.
+            d3.select("#trail").select("#endlabel")
+                .attr("x", (nodeArray.length + 0.5) * (b.w + b.s))
+                .attr("y", b.h / 2)
+                .attr("dy", "0.35em")
+                .attr("text-anchor", "middle")
+                .text(percentageString);
+
+            // Make the breadcrumb trail visible, if it's hidden.
+            d3.select("#trail")
+                .style("visibility", "");
+
+        }
+
+
+        function initializeBreadcrumbTrail() {
+            // Add the svg area.
+            var trail = d3.select("#sequence").append("svg:svg")
+                .attr("width", sWidth)
+                .attr("height", 50)
+                .attr("id", "trail");
+            // Add the label at the end, for the percentage.
+            trail.append("svg:text")
+                .attr("id", "endlabel")
+                .style("fill", "white");
+        }
+
+        function focusOn(d = { x0: 0, x1: 1, y0: 0, y1: 1 }) {
+            // Reset to top-level if no data point specified
+
+            let transition = sunSvg.transition()
+                .duration(500)
+                .tween('scale', () => {
+                    let xd = d3.interpolate(sunx.domain(), [d.x0, d.x1]),
+                        yd = d3.interpolate(suny.domain(), [d.y0, 1]);
+                    return t => { sunx.domain(xd(t)); suny.domain(yd(t)); };
+                });
+
+            transition.selectAll('path.main-arc')
+                .attrTween('d', d => () => arc(d));
+
+            transition.selectAll('path.hidden-arc')
+                .attrTween('d', d => () => middleArcLine(d));
+
+            transition.selectAll('text')
+                .attrTween('display', d => () => textFits(d) ? null : 'none');
+
+            moveStackToFront(d);
+
+            //
+
+            function moveStackToFront(elD) {
+                sunSvg.selectAll('.slice').filter(d => d === elD)
+                    .each(function(d) {
+                        this.parentNode.appendChild(this);
+                        if (d.parent) { moveStackToFront(d.parent); }
+                    })
+            }
+        }
+
+        function hashCode(str) { // java String#hashCode
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            return hash;
+        }
+        // assign rgb value (to each publisher)
+        function intToRGB(i) {
+            let c = (i & 0x00FFFFFF)
+                .toString(16)
+                .toUpperCase();
+            return "#" + "000000".substring(0, 6 - c.length) + c;
+        }
+        // basic parameters
+        let sunbarw = 700;
+        let sunbarh = 700;
+        let sunbarpadding = 25;
+        let sunbardata = new Map();
+        let sunbardata2 = new Map()
+        let sunbardataset = [];
+        let sunbarbarData = [];
+        let sunbarfocus = false;
+        let sunbarfocusedOn;
+        let tooltip = d3.select("body").append("div").attr("class", "toolTip");
+        let currentChoice = 'tt';
+        var arr = []
+        while(arr.length < 30){
+            var r = Math.floor(Math.random()*90) + 1;
+            if(arr.indexOf(r) === -1) arr.push(r);
+        }
+        // document.write(arr);
+        for (let i = 1; i <= 4; i++) {
+            sunbardata2.set(i, []);
+        }
+        
+        d3.csv("debtAndSalary.csv", function (error, data) {
+            if(error){
+                // console.log(error);
+            }else{
+                data = data.sort(function (a, b) {
+                    return b.tuition - a.tuition;
+                });
+                for (let i = 0; i < data.length; i++) {
+                    var record = data[i];
+                    record.University = record.displayName
+                    if (record.range == 30) {
+                        // console.log(record);
+                        sunbardata2.get(1).push(record);
+                    } else if (record.range == 60) {
+                        sunbardata2.get(2).push(record);
+                    } else if (record.range == 90) {
+                        sunbardata2.get(3).push(record);
+                    }
+                    // data.get(record.Year).push(record);
+                }
+
+                for (let i = 0; i < arr.length; i++){
+                    sunbardata2.get(4).push(data[arr[i]]);
+                }
+                // console.log(sunbardata2.get(4));
+                sunbardataset = sunbardata2.get(1);
+                sunbardataset.sort(function (a, b) {
+                    return b.tuition - a.tuition;
+                });
+                sunbarbarData = sunbardataset.slice(0, 30).reverse()
+                // console.log(barData)
+                // makeChart(sunbarbarData)
+            }
+        })
+
+
+        
+        // let key = function (d) {
+        //     return d.key;
+        // };
+        let sunbarx, sunbary, sunbarr, sunbarc;
+        let sunbarxAxis, sunbaryAxis;
+        var sunbarxScale = d3.scaleLinear().range([0, sunbarw]);
+        var sunbaryScale = d3.scaleBand();
+        // let year_label2 = d3.select("#sunbar").append("text")
+        //     .attr("class", "barYearLabel")
+        //     // .text(current_year)
+        //     .attr("x", 600)
+        //     .attr("y", 600)
+        //     .style("fill", "#8A7F7D")
+        //     .style("font-size", "130px")
+        //     .style("font-family", "sans-serif");
+        function makeChart(barData) {
+            sunbary = d3.scaleLinear()
+                .domain([0, 100])
+                .range([sunbarh - sunbarpadding, sunbarpadding]);
+            sunbarx = d3.scaleLinear()
+                .domain([0, 100])
+                .range([sunbarpadding, sunbarw - sunbarpadding]);
+            sunbarr = d3.scaleLinear()
+                .domain([0, 140])
+                .range([3, 80]);
+            // console.log(barData)
+            sunbarxScale.domain([0, 80000]);
+            sunbaryScale.domain(sunbarbarData.map(function (d) {
+                return d.University
+            })).range([sunbarh, 100]).padding(0.1);
+            //famous
+            // console.log(barData)
+            sunbartest = []
+            for (let i = 0; i < sunbarbarData.length; i++){
+                sunbartest.push(sunbarbarData[i].University)
+            }
+            console.log(sunbartest)
+        // famous = ["Nintendo", "Electronic Arts", "Activision", "Take-Two Interactive", "Microsoft Game Studios", "Sony Computer Entertainment", "Ubisoft", "Bethesda Softworks", "Sega", "THQ", "Warner Bros. Interactive Entertainment", "Capcom", "Atari", "LucasArts"];
+            sunbarfamous = sunbartest
+            // famous.sort(function (a, b) {
+            //     return a.length - b.length
+            // })
+            sunbarfamousColor = [];
+            for (let i = 0; i < sunbarfamous.length; i++) {
+                sunbarfamousColor.push(intToRGB(hashCode(sunbarfamous[i])));
+            }
+            sunbarc = d3.scaleOrdinal()
+                .domain(sunbarfamous)
+                .range(sunbarfamousColor)
+            let sunbarcanvas = d3.select(".chart")
+                .style("width", sunbarw + 50)
+                .style("height", sunbarh)
+            //bar chart frame
+            let sunbarsvgBar = d3.select("#sunbar")
+                .attr("width", sunbarw + 200)
+                .attr("height", sunbarh);
+            sunbarg = sunbarsvgBar.append("g")
+                .attr("transform", "translate(" + 250 + "," + -30 + ")");
+            sunbarg.append("g")
+                .attr("class", "x_axis")
+                .attr("transform", "translate(0," + sunbarh + ")")
+                .call(d3.axisBottom(sunbarxScale).ticks(10))
+                .append("text")
+                // .text("Global Sales")
+
+                .attr("font-size", "15px")
+                .attr("x", sunbarh - 15)
+                .attr("dy", -10)
+                .attr('fill', 'white')
+                .style("text-anchor", "end");
+            sunbarg.append("g")
+                .attr("class", "y_axis")
+                .call(d3.axisLeft(sunbaryScale));
+            // barUpdate();
+        }
+        function barUpdate(options) {
+            //console.log(barData)
+            // let choice = "tuition"
+            
+            // console.log(sunbarbarData)
+            // if ( options == 't1' || options == 't2' || options == 't3' || options == 'T') {
+            //     console.log("ok")
+            //     choice = "tuition"
+            // }
+            if (options == 't1' || options == 'l1' || options == 's1' ) {
+                sunbarbarData = sunbardata2.get(1)
+                if (options == 't1') {
+                    sunbarbarData.sort(function(a, b) {return a.tuition - b.tuition;});
+                } else if (options == 'l1') {
+                    sunbarbarData.sort(function(a, b) {return a.debt - b.debt;});
+                } else {
+                    sunbarbarData.sort(function(a, b) {return a.salary - b.salary;});
+                }
+            } else if (options == 't2' || options == 'l2' || options == 's2') {
+                sunbarbarData = sunbardata2.get(2)
+                if (options == 't2') {
+                    sunbarbarData.sort(function(a, b) {return a.tuition - b.tuition;});
+                } else if (options == 'l2') {
+                    sunbarbarData.sort(function(a, b) {return a.debt - b.debt;});
+                } else {
+                    sunbarbarData.sort(function(a, b) {return a.salary - b.salary;});
+                }
+            } else if (options == 't3' || options == 'l3' || options == 's3') {
+                sunbarbarData = sunbardata2.get(3)
+                if (options == 't3') {
+                    sunbarbarData.sort(function(a, b) {return a.tuition - b.tuition;});
+                } else if (options == 'l3') {
+                    sunbarbarData.sort(function(a, b) {return a.debt - b.debt;});
+                } else {
+                    sunbarbarData.sort(function(a, b) {return a.salary - b.salary;});
+                }
+            } else {
+                sunbarbarData = sunbardata2.get(4)
+                if (options == 'T') {
+                    sunbarbarData.sort(function(a, b) {return a.tuition - b.tuition;});
+                } else if (options == 'L') {
+                    sunbarbarData.sort((a, b)=>{return a.debt - b.debt;});
+                } else if (options == 'S') {
+                    sunbarbarData.sort((a, b) => {return a.salary - b.salary;});
+                }
+            }
+            console.log("update before :" + ifclick);
+            if (!ifclick && options != 'tt') {
+                makeChart(sunbarbarData)
+                ifclick = true
+            }
+            
+
+            let sunbarUniversity = [];
+            for (let i = 0; i < sunbarbarData.length; i++) {
+                sunbarUniversity.push(sunbarbarData[i].University);
+            }
+            //console.log(Companies);
+            
+            sunbaryScale.domain(sunbarbarData.map(function (d) {
+                return d.University
+            })).range([sunbarh, 100]).padding(0.1);
+            let sunbarmyYaxis = d3.axisLeft()
+                .scale(sunbaryScale);
+            let sunbarticks = d3.selectAll(".y_axis");
+            //ticks.call(myYaxis);
+            // console.log(ticks);
+            // console.log(ticks._groups[0][0]);
+            let sunbarbar = d3.select("#sunbar").selectAll("rect")
+                .data(sunbarbarData, function(d) {
+                    return d.University
+                });
+            let sunbarupdatedTicks = sunbarticks.enter()
+                .attr("font-size", "15px");
+            sunbarupdatedTicks.merge(sunbarticks).transition().duration(500)
+                .call(sunbarmyYaxis).attr("font-size", "15px");
+            sunbarupdatedTicks.exit().transition().duration(500).remove();
+            let sunbarenterBar = sunbarbar.enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", 0)
+                .attr("height", sunbaryScale.bandwidth())
+                .attr("y", function (d) {
+                    return sunbaryScale(d.University);
+                })
+                .attr("width", function (d) {
+                    // console.log(options)
+                    if (options == 't1'|| options == 't2' || options == 't3'||options == 'T') {
+                        // console.log('in tuition')
+                        currentChoice = 'tuition'
+                        return sunbarxScale(d.tuition);
+                    } else if (options == 'l1' || options == 'l2' || options == 'l3' || options == 'L') {
+                        // console.log('in debt')
+                        // console.log(d.debt)
+                        currentChoice = 'debt'
+                        return sunbarxScale(d.debt);
+                    } else if (options == 's1' || options == 's2' || options == 's3' || options == 'S') {
+                        // console.log('salary')
+                        currentChoice = 'salary'
+                        return sunbarxScale(d.salary);
+                    }
+                    
+                })
+                .attr('fill', function (d) {
+                    // return intToRGB(hashCode(d.University));
+                    return "rgb(240, 189, 137)";
+                })
+                .attr("transform", "translate(251, -30)")
+                .on("mouseover", function (d) {
+                    var shownValue;
+                    if(currentChoice == 'salary') {
+                        shownValue = "Salary: " + d.salary
+                    }else if (currentChoice == 'tuition'){
+                        
+                        shownValue = "Tuition: " + d.tuition
+                    }else{
+                        shownValue = "Debt: " + d.debt
+                    }
+                    tooltip
+                        .style("left", d3.event.pageX - 50 + "px")
+                        .style("top", d3.event.pageY - 70 + "px")
+                        .style("display", "inline-block")
+                        .html((d.University) + "<br>" + shownValue);
+                })
+                .on("mouseout", function (d) {
+                    tooltip.style("display", "none");
+                });
+            sunbarenterBar.merge(sunbarbar).transition().duration(500)
+                .attr("class", "bar")
+                .attr("id", function (d) {
+                    return "a" + hashCode(d.University);
+                })
+                .attr("x", 0)
+                .attr("height", sunbaryScale.bandwidth())
+                .attr("y", function (d) {
+                    return sunbaryScale(d.University);
+                })
+                .attr("width", function (d) {
+                    // return sunbarxScale(d.tuition);
+                    console.log("test for width :"+options)
+                    if (options == 't1'|| options == 't2' || options == 't3' || options == 'T') {
+                        // console.log('in tuition')
+                        currentChoice = 'tuition'
+                        return sunbarxScale(d.tuition);
+                    } else if (options == 'l1' || options == 'l2' || options == 'l3' || options == 'L') {
+                        // console.log('in debt')
+                        // console.log(d.debt)
+                        currentChoice = 'debt'
+                        return sunbarxScale(d.debt);
+                    } else if (options == 's1' || options == 's2' || options == 's3' || options == 'S') {
+                        // console.log('salary')
+                        currentChoice = 'salary'
+                        return sunbarxScale(d.salary);
+                    }
+                })
+                .attr('fill', function (d) {
+                    return "rgb(240, 189, 137)";
+                })
+                .attr("transform", "translate(251, -30)");
+            sunbarbar.exit().transition().duration(500)        
+                .attr("width", 0)
+                .attr("height", 0)
+                // .attr("x", 0)
+                // .attr("y", 0)
+                .remove();
+        }
+
+    </script>
+</body>

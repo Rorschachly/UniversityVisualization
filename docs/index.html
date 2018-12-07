@@ -1,0 +1,2769 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>University Data Visualization</title>
+    <meta name="author" content="Zongyuan Chen"/>
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+
+    <script type="text/javascript" src="scrolloverflow.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="fullpage.css"/>
+    <!-- This is for github and linkedin icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- SchoolByYear -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <link href="style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="schoolByYear.css" type="text/css"/>
+    <!-- Liandong -->
+    <link rel="stylesheet" href="lianDong.css" type="text/css"/>
+    <!-- GeoMap CSS -->
+    <link rel="stylesheet" href="geoMap.css" type="text/css"/>
+    <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>    <!-- .. 5.7 ; .4 -->
+
+
+    <style>
+        html * {
+            font-family: Helvetica, sans-serif !important;
+        }
+
+
+        .pyraAxis line,
+        .pyraAxis path {
+            shape-rendering: crispEdges;
+            fill: transparent;
+            stroke: #555;
+        }
+
+        .pyraAxis text {
+            font-size: 11px;
+        }
+
+
+        .pyraBar {
+            fill-opacity: 0.5;
+        }
+
+        .pyraBar.left {
+            fill: firebrick;
+        }
+
+        .pyraBar.right {
+            fill: steelblue;
+        }
+
+        /* Style for our header texts
+        * --------------------------------------- */
+        h1 {
+            letter-spacing: 2px;
+            font-size: 5em;
+            font-family: 'Helvetica', 'Raleway', sans-serif;
+            color: #ebebeb;
+
+            margin: 0;
+        }
+
+        .titlesMainContents {
+            color: black;
+            letter-spacing: 1px;
+            font-family: 'Helvetica', 'Raleway', sans-serif;
+            font-size: 2em;
+            text-align: left;
+        }
+
+        /* Centered texts in each section
+        * --------------------------------------- */
+
+
+        /* Overwriting styles for control arrows for slides
+        * --------------------------------------- */
+        .controlArrow.prev {
+            left: 50px;
+        }
+
+        .controlArrow.next {
+            right: 50px;
+        }
+
+        /* Bottom menu
+        * --------------------------------------- */
+        #infoMenu li a {
+            color: #fff;
+        }
+
+        #test2Loki {
+            width: 1920px;
+            height: 900px;
+        }
+
+        #needleLeiyi {
+            width: 1000px;
+            height: 800px;
+        }
+
+        #mainTitle {
+            display: flex;
+            text-align: left;
+            width: 1080px;
+            margin: 0;
+        }
+
+        #PageTitle {
+            font-size: 3em;
+            height: 300px;
+            padding-left: 2%;
+            position: absolute;
+            top: 1em;
+        }
+
+
+        .UWandPaul {
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+        }
+
+        #UW {
+            position: absolute;
+            top: 2.5em;
+            right: 4em;
+        }
+
+        #PAUL {
+            position: absolute;
+            right: 4em;
+            top: 4em;
+        }
+
+        #insightSentence1 {
+            position: absolute;
+            bottom: 4em;
+            left: 5em;
+        }
+
+        #insightSentence2 {
+            position: absolute;
+            bottom: 2.5em;
+            left: 5em;
+        }
+
+        #cse442 {
+            position: absolute;
+            bottom: 4em;
+            right: 5em;
+        }
+
+        #circle1 {
+            position: absolute;
+            top: 30%;
+            left: 5%;
+        }
+
+        #circle2 {
+            position: absolute;
+            top: 30%;
+            left: 10%;
+        }
+
+        #circle3 {
+            position: absolute;
+            top: 30%;
+            left: 19%;
+        }
+
+        .descriptions {
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+        }
+
+        .lianDongFactors {
+            color: #272727;
+            font-size: 1.3em;
+        }
+
+
+        .whiteTitle {
+            color: white;
+        }
+
+        .intro {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 10%;
+            width: -webkit-fill-available;
+        }
+
+        .lastOne {
+            font-family: Helvetica, sans-serif;
+            display: flex;
+            flex-direction: row;
+            margin: 10%;
+            width: -webkit-fill-available;
+            font-size: 1.5em;
+            align-items: baseline;
+            justify-content: center;
+        }
+
+        .leftTexts {
+            padding-left: 4%;
+            padding-right: 4%;
+            width: 50em;
+        }
+
+        #section3,
+        #section4,
+        #section5 {
+            background-color: rgb(255, 245, 244);
+        }
+
+        #section0,
+        #section1,
+        #section2,
+        #section13 {
+            display: block;
+            background-color: #181818;
+            color: #999;
+
+            /* background-image: url(imgsrc/proj1.jpg); */
+            /* background-size: cover; /* <------ */
+            /* background-repeat: no-repeat; */
+            /* opacity: 1; */
+        }
+
+
+        #section6,
+        #section7,
+        #section8,
+        #section9,
+        #section10,
+        #section11,
+        #section12 {
+            color: white;
+            background-color: rgb(65, 68, 85);
+        }
+
+        /* #section7 {
+            font-family: Helvetica, sans-serif;
+            letter-spacing: 1px;
+            font-size: 2em;
+        } */
+
+        #section13 a:link {
+            font-family: Helvetica, sans-serif;
+            letter-spacing: 1px;
+            color: #999;
+            text-decoration: none;
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+
+        #section13 a:visited {
+            color: rgb(201, 165, 161);
+        }
+
+
+        #factorsBox {
+            width: 70%;
+        }
+
+        #lianDongButton {
+            margin-top: 25%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: lightpink;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .fullpage-wrapper {
+            width: 100% !important;
+            transform: none !important;
+        }
+
+        .fp-section {
+            width: 100% !important;
+            position: absolute;
+            left: 0;
+            top: 0;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 0;
+            transition: all .7s ease-in-out;
+        }
+
+        .fp-section.active {
+            visibility: visible;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .fp-tableCell {
+            display: flex;
+        }
+
+        .lastBoxes {
+            margin: 3%;
+        }
+
+
+        #geoMap {
+            margin: 0;
+            /*color: rgb(255, 254, 213);*/
+            color: white;
+            font-size: 1em;
+            font-family: Helvetica, sans-serif;
+            letter-spacing: 1px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .button {
+            background-color: grey;
+            color: rgb(255, 254, 213);
+        }
+
+        .univGeoCircles:hover {
+            stroke: rgb(242, 135, 125) !important;
+            stroke-width: 2px !important;
+        }
+
+        #wholegeoMapLegend {
+            height: 100px;
+            border-color: white;
+            border-width: 1px
+
+        }
+
+
+        #pyrageoMapLegend {
+            width: 100px;
+            height: 20px;
+            border: 1px solid white;
+            margin-right: 15em;
+        }
+
+
+        .wholepageText {
+            color: white; /* Fallback: assume this color ON TOP of image */
+            background: url(imgsrc/xiaomiBack.jpg);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5em;
+            font-family: Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        .wholeText {
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%;
+        }
+
+        .whiteBigTexts {
+            color: white; /* Fallback: assume this color ON TOP of image */
+
+            -webkit-background-clip: text;
+            font-size: 2.5em;
+            font-family: Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+
+        #whiteBigTexts01 {
+            display: inline;
+            color: white; /* Fallback: assume this color ON TOP of image */
+
+            -webkit-background-clip: text;
+            font-size: 2.5em;
+            font-family: Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        #whiteBigTexts02 {
+            display: inline;
+            color: white; /* Fallback: assume this color ON TOP of image */
+
+            -webkit-background-clip: text;
+            font-size: 2.5em;
+            font-family: Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        #whiteBigTexts03 {
+            display: inline;
+            color: white; /* Fallback: assume this color ON TOP of image */
+
+            -webkit-background-clip: text;
+            font-size: 2.5em;
+            font-family: Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        /* schoolByYear slider */
+        .slidecontainer {
+            width: 100%; /* Width of the outside container */
+        }
+
+        /* The slider itself */
+        .slider {
+            -webkit-appearance: none; /* Override default CSS styles */
+            appearance: none;
+            width: 60%; /* Full-width */
+            height: 20px; /* Specified height */
+            background: #d3d3d3; /* Grey background */
+            outline: none; /* Remove outline */
+            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+        }
+
+        /* Mouse-over effects */
+        .slider:hover {
+            opacity: 1; /* Fully shown on mouse-over */
+        }
+
+        /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Override default look */
+            appearance: none;
+            width: 25px; /* Set a specific slider handle width */
+            height: 25px; /* Slider handle height */
+            background: rgb(253, 178, 178); /* Green background */
+            cursor: pointer; /* Cursor on hover */
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px; /* Set a specific slider handle width */
+            height: 25px; /* Slider handle height */
+            background: rgb(253, 178, 178); /* Green background */
+            cursor: pointer; /* Cursor on hover */
+        }
+
+        .range-labels {
+            margin: 14px 45px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .range-labels li {
+            position: relative;
+            float: left;
+            width: 90.25px;
+            text-align: center;
+            left: 3em;
+            color: #b2b2b2;
+            font-size: 14px;
+        }
+
+        .listItem {
+            margin-right: 5px;
+        }
+
+        #geopyra {
+            margin: 0;
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        #geopyramaps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        #geopyraDecriptions {
+            margin: 3em;;
+            color: white;
+            top: 10%;
+            right: 10%;
+        }
+
+        /* TODO: this should be changed!!!!!*/
+        .pyraGeoMap {
+            width: 60%;
+            height: auto;
+        }
+
+        .pyraGraph {
+            width: 40%;
+            height: auto;
+        }
+
+        .tui_aid, .tui_enrollment, .tui_sat, .tui_score {
+            width: 49%;
+            height: 49%;
+        }
+
+        #scrollIndicator {
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            background-color: grey;
+            border-radius: 1em;
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        #gdptext {
+            margin-right: 15em;
+        }
+
+        #Sanwanlegend {
+            margin-right: 14.7em;
+        }
+
+        #geo-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 40%;
+        }
+
+        #rankbuttons {
+            display: flex;
+            height: 70px;
+            align-items: baseline;
+        }
+
+        .geo {
+            width: 100%;
+            height: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        #justTheMap {
+            font-size: 0.8em;
+            text-align: right;
+            width: 60%;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .buttonblocks {
+            width: 100%;
+        }
+
+        .bluetext {
+            color: steelblue;
+        }
+
+        .redtext {
+            color: firebrick;
+        }
+
+
+    </style>
+
+</head>
+<body onload="drawCirclesFirstPage();">
+
+<div id="fullpage">
+
+    <div class="section" id="section0">
+        <div class="intro1" id="mainTitle">
+            <h1 id="PageTitle"><strong>A UNIVERSITY SURVEY</strong></h1>
+
+            <p class="UWandPaul" id="UW">University of Washington</p>
+            <p class="UWandPaul" id="PAUL">Paul G.Allen School Computer Science</p>
+            <p class="UWandPaul" id="insightSentence1"> an insight correlation of college tuition</p>
+            <p class="UWandPaul" id="insightSentence2"> and local economic development</p>
+            <p class="UWandPaul" id="cse442"> CSE442</p>
+            <!--<canvas id="circle1" width="300" height="300"></canvas>-->
+            <!--<canvas id="circle2" width="300" height="300"></canvas>-->
+            <!--<canvas id="circle3" width="300" height="300"></canvas>-->
+        </div>
+    </div>
+
+    <div class="section" id="section1">
+        <div class="intro">
+            <div class="wholeText">
+                <p id="whiteBigTexts01">Education is one of the most prevalent ways to guarantee the class mobility of
+                    society.</p>
+                <p class="wholepageText">
+                    People consider
+                    it as a reliable way to achieve success. Unfortunately, to get a
+                    chance of education, people have to pay a substantial amount of
+                    tuitions and fees. This may become a barrier that keeps the poor
+                    from the door of qualified education, and such a barrier may
+                    negatively affect the class mobility of society.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section" id="section3">
+        <div class="intro">
+            <div class="leftTexts" id="leftTextYear">
+                <h1 class="titlesMainContents" style="color: rgb(65,68,85);">Tuition - Overall Rating</h1>
+                <p class="descriptions" id="firstDisplay" style="visibility: visible; color: rgb(65,68,85);">
+                    <b class="bluetext">Private schools</b> have higher tuition
+                    generally, and they tend to have higher overall scores.
+                    As shown in the chart, most schools with a score greater than 60
+                    are private.
+                </p>
+                <p class="descriptions" id="secondDisplay" style="color: rgb(65,68,85);">
+
+                    Even though many <b class="redtext">public schools</b> charge relatively low tuition as
+                    shown by the blue dots sitting in the bottom left corner, their
+                    scores are correspondingly lower, which indicates that the quality
+                    of education provided by these public schools is far from
+                    satisfactory.
+                </p>
+                <p class="descriptions" id="thridDisplay" style="color: rgb(65,68,85);">
+                    Furthermore, the ranking of each school does not vary
+                    greatly from year to year, which implies the situation
+                    where good schools charge higher fee does not change
+                    in the short-term.
+                </p>
+            </div>
+
+            <div id="geoMapBox" style="text-align: center;">
+                <!-- <span style="font-size: 48px; color: rgb(112, 112, 112);">
+                        <i class="fas fa-arrow-left" onclick="schoolByYearChartminus()"></i>
+                        <i class="fas fa-arrow-right" onclick="schoolByYearChartplus()"></i>
+                </span> -->
+                <svg class="schoolByYearChart"></svg>
+                <div class="slidecontainer">
+                    <input type="range" min="2012" max="2015" value="2012" class="slider" id="sliderSchoolByYear">
+                </div>
+                <ul class="range-labels">
+                    <li class="listItem">2012</li>
+                    <li class="listItem">2013</li>
+                    <li class="listItem">2014</li>
+                    <li class="listItem">2015</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section" id="section4">
+        <div class="intro">
+            <div class="wholeText">
+                <!-- <p id="whiteBigTexts02">We use data visualization techniques</p> -->
+                <p class="wholepageText">
+                    <b class="redtext">Public school</b> tends to have lower tuition as well as lower overall score,
+                    and <b class="bluetext">private school</b> is just the opposite.
+                    Also, the positions of the dots don't vary much from year to year, which implies that the
+                    situation where good schools charge higher fee does not change in the short-term.
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section" id="section5">
+        <div class="intro">
+            <div class="leftTexts">
+                <p class="descriptions lianDongFactors" style="color: rgb(65,68,85);">
+                    Let's take a closer look at some factors of a univerisity
+                    and try to see if there exist some correlations.
+                </p>
+                <p class="descriptions lianDongFactors" style="color: rgb(65,68,85);">
+                    <b class="redtext">Public schools</b> are colored in <b class="redtext">red</b>, and <b
+                        class="bluetext">private schools</b> are in <b class="bluetext">blue</b>. We can see that more
+                    percentage of students in private schools can get financial aid. And private schools have lower
+                    enrollment. There does not seem to have a strong relationship between institutional control and SAT
+                    scores.
+                </p>
+
+                <p class="descriptions lianDongFactors" style="color: rgb(65,68,85);">
+                    Click on the "Resample" button to sample 30 other schools!
+                </p>
+            </div>
+            <button class="button" id="lianDongButton" onclick="getNewSample()">Resample</button>
+            <div id="factorsBox">
+                <svg class="tui_score" viewBox="0 0 365 365"></svg>
+                <svg class="tui_enrollment" viewBox="0 0 365 365"></svg>
+                <svg class="tui_aid" viewBox="0 0 365 365"></svg>
+                <svg class="tui_sat" viewBox="0 0 365 365"></svg>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section" id="section7">
+
+        <div class="intro whiteTitle" id="geopyra">
+            <p class="descriptions" id="geopyraDecriptions">
+                These charts show the distribution of schools in the ranking system. Again, <b class="redtext">red
+                bars</b> represent the<b class="redtext">public schools</b>, and the <b class="bluetext">blue</b> ones
+                are <b class="bluetext">private schools</b>.</br>Click on the bars to get more information about the
+                regional distribution of the universities.
+            </p>
+
+            <div id="geopyramaps">
+                <svg class='pyraGeoMap' viewBox="0 0 1200 600"></svg>
+
+                <svg class='pyraGraph' viewBox="0 0 540 344"></svg>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section" id="section6">
+        <div class="intro">
+            <div class="wholeText">
+                <p class="wholepageText">
+                    All Top 20 universities are private schools and over a half of the universities ranked after 150 are
+                    public schools.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="section8">
+        <div class="slide whiteTitle">
+            <object id="test2Loki" data="test2.html">
+                Your browser doesn’t support the object tag.
+            </object>
+            <div id="scrollIndicator">
+                <p>&nbsp;Please put your mouse here to <b>scroll</b> &nbsp;</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section" id="section9">
+        <div class="intro">
+            <div class="wholeText" id="Section9sFonts">
+                <p class="whiteBigTexts">Top universities, which are usually private, charge more tuition generally.</p>
+                <p class="wholepageText">
+                    <br/>
+                    Therefore,
+                    students need to
+                    invest more money in order to get better education. But things are getting better after
+                    graduation: <br/><br/>Students who attend better universities usually earn more.
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="section10">
+        <div class="intro">
+            <div class="wholeText">
+                <p class="whiteBigTexts">
+                    In the end, we’d like to offer you an opportunity to play around with this
+                    geographic map.
+                </p>
+
+                <p class="wholepageText">
+                    Select the buttons and see the changes! You will find the “secrets” hiding among the data.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section" id="section11">
+        <div class="intro" id="geoMap">
+            <!--<h1 class="titlesMainContents whiteTitle">Geographical Map</h1>-->
+            <div id="justTheMap">
+
+                <svg class="geo" viewBox="0 0 1200 600"></svg>
+                <p id="Sanwanlegend" style="font-size:12px; transform:translate(-10px,0px);">30000 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    80000</p>
+                <canvas id="pyrageoMapLegend"></canvas>
+                <p id="gdptext">GDP per Capita</p>
+            </div>
+            <div id="geo-buttons">
+
+
+                <div class="buttonblocks">
+                    <!-- add blank spaces to make it beautiful -->
+                    Tuition &nbsp; &nbsp; &nbsp;
+                    <button class="button geoMapButton" id="20K" onclick="changeTuitionFilter(0)"
+                            style="background-color: grey;">20K-
+                    </button>
+                    <button class="button geoMapButton" id="20KTo40K" onclick="changeTuitionFilter(1)"
+                            style="background-color: grey;">20K~40K
+                    </button>
+                    <button class="button geoMapButton" id="40K" onclick="changeTuitionFilter(2)"
+                            style="background-color: grey;">40K+
+                    </button>
+                </div>
+
+                <div class="buttonblocks">
+                    Enrollment
+                    <button class="button geoMapButton" onclick="changeEnrollFilter(0)" id="10K"
+                            style="background-color: grey;">10K-
+                    </button>
+                    <button class="button geoMapButton" onclick="changeEnrollFilter(1)" id="10KTo30K"
+                            style="background-color: grey;">10K~30K
+                    </button>
+                    <button class="button geoMapButton" onclick="changeEnrollFilter(2)" id="30K"
+                            style="background-color: grey;">30K+
+                    </button>
+
+                    <!--
+                                        <label class="container" style="font-size: 12px">Include Unknown
+                                            <input type="checkbox" checked="checked" onclick="setCheckedEnrollment(this)">
+                                            <span class="checkmark"></span>
+                                        </label>-->
+
+                </div>
+
+                <div class="buttonblocks" id="rankbuttons">
+                    Rank &nbsp; &nbsp; &nbsp; &nbsp;
+                    <button class="button rankbuttonclass" id="t50" onclick="changeRankFilter(0)"
+                            style="background-color: grey;">Top 50
+                    </button>
+                    <button class="button rankbuttonclass" id="t100" onclick="changeRankFilter(1)"
+                            style="background-color: grey;">51-100
+                    </button>
+                    <button class="button rankbuttonclass" id="t150" onclick="changeRankFilter(2)"
+                            style="background-color: grey;">101~150
+                    </button>
+
+                    <button class="button rankbuttonclass" id="t231" onclick="changeRankFilter(3)"
+                            style="background-color: grey;">151~230
+                    </button>
+                    <button class="button rankbuttonclass" id="t300" onclick="changeRankFilter(4)"
+                            style="background-color: grey;">231~300
+                    </button>
+                    <button class="button rankbuttonclass" id="t300+" onclick="changeRankFilter(5)"
+                            style="background-color: grey;">300+
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section" id="section12">
+        <div class="intro">
+            <div class="wholeText">
+                <p class="whiteBigTexts">Education is free.</p>
+                <p class="wholepageText">
+                    Freedom of education shall be
+                    enjoyed under the condition fixed by law and under
+                    the supreme control of the state.
+                </p>
+                <p class="whiteBigTexts">–––– Karl Marx</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="section13">
+        <div class="lastOne">
+            <div class="lastBoxes" id="reference">
+                <h2>Reference</h2>
+                <p><a href='https://cse442-17s.github.io/Looking-Down-the-Barrel/final/'>Looking Down the Barrel</a></p>
+                <p><a href='https://www.kaggle.com/mylesoneill/world-university-rankings'>World university rankings</a>
+                </p>
+                <p><a href='https://www.kaggle.com/theriley106/university-statistics'>University statistics</a></p>
+                <p><a href='http://jsbin.com/jalex/1/edit?js,output'>Double Bar Graph</a></p>
+                <p><a href='https://rasmusfonseca.github.io/d3RangeSlider/'>D3 Range Slider</a></p>
+                <p><a href='https://alvarotrigo.com/fullPage/'>Fullpage.js</a></p>
+
+            </div>
+            <div class="lastBoxes" id="specialThanks">
+                <h2>Special Thanks</h2>
+                <p>Professor Jeffrey Heer</p>
+                <p>Our awesome TAs</p>
+                <p>D3.js developed by Mike Bostock</p>
+                <p>Jasper, a designer</p>
+                <p>Amanda, a friend from HCDE</p>
+                <p>Steven Bao, a friend who designs</p>
+            </div>
+            <div class="lastBoxes" id="about us">
+                <h2>About Us</h2>
+                <a href="mailto:zongyc@cs.washington.edu?Subject=Hello%20again" target="_top">Zongyuan Chen</a>
+                <a href="mailto:jl262@cs.washington.edu?Subject=Hello%20again" target="_top">Jialiang Liu</a>
+                <a href="mailto:leiyiz@uw.edu?Subject=Hello%20again" target="_top">Leiyi Zhang</a>
+                <a href="mailto:chenm32@cs.washington.edu?Subject=Hello%20again" target="_top">Mengxing Chen</a>
+                <a href="mailto:dengcc@cs.washington.edu?Subject=Hello%20again" target="_top">Loki Chen</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript" src="fullpage.js"></script>
+<!-- <script type="text/javascript" src="examples.js"></script>
+ -->
+<script type="text/javascript">
+
+    var myFullpage = new fullpage('#fullpage', {
+        licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+        anchors: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14'],
+        navigation: true,
+        navigationPosition: 'right',
+        navigationTooltips: ['First page', 'Second page', 'Third page', 'Fourth Page', 'Fifth Page', 'Sixth Page', 'Seventh Page', 'Eighth Page']
+    });
+
+    function drawCirclesFirstPage() {
+        var canvas = document.getElementById('circle1');
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+            var X = canvas.width / 2;
+            var Y = canvas.height / 2;
+            var R = 120;
+            ctx.beginPath();
+            ctx.arc(X, Y, R, 0, 2 * Math.PI, false);
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.stroke();
+        }
+        let canvas2 = document.getElementById('circle2');
+        if (canvas2.getContext) {
+            var ctx = canvas2.getContext('2d');
+            var X = canvas2.width / 2;
+            var Y = canvas2.height / 2;
+            var R = 110;
+            ctx.beginPath();
+            ctx.arc(X, Y, R, 0, 2 * Math.PI, false);
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.stroke();
+        }
+        let canvas3 = document.getElementById('circle3');
+        if (canvas3.getContext) {
+            var ctx = canvas3.getContext('2d');
+            var X = canvas3.width / 2;
+            var Y = canvas3.height / 2;
+            var R = 120;
+            ctx.beginPath();
+            ctx.arc(X, Y, R, 0, 2 * Math.PI, false);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.stroke();
+        }
+
+    }
+
+    /* global d3 */
+    // basic parameters
+    let lianDongpadding = 25;
+    let lianDongDataset = [];  // all data stored here
+    let lianDongsampleSize = 30;
+    let lianDongsampleData = [];
+
+
+    d3.csv("./schoolInfo_copy.csv", function (row) {
+        return {
+            Name: row.displayName,
+            Score: +row.overall,
+            Control: row.control,
+            Tuition: +row.tuition,
+            AcceptRate: +row.acceptRate,
+            Enrollment: +row.enrollment,
+            Aid: +row.aidPercent,
+            SAT: +row.sat,
+            key: 1
+        };
+    }).then(rows => {
+        // console.log(rows);
+        rows = rows.sort(function (a, b) {
+            return a.Tuition - b.Tuition;
+        });
+
+        for (let i = 0; i < rows.length; i++) {
+            let row = rows[i];
+            // get rid of those rows that have NaN tuition or NaN score
+            if (!isNaN(row.Score) && !isNaN(row.Tuition) && !isNaN(row.Aid) && !isNaN(row.Enrollment) && !isNaN(row.AcceptRate) && !isNaN(row.SAT)) {
+                lianDongDataset.push(row);
+            }
+        }
+
+        getNewSample()
+        console.log(lianDongDataset.length)
+        makeChart();
+    }).catch(error => {
+        console.log(error)
+    });
+
+    // Set the dimensions of the canvas / graph
+    let margin = {top: 50, right: 50, bottom: 50, left: 50},
+        width = 365 - margin.left - margin.right,
+        height = 365 - margin.top - margin.bottom;
+
+    let x = d3.scaleLinear()
+        .range([lianDongpadding, width - lianDongpadding]);
+    let scoreY = d3.scaleLinear()
+        .range([height - lianDongpadding, lianDongpadding]);
+    let enrollmentY = d3.scaleLinear()
+        .range([height - lianDongpadding, lianDongpadding]);
+    let aidY = d3.scaleLinear()
+        .range([height - lianDongpadding, lianDongpadding]);
+    let satY = d3.scaleLinear()
+        .range([height - lianDongpadding, lianDongpadding]);
+
+    let valueline = d3.line()
+        .x(function (d) {
+            return x(d.Tuition);
+        })
+        .y(function (d) {
+            return scoreY(d.Score);
+        });
+
+    // Define the axes
+    let xAxis = d3.axisBottom().scale(x).ticks(5);
+    let scoreYAxis = d3.axisLeft().scale(scoreY).ticks(5);
+    let enrollmentYAxis = d3.axisLeft().scale(enrollmentY).ticks(5);
+    let satYAxis = d3.axisLeft().scale(satY).ticks(5);
+    let aidYAxis = d3.axisLeft().scale(aidY).ticks(5);
+    // Score
+    let scoreSvg = d3.select(".tui_score")
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+    // Enrollment
+    let enrollmentSvg = d3.select(".tui_enrollment")
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+    // Aid
+    let aidSvg = d3.select(".tui_aid")
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+    let satSvg = d3.select(".tui_sat")
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+    function makeChart() {
+        // Scale the range of the data
+        x.domain([0, 60000]);
+        scoreY.domain([20, 100]);
+        enrollmentY.domain([0, 60000])
+        aidY.domain([0, 100])
+        satY.domain([800, 1600])
+
+        // Score
+        scoreSvg.append("g")
+            .attr("class", "lianDongxaxis")
+            .attr("transform", "translate(0," + "240)")
+            .call(xAxis)
+            .append("text")
+            .text("Tuition")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("x", height + 20)
+            .attr("dy", 0)
+            .style("text-anchor", "end");
+
+        scoreSvg.append("g")
+            .attr("class", "lianDongyaxis")
+            .attr("transform", "translate(" + margin.left / 2 + ", 0)")
+            .call(scoreYAxis)
+            .append("text")
+            .text("General Score")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 15)
+            .attr("dx", -10)
+            .style("text-anchor", "end");
+
+        // Enrollment
+        enrollmentSvg.append("g")
+            .attr("class", "lianDongxaxis")
+            .attr("transform", "translate(0," + (height - 25) + ")")
+            .call(xAxis)
+            .append("text")
+            .text("Tuition")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("x", height + 20)
+            .attr("dy", 0)
+            .style("text-anchor", "end");
+
+        enrollmentSvg.append("g")
+            .attr("class", "lianDongyaxis")
+            .attr("transform", "translate(" + margin.left / 2 + ", 0)")
+            .call(enrollmentYAxis)
+            .append("text")
+            .text("Enrollment")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 15)
+            .attr("dx", -10)
+            .style("text-anchor", "end");
+
+        // Aid
+
+        aidSvg.append("g")
+            .attr("class", "lianDongxaxis")
+            .attr("transform", "translate(0," + (height - 25) + ")")
+            .call(xAxis)
+            .append("text")
+            .text("Tuition")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("x", height + 20)
+            .attr("dy", 0)
+            .style("text-anchor", "end");
+
+
+        aidSvg.append("g")
+            .attr("class", "lianDongyaxis")
+            .attr("transform", "translate(" + margin.left / 2 + ", 0)")
+            .call(aidYAxis)
+            .append("text")
+            .text("% Financial Aid")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 15)
+            .attr("dx", -10)
+            .style("text-anchor", "end");
+
+        // SAT
+
+        satSvg.append("g")
+            .attr("class", "lianDongxaxis")
+            .attr("transform", "translate(0," + (height - 25) + ")")
+            .call(xAxis)
+            .append("text")
+            .text("Tuition")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("x", height + 20)
+            .attr("dy", 0)
+            .style("text-anchor", "end");
+
+        satSvg.append("g")
+            .attr("class", "lianDongyaxis")
+            .attr("transform", "translate(" + margin.left / 2 + ", 0)")
+            .call(satYAxis)
+            .append("text")
+            .text("SAT Score")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 15)
+            .attr("dx", -10)
+            .style("text-anchor", "end");
+
+        lianDongupdate()
+    }
+
+    function lianDongupdate() {
+        console.log(lianDongsampleData)
+        // Add the scatterplot
+        let scores = scoreSvg.selectAll(".lianDongscores")
+            .data(lianDongsampleData)
+        // .append("g");
+
+        // Score
+        let scoreEnter = scores.enter().append("circle")
+            .attr("class", "lianDongscores")
+            .attr("r", 5)
+            .attr("cx", function (d) {
+                return x(d.Tuition);
+            })
+            .attr("cy", function (d) {
+                return scoreY(d.Score);
+            })
+            .attr('fill', function (d) {
+                if (d.Control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            });
+
+        scores.append("svg:title")
+            .text(function (d) {
+                return d.Name + "\nScore: " + d.Score + "\nTuition: " + d.Tuition;
+            });
+
+        scoreEnter.merge(scores).transition().duration(300)
+            .attr("r", 5)
+            .attr("cx", function (d) {
+                return x(d.Tuition);
+            })
+            .attr("cy", function (d) {
+                return scoreY(d.Score);
+            })
+            .attr('fill', function (d) {
+                if (d.Control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            })
+            .attr("fill-opacity", 0.6);
+
+        scores.exit().transition().duration(300).remove();
+        // Enrollment
+        let enrolls = enrollmentSvg.selectAll(".lianDongenrolls")
+            .data(lianDongsampleData);
+
+        let enrollmentEnter = enrolls.enter().append("circle")
+            .attr("class", "lianDongenrolls")
+            .attr("r", 5)
+            .attr("cx", function (d) {
+                return x(d.Tuition);
+            })
+            .attr("cy", function (d) {
+                return enrollmentY(d.Enrollment);
+            })
+            .attr('fill', function (d) {
+                if (d.Control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            })
+            .attr("fill-opacity", 0.6);
+
+        enrolls.append("svg:title")
+            .text(function (d) {
+                return d.Name + "\nEnrollment: " + d.Enrollment + "\nTuition: " + d.Tuition;
+            });
+
+        enrollmentEnter.merge(enrolls).transition().duration(300)
+            .attr("r", 5)
+            .attr("cx", function (d) {
+                return x(d.Tuition);
+            })
+            .attr("cy", function (d) {
+                return enrollmentY(d.Enrollment);
+            })
+            .attr('fill', function (d) {
+                if (d.Control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            })
+            .attr("fill-opacity", 0.6);
+
+        enrolls.exit().transition().duration(300).remove();
+
+        let aids = aidSvg.selectAll(".lianDongaids")
+            .data(lianDongsampleData);
+
+        let aidEnter = aids.enter().append("circle")
+            .attr("class", "lianDongaids")
+            .attr("r", 5)
+            .attr("cx", function (d) {
+                return x(d.Tuition);
+            })
+            .attr("cy", function (d) {
+                return aidY(d.Aid);
+            })
+            .attr('fill', function (d) {
+                if (d.Control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            })
+            .attr("fill-opacity", 0.6);
+
+        aidEnter.merge(aids).transition().duration(300)
+            .attr("r", 5)
+            .attr("cx", function (d) {
+                return x(d.Tuition);
+            })
+            .attr("cy", function (d) {
+                return aidY(d.Aid);
+            })
+            .attr('fill', function (d) {
+                if (d.Control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            })
+            .attr("fill-opacity", 0.6);
+
+        aids.exit().transition().duration(300).remove();
+
+        aids.append("svg:title")
+            .text(function (d) {
+                return d.Name + "\nAid Percentage: " + d.aidPercent + "\nTuition: " + d.Tuition;
+            });
+
+        let sats = satSvg.selectAll(".lianDongsats")
+            .data(lianDongsampleData);
+
+        let satEnter = sats.enter().append("circle")
+            .attr("class", "lianDongsats")
+            .attr("r", 5)
+            .attr("cx", function (d) {
+                return x(d.Tuition);
+            })
+            .attr("cy", function (d) {
+                return satY(d.SAT);
+            })
+            .attr('fill', function (d) {
+                if (d.Control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            })
+            .attr("fill-opacity", 0.6);
+
+        satEnter.merge(sats).transition().duration(300)
+            .attr("r", 5)
+            .attr("cx", function (d) {
+                return x(d.Tuition);
+            })
+            .attr("cy", function (d) {
+                return satY(d.SAT);
+            })
+            .attr('fill', function (d) {
+                if (d.Control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            })
+            .attr("fill-opacity", 0.6);
+        sats.append("svg:title")
+            .text(function (d) {
+                return d.Name + "\nSAT Score: " + d.SAT + "\nTuition: " + d.Tuition;
+            });
+
+        sats.exit().transition().duration(300).remove();
+    }
+
+    function getNewSample() {
+        shuffle(lianDongDataset)
+        lianDongsampleData = [];
+        for (var i = 1; i <= lianDongsampleSize; i++) {
+            lianDongsampleData.push(lianDongDataset[i]);
+        }
+        lianDongsampleData.sort(function (a, b) {
+            return b.Tuition - a.Tuition
+        })
+        console.log("finish getting sample")
+        lianDongupdate()
+
+    }
+
+    function shuffle(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+            a[i].key = i;
+            a[j].key = j;
+        }
+        return a;
+    }
+
+    function getKey(d) {
+        return d.key;
+    }
+
+    // SchoolByYear
+
+    /* global d3 */
+    // document.onkeydown = function (e) {
+    //     switch (e.keyCode) {
+    //         case 37:
+    //             schoolByYearChartminus();
+    //             break;
+    //         case 39:
+    //             schoolByYearChartplus();
+    //             break;
+    //     }
+    // };
+
+    function schoolByYearhashCode(str) { // java String#hashCode
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return hash;
+    }
+
+
+    // assign rgb value (to each publisher)
+    function schoolByYearintToRGB(i) {
+        let schoolByYearChartC = (i & 0x00FFFFFF)
+            .toString(16)
+            .toUpperCase();
+        return "#" + "000000".substring(0, 6 - schoolByYearChartC.length) + schoolByYearChartC;
+    }
+
+    // basic parameters
+    let schoolByYearChartW = 500;
+    let schoolByYearChartH = 500;
+    let schoolByYearChartpadding = 25;
+    let schoolByYearChartData = new Map();
+    let schoolByYearChartDataset = [];
+    let schoolByYearChartCurrent_year = 2012;
+    for (let i = 2012; i <= 2015; i++) {
+        schoolByYearChartData.set(i, []);
+    }
+    d3.csv("schoolByYear.csv", function (row) {
+        return {
+            school: row.name,
+            tuition: +row.tuition,
+            patent: +row.patent,
+            score: +row.score,
+            year: +row.year,
+            control: row.control,
+            ratio: +row.ratio,
+            schoolByYearChartyKey: row.name
+        };
+    }).then(rows => {
+        for (let i = 0; i < rows.length; i++) {
+            let record = rows[i];
+            if (!Number.isNaN(record.year)) {
+                schoolByYearChartData.get(record.year).push(record);
+
+            }
+        }
+        schoolByYearChartDataset = schoolByYearChartData.get(schoolByYearChartCurrent_year);
+        schoolByYearChartmakeChart()
+
+    }).catch(error => {
+        console.log(error)
+    });
+    let schoolByYearChartyKey = function (d) {
+        return d.schoolByYearChartyKey;
+    };
+    let schoolByYearChartX, schoolByYearChartY, schoolByYearChartR, schoolByYearChartC;
+    let schoolByYearChartxAxis, schoolByYearChartyAxis;
+
+    let year_label = d3.select(".schoolByYearChart").append("text")
+        .text(schoolByYearChartCurrent_year)
+        .attr("x", 120)
+        .attr("y", 100)
+        .style("fill", "#d3d3d3")
+        .style("font-size", "70px")
+        .style("font-family", "'Lato', sans-serif");
+
+    function schoolByYearChartmakeChart() {
+
+        schoolByYearChartY = d3.scaleLinear()
+            .domain([40, 100])
+            .range([schoolByYearChartH - schoolByYearChartpadding, schoolByYearChartpadding]);
+        schoolByYearChartX = d3.scaleLinear()
+            .domain([0, 60000])
+            .range([schoolByYearChartpadding, schoolByYearChartW - schoolByYearChartpadding]);
+        // schoolByYearChartR = d3.scaleLinear()
+        //     .domain([0, 140])
+        //     .range([3, 80]);
+
+        // schoolByYearChartC = d3.scaleOrdinal()
+        //     .domain(famous)
+        //     .range(famousColor)
+        let canvas = d3.select(".schoolByYearChart")
+            .style("width", schoolByYearChartW + 50)
+            .style("height", schoolByYearChartH)
+
+        // bubble schoolByYearChart frame
+        schoolByYearChartxAxis = d3.axisBottom()
+            .scale(schoolByYearChartX)
+            .ticks(5);
+        schoolByYearChartyAxis = d3.axisLeft()
+            .scale(schoolByYearChartY)
+            .ticks(5);
+        let yAxisGroup = canvas.append("g")
+            .attr("class", "axis")
+            .attr("id", "schoolByYearChartyAxis")
+            .attr("transform", "translate(60,0)")
+            .call(schoolByYearChartyAxis);
+        yAxisGroup.selectAll("text")
+            .attr("transform", "translate(-5,0)");
+        yAxisGroup.append("text")
+            .text("Score")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 15)
+            .attr("dx", -10)
+            .style("text-anchor", "end");
+        canvas.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(35," + (schoolByYearChartH - 25) + ")")
+            .call(schoolByYearChartxAxis)
+            .append("text")
+            .text("Tuition")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("x", schoolByYearChartH - 15)
+            .attr("dy", -10)
+            .style("text-anchor", "end");
+        schoolByYearChartupdate();
+    }
+
+    function schoolByYearChartupdate() {
+
+        // scatter
+        let scatter = d3.select(".schoolByYearChart").selectAll("circle")
+            .data(schoolByYearChartDataset, schoolByYearChartyKey);
+        let enter = scatter.enter().append("circle")
+            .attr("class", "circles")
+            .attr("cx", function (d) {
+                return schoolByYearChartX(d.tuition);
+            })
+            .attr("cy", function (d) {
+                return schoolByYearChartY(d.score);
+            })
+            .attr("r", function () {
+                return 5;
+            })
+            .attr('fill', function (d) {
+                if (d.control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            })
+            .attr("fill-opacity", 0.6);
+        // .attr("fill-opacity", 0.75);
+        // .on("click", function (d) {
+        //     // Determine if current line is visible
+        //     focus = !focus;
+        //     if (focus) {
+        //         focusedOn = d.Publisher;
+        //         console.log("=========================")
+        //         console.log(d)
+        //         console.log(barData)
+        //         if (barData.includes(d)) {
+        //             console.log("try to highlight")
+        //             d3.select("#a" + hashCode(d.Publisher)).attr("stroke", "salmon").attr("stroke-width", "3px");
+        //         }
+        //         schoolByYearChartupdate();
+        //     }
+        //     else {
+        //         d3.select("#a" + hashCode(d.Publisher)).attr("stroke", "salmon").attr("stroke-width", "0px");
+        //         d3.select(".schoolByYearChart").selectAll("circle").style("fill-opacity", 0.75);
+        //         schoolByYearChartupdate();
+        //     }
+
+        // });
+
+        enter.append("svg:title")
+            .text(function (d) {
+                return schoolByYearChartgetInfo(d);
+            });
+        ;
+        // ENTER + schoolByYearChartupdate
+        enter.merge(scatter).transition().duration(500)
+            .attr("cx", function (d) {
+                return schoolByYearChartX(d.tuition);
+            })
+            .attr("cy", function (d) {
+                return schoolByYearChartY(d.score);
+            })
+            .attr("r", function (d) {
+                return 5;
+            })
+            .attr('fill', function (d) {
+                if (d.control === "public") {
+                    return "firebrick";
+                }
+                else {
+                    return "steelblue";
+                }
+            })
+            .attr("fill-opacity", function (d) {
+                return 0.6;
+            })
+            //.attr("fill-opacity", 0.75)
+            .select("title")
+            .text(function (d) {
+                return schoolByYearChartgetInfo(d);
+            });
+        // EXIT
+        scatter.exit().transition().duration(500)
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 0)
+            .attr("fill-opacity", 0)
+            .remove();
+    }
+
+    function schoolByYearChartgetInfo(d) {
+        return d.school + "\nTuition " + d.tuition +
+            "\nScore " + d.score +
+            "\nPatent " + d.patent;
+    }
+
+    function schoolByYearChartplus() {
+        if (schoolByYearChartCurrent_year != 2015) {
+            schoolByYearChartCurrent_year++;
+            schoolByYearChartDataset = schoolByYearChartData.get(schoolByYearChartCurrent_year);
+            d3.select("text").text(schoolByYearChartCurrent_year);
+
+            schoolByYearChartupdate();
+        }
+    }
+
+    function schoolByYearChartminus() {
+        if (schoolByYearChartCurrent_year != 2012) {
+            schoolByYearChartCurrent_year--;
+            console.log(schoolByYearChartCurrent_year);
+            schoolByYearChartDataset = schoolByYearChartData.get(schoolByYearChartCurrent_year);
+            d3.select("text").text(schoolByYearChartCurrent_year);
+
+            schoolByYearChartupdate();
+        }
+    }
+
+    var sliderSchoolByYear = document.getElementById("sliderSchoolByYear");
+    sliderSchoolByYear.oninput = function () {
+        schoolByYearChartCurrent_year = this.value / 1;
+
+        schoolByYearChartDataset = schoolByYearChartData.get(schoolByYearChartCurrent_year);
+        d3.select("text").text(schoolByYearChartCurrent_year);
+
+        schoolByYearChartupdate();
+    }
+    sliderSchoolByYear.disabled = true;
+    var schoolYear = 2012;
+    var schoolYearTimer = setInterval(increment_year, 1000);
+
+    // function increment_
+    function increment_year() {
+
+        sliderSchoolByYear.value = schoolYear;
+        schoolByYearChartCurrent_year = schoolYear
+        schoolByYearChartDataset = schoolByYearChartData.get(schoolByYearChartCurrent_year);
+        d3.select("text").text(schoolByYearChartCurrent_year);
+        schoolYear += 1;
+        schoolByYearChartupdate();
+        if (schoolYear == 2016) {
+            clearInterval(schoolYearTimer);
+            schoolYearTimer = null;
+            sliderSchoolByYear.disabled = false;
+        }
+
+    }
+
+    // This is for the slider control
+    // function schoolByYearChartChange() {
+
+    // }
+
+    // GeoMap
+
+    function setCheckedControl(cb) {
+        include_undefined_control = cb.checked;
+        geoMapupdate();
+    }
+
+    function setCheckedTuition(cb) {
+        include_undefined_Tuition = cb.checked;
+        geoMapupdate();
+    }
+
+
+    function setCheckedAcceptRate(cb) {
+        include_undefined_Rank = cb.checked;
+        geoMapupdate();
+    }
+
+    function changeInstitutionControl(option) {
+        if (option == 0) {
+            changeButtonColor("public");
+        }
+        else {
+            changeButtonColor("private");
+        }
+        control[option] = !control[option];
+        geoMapupdate();
+    }
+
+    function changeTuitionFilter(option) {
+        if (option == 0) {
+            changeButtonColor("20K");
+        }
+        else if (option == 1) {
+            changeButtonColor("20KTo40K");
+        }
+        else {
+            changeButtonColor("40K");
+        }
+        tuiFilter[option] = !tuiFilter[option];
+        geoMapupdate();
+    }
+
+    function changeButtonColor(id) {
+        if (document.getElementById(id).style.backgroundColor === "grey") {
+            document.getElementById(id).style.backgroundColor = "rgb(65, 68, 85)";
+        }
+        else {
+            document.getElementById(id).style.backgroundColor = "grey";
+        }
+    }
+
+    function changeEnrollFilter(option) {
+        if (option == 0) {
+            changeButtonColor("10K");
+        }
+        else if (option == 1) {
+            changeButtonColor("10KTo30K");
+        }
+        else {
+            changeButtonColor("30K");
+        }
+        enrollFilter[option] = !enrollFilter[option];
+        geoMapupdate();
+    }
+
+    function changeRankFilter(option) {
+        if (option == 0) {
+            changeButtonColor("t50");
+        }
+        else if (option == 1) {
+            changeButtonColor("t100");
+        }
+        else if (option == 2) {
+            changeButtonColor("t150");
+        }
+        else if (option == 3) {
+            changeButtonColor("t231")
+        }
+        else if (option == 4) {
+            changeButtonColor("t300");
+        }
+        else {
+            changeButtonColor("t300+");
+        }
+        rankFilter[option] = !rankFilter[option];
+
+        geoMapupdate();
+    }
+
+    // function publicDots() {
+    //     //geoMapupdate(false)
+    //     control = 1;
+    //     geoMapupdate();
+    // }
+
+    // function privateDots() {
+    //     //geoMapupdate(false)
+    //     control = 2;
+    //     geoMapupdate();
+    // }
+
+    //Width and height
+    var geoMapw = 1200;
+    var geoMaph = 600;
+    // Plot each university on the GeoMap
+    var allUniv = [];
+    var displayUniv = [];
+    var circleEnter;
+
+    var zoomScale = 1;
+    var focused = false;
+    var focusedState = "";
+    // Filters
+    var include_undefined_control = true;
+    var include_undefined_acceptRate = true;
+    var include_undefined_Enrollment = false;
+    var include_undefined_Rank = true;
+    var include_undefined_Tuition = true;
+    var control = [true, true];
+    var tuiFilter = [true, true, true];
+    var enrollFilter = [true, true, true];
+    var rankFilter = [true, true, true, true, true, true];
+    var acceptFilter = 100;
+
+    //Define map projection
+    var projection = d3.geoAlbersUsa()
+        .translate([geoMapw / 2, geoMaph / 2])
+        .scale([1500]);
+
+    //Define geoPath generator
+    var geoPath = d3.geoPath()
+        .projection(projection);
+
+    //Define quantize scale to sort data values into buckets of geoMapColor
+    var geoMapColor = d3.scaleSequential(d3.interpolateHcl("rgb(135,139,165)", "rgb(66, 69, 86)"))
+        .domain([30000,
+            80000]);
+    //Colors taken from colorbrewer.js, included in the D3 download
+    geoMapColor.domain([30000, 80000])        // hard code here, since the capital is
+
+
+    //Number formatting for population values
+    var formatAsThousands = d3.format(",");  //e.g. converts 123456 to "123,456"
+
+    //Create SVG element
+    var geoMapSVG = d3.select(".geo")
+    // .attr("width", geoMapw)
+    // .attr("height", geoMaph);
+
+    // //Define what to do when panning or zooming
+    var zooming = function () {
+
+        //Log out d3.event.transform, so you can see all the goodies inside
+        //console.log(d3.event.transform);
+
+        //New offset array
+        var offset = [d3.event.transform.x, d3.event.transform.y];
+
+        //Calculate new scale
+        var newScale = d3.event.transform.k * 2000;
+
+        //geoMapupdate projection with new offset and scale
+        projection.translate(offset)
+            .scale(newScale);
+
+        //geoMapupdate all paths and circles
+        geoMapSVG.selectAll(".geoPath")
+            .transition()
+            .attr("d", geoPath);
+
+        geoMapSVG.selectAll("circle")
+            .transition()
+            .attr("cx", function (d) {
+                return projection([d.Longitude, d.Latitude])[0];
+            })
+            .attr("cy", function (d) {
+                return projection([d.Longitude, d.Latitude])[1];
+            });
+
+    }
+
+    //Then define the zoom behavior
+    var zoom = d3.zoom()
+        .scaleExtent([0.6, 0.6])
+        .translateExtent([[0, 0], [0, 0]])
+        .on("zoom", zooming);
+
+
+    //The geoMapcenter of the country, roughly
+    var geoMapcenter = projection([-93.3, 39.8]);
+
+    //Create a container in which all zoom-able elements will live
+    var geoMap = geoMapSVG.append("g")
+        .call(zoom)  //Bind the zoom behavior
+
+        // cancel pan
+        .on("mousedown.zoom", null)
+        .on("touchstart.zoom", null)
+        .on("touchmove.zoom", null)
+        .on("touchend.zoom", null)
+
+        .call(zoom.transform, d3.zoomIdentity  //Then apply the initial transform
+            .translate(geoMapw / 1.2, geoMaph / 1.3)
+            .scale(0.6)
+            .translate(-geoMapcenter[0], -geoMapcenter[1]));
+
+
+    var pathEnter;
+    var gdpState = {}
+    d3.csv("stateGDP.csv").then(function (data) {
+        for (var i = 0; i < data.length; i++) {
+            gdpState[data[i].State] = data[i].GDP;
+        }
+        d3.json("us-states.json").then(function (json) {
+            for (var j = 0; j < json.features.length; j++) {
+                json.features[j].properties.gdp = gdpState[json.features[j].properties.name]
+            }
+
+            pathEnter = geoMap.selectAll(".geoPath")
+                .data(json.features)
+                .enter()
+                .append("path")
+                .attr("class", "geoPath")
+                .attr("d", geoPath)
+                .style("stroke", "grey")
+                .style("stroke-width", "1")
+                .style("fill", function (d) {
+                    var value = d.properties.gdp;
+
+                    if (value) {
+                        //If value exists…
+                        return geoMapColor(Math.min(80000, value));
+                    }
+                    else {
+                        //If value is undefined…
+                        return "#ccc";
+                    }
+                })
+                .on("click", selectState)
+                .on("mouseover", function (d) {
+                    d3.select(this).style("cursor", "pointer");
+                    d3.select(this)
+                        .style("fill", "pink");
+                })
+                .on("mouseout", function (d) {
+                    d3.select(this).style("cursor", "default");
+                    d3.select(this).style("fill", function (d) {
+                        var value = d.properties.gdp;
+
+                        if (value) {
+                            //If value exists…
+                            return geoMapColor(Math.min(80000, value));
+                        }
+                        else {
+                            //If value is undefined…
+                            return "#ccc";
+                        }
+                    })
+
+                })
+                .append("svg:title").attr("class", "stateTitle")
+                .text(function (d) {
+                    return "State: " + d.properties.name + "\nGDP per capita: " + d.properties.gdp;
+                });
+
+            //Load in universities data
+            d3.csv("schoolInfo.csv", function (row) {
+                return {
+                    Name: row.displayName,
+                    Sat: +row.sat,
+                    Act: +row.act,
+                    Latitude: +row.lat,
+                    Longitude: +row.lng,
+                    Rank: +row.rank,
+                    HighSchoolGPA: +row.hsGPA,
+                    AcceptRate: +row.acceptRate,
+                    Overall: +row.overall,
+                    Business: +row.business,
+                    Engineering: +row.engineering,
+                    Tuition: +row.tuition,
+                    Enrollment: +row.enrollment,
+                    Control: row.control,
+                    key: row.displayName
+                };
+            })
+                .then(rows => {
+                    for (let i = 0; i < rows.length; i++) {
+                        allUniv.push(rows[i]);
+                    }
+                    geoMapupdate()
+                }).catch(error => {
+                console.log(error)
+            });
+        })
+    })
+
+    var geoMapcircles;
+    var circleEnter;
+
+    function geoMapupdate() {
+        // filter rows
+        displayUniv = [];
+
+
+        for (let i = 0; i < allUniv.length; i++) {
+            var univ = allUniv[i];
+            if ((!control[1] && (univ.Control == "proprietary" || univ.Control == "private")) || (!control[0] && univ.Control == "public")) {
+                continue;
+            }
+            else {
+
+                var filter_condition = (tuiFilter[Math.floor(univ.Tuition / 20000)] || ((Number.isNaN(univ.Tuition) || !univ.Tuition) && include_undefined_Tuition)) &&
+                    (enrollFilter[Math.min(2, Math.floor((univ.Enrollment + 10000) / 20000))] || ((Number.isNaN(univ.Enrollment) || !univ.Enrollment) && include_undefined_Enrollment)) &&
+                    ((univ.AcceptRate <= acceptFilter) || ((Number.isNaN(univ.AcceptRate) || !univ.acceptRate) && include_undefined_acceptRate));
+
+                // if(univ.Name == "University of Washington") {
+                //     console.log("UW", tuiFilter[Math.floor(univ.Tuition / 20000)] || ((Number.isNaN(univ.Tuition) || !univ.Tuition) && include_undefined), filter_condition)
+                // }
+
+                if (filter_condition) {
+                    if (univ.Rank > 0 && rankFilter[Math.min(3, Math.floor(univ.Rank / 50))]) {
+                        displayUniv.push(univ);
+                    }
+                    else if (rankFilter[univ.Rank * -1 + 3]) {
+                        displayUniv.push(univ);
+                    }
+                }
+                //}
+            }
+        }
+
+        // console.log(displayUniv)
+        geoMapcircles = d3.select(".geo g").selectAll("circle")
+            .data(displayUniv, function (d) {
+                return d.key;
+            });
+        circleEnter = geoMapcircles.enter()
+            .append("circle")
+            .attr("class", "univGeoCircles")
+            .attr("cx", function (d) {
+                return projection([d.Longitude, d.Latitude])[0];
+            })
+            .attr("cy", function (d) {
+                return projection([d.Longitude, d.Latitude])[1];
+            })
+            .attr("r", function (d) {
+                if (focused) {
+                    return 10 / zoomScale;
+                }
+                else {
+                    return 4;
+                }
+            })
+            .style("fill", "rgb(255, 254, 213)")
+            .style("opacity", 0.5)
+            .append("title")
+            .text(function (d) {
+                return getSchoolInfo(d);
+            });
+
+        circleEnter.merge(geoMapcircles)
+            .transition().duration(1000)
+            .attr("cx", function (d) {
+                return projection([d.Longitude, d.Latitude])[0];
+            })
+            .attr("cy", function (d) {
+                return projection([d.Longitude, d.Latitude])[1];
+            })
+            .attr("r", function (d) {
+                if (focused) {
+                    return 10 / zoomScale;
+                }
+                else {
+                    return 4;
+                }
+            })
+            .style("fill", "rgb(255, 254, 213)")
+            // .style("stroke", "gray")
+            // .style("stroke-width", 0.25)
+            .style("opacity", 0.5)
+        geoMapcircles.exit().transition().duration(1000).attr("r", 0).remove();
+
+    }
+
+    // Cite: https://cse442-17s.github.io/Looking-Down-the-Barrel/final/#gun-laws/1
+    function selectState(d) {
+        if (focusedState != d.properties.name) {
+            focused = true;
+            focusedState = d.properties.name
+            var bounds = geoPath.bounds(d);
+            var dx = bounds[1][0] - bounds[0][0];
+            var dy = bounds[1][1] - bounds[0][1];
+            var x = (bounds[0][0] + bounds[1][0]) / 2;
+            var y = (bounds[0][1] + bounds[1][1]) / 2;
+            zoomScale = .9 / Math.max(dx / geoMapw, dy / geoMaph);
+            var zoomTranslate = [geoMapw / 2 - zoomScale * x, geoMaph / 2 - zoomScale * y];
+
+            geoMap.selectAll("circle").transition().duration(1000)
+                .attr("r", 10 / zoomScale)
+
+            geoMap.transition()
+                .duration(750)
+                .style("stroke-width", 1.5 / zoomScale + "px")
+                .attr("transform", "translate(" + zoomTranslate + ")scale(" + zoomScale + ")");
+        }
+        else {
+            reset();
+        }
+    }
+
+    function reset() {
+        focused = false;
+        focusedState = "";
+        geoMap.transition()
+            .duration(750)
+            .style("stroke-width", "1.5px")
+            .attr("transform", "");
+        zoomScale = 1;
+
+        geoMap.selectAll("circle").transition("name").duration(1000)
+            .attr("r", 4 / zoomScale)
+    }
+
+    function getSchoolInfo(d) {
+        var realRank = "";
+        if (d.Rank == -1) {
+            realRank = "200~300";
+        }
+        else if (d.Rank == -2) {
+            realRank = "300~"
+        }
+        else {
+            realRank = d.Rank
+        }
+        var rate = d.AccpetRate ? d.AcceptRate : "Unknown";
+        var tui = d.Tuition ? d.Tuition : "Unknown";
+        var enroll = d.Enrollment ? d.Enrollment : "Unknown";
+        var over = d.Overall ? d.Overall : "Unknown";
+        var engin = d.Engineering ? d.Engineering : "Unknown";
+        var busi = d.Business ? d.Business : "Unknown";
+        return d.Name +
+            "\nNational Rank:    " + realRank +
+            "\nAccept Rate:  " + rate +
+            "\nTuition:  " + tui +
+            "\nEnrollment:    " + enroll +
+            "\nOverall Score:    " + over +
+            "\nEngineering Score:  " + engin +
+            "\nBusiness Score: " + busi +
+            "\nInstitutional Control: " + d.Control;
+    }
+
+
+    var legendPyra = document.getElementById("pyrageoMapLegend");
+    var legendPyraDraw = legendPyra.getContext("2d");
+    var pyragrd = legendPyraDraw.createLinearGradient(0, 0, 170, 0);
+    pyragrd.addColorStop(0, "rgb(135,139,165)");
+    pyragrd.addColorStop(1, "rgb(66, 69, 86)");
+
+    legendPyraDraw.fillStyle = pyragrd;
+    legendPyraDraw.fillRect(0, 0, 1000, 150);
+    legendPyraDraw.stroke();
+    // geo and pyra
+    // SET UP DIMENSIONS
+    var pyra_w = 500,
+        pyra_h = 300;
+
+    // margin.middle is distance from center line to each y-pyraAxis
+    var pyra_margin = {
+        top: 20,
+        right: 20,
+        bottom: 24,
+        left: 20,
+        middle: 28
+    };
+
+    // the width of each side of the chart
+    var pyra_regionWidth = pyra_w / 2 - pyra_margin.middle;
+    // these are the x-coordinates of the y-axes
+    var pyra_pointA = pyra_regionWidth,
+        pyra_pointB = pyra_w - pyra_regionWidth;
+
+    // some contrived data for public vs private schools
+    var pyra_schoolData = [
+        {group: '191-200', public: 7, private: 3},
+        {group: '181-190', public: 5, private: 6},
+        {group: '171-180', public: 7, private: 3},
+        {group: '161-170', public: 3, private: 3},
+        {group: '151-160', public: 9, private: 5},
+        {group: '141-150', public: 5, private: 1},
+        {group: '131-140', public: 10, private: 3},
+        {group: '121-130', public: 5, private: 3},
+        {group: '111-120', public: 5, private: 4},
+        {group: '101-110', public: 7, private: 5},
+        {group: '91-100', public: 5, private: 4},
+        {group: '81-90', public: 8, private: 5},
+        {group: '71-80', public: 4, private: 2},
+        {group: '61-70', public: 7, private: 7},
+        {group: '51-60', public: 8, private: 1},
+        {group: '41-50', public: 5, private: 5},
+        {group: '31-40', public: 3, private: 7},
+        {group: '21-30', public: 5, private: 6},
+        {group: '11-20', public: 0, private: 10},
+        {group: '1-10', public: 0, private: 10},
+        {group: 'Rank', public: 0, private: 0}
+    ];
+
+
+    // CREATE SVG
+    var pyra_svg = d3.select('.pyraGraph')
+    // .attr('width', pyra_margin.left + pyra_w + pyra_margin.right)
+    // .attr('height', pyra_margin.top + pyra_h + pyra_margin.bottom)
+    // ADD A GROUP FOR THE SPACE WITHIN THE MARGINS
+        .append('g')
+        .attr('transform', pyra_translation(pyra_margin.left, pyra_margin.top));
+
+    // find the maximum data value on either side
+    //  since this will be shared by both of the x-axes
+    var pyra_maxValue = Math.max(
+        d3.max(pyra_schoolData, function (d) {
+            return d.public;
+        }),
+        d3.max(pyra_schoolData, function (d) {
+            return d.private;
+        })
+    );
+
+    // SET UP SCALES
+
+    // the xScale goes from 0 to the width of a region
+    //  it will be reversed for the left x-pyraAxis
+    var pyra_xScale = d3.scaleLinear()
+        .domain([0, pyra_maxValue])
+        .range([0, pyra_regionWidth])
+        .nice();
+
+    var pyra_xScaleLeft = d3.scaleLinear()
+        .domain([0, pyra_maxValue])
+        .range([pyra_regionWidth, 0]);
+
+    var pyra_xScaleRight = d3.scaleLinear()
+        .domain([0, pyra_maxValue])
+        .range([0, pyra_regionWidth]);
+
+    var pyra_yScale = d3.scaleOrdinal()
+        .domain(pyra_schoolData.map(function (d) {
+            return d.group;
+        }))
+        .range([300, 285, 270, 255, 240, 225, 210, 195, 180, 165, 150, 135, 120, 105, 90, 75, 60, 45, 30, 15, 0]);
+
+
+    // SET UP AXES
+    // var pyra_yAxisLeft = d3.svg.pyraAxis()
+    //     .scale(pyra_yScale)
+    //     .orient('right')
+    //     .tickSize(4, 0)
+    //     .tickPadding(pyra_margin.middle - 4);
+
+    var pyra_yAxisLeft = d3.axisRight().scale(pyra_yScale).ticks(5);
+    var pyra_yAxisRight = d3.axisLeft().scale(pyra_yScale).ticks(5);
+
+    // var pyra_yAxisRight = d3.svg.pyraAxis()
+    //     .scale(pyra_yScale)
+    //     .orient('left')
+    //     .tickSize(4, 0)
+    //     .tickFormat('');
+
+    var pyra_xAxisRight = d3.axisBottom().scale(pyra_xScaleRight);
+    var pyra_xAxisLeft = d3.axisBottom().scale(pyra_xScaleLeft);
+
+    // var pyra_xAxisRight = d3.svg.pyraAxis()
+    //     .scale(pyra_xScale)
+    //     .orient('bottom')
+    // // .tickFormat(d3.format('%'));
+
+    // var pyra_xAxisLeft = d3.svg.pyraAxis()
+    // // REVERSE THE X-pyraAxis SCALE ON THE LEFT SIDE BY REVERSING THE RANGE
+    //     .scale(pyra_xScale.copy().range([pyra_pointA, 0]))
+    //     .orient('bottom')
+    // // .tickFormat(d3.format('%'));
+
+    // MAKE GROUPS FOR EACH SIDE OF CHART
+    // scale(-1,1) is used to reverse the left side so the bars grow left instead of right
+    var pyra_leftBarGroup = pyra_svg.append('g')
+        .attr('transform', pyra_translation(pyra_pointA, 0) + 'scale(-1,1)');
+    var pyra_rightBarGroup = pyra_svg.append('g')
+        .attr('transform', pyra_translation(pyra_pointB, 0));
+
+    // DRAW AXES
+    pyra_svgG = pyra_svg.append('g')
+        .attr('class', 'pyraAxis y left')
+        .attr('transform', pyra_translation(pyra_pointA, 0))
+        .call(pyra_yAxisLeft)
+        .selectAll('text')
+        .attr('transform', "translate(19,0)")
+        .style('text-anchor', 'middle');
+
+
+    pyra_svg.append('g')
+        .attr('class', 'pyraAxis y right')
+        .attr('transform', pyra_translation(pyra_pointB, 0))
+        .call(pyra_yAxisRight)
+        .selectAll('text')
+        .remove()
+
+    pyra_svg.append('g')
+        .attr('class', 'pyraAxis x left')
+        .attr('transform', pyra_translation(0, pyra_h + 7))
+        .call(pyra_xAxisLeft);
+
+    pyra_svg.append('g')
+        .attr('class', 'pyraAxis x right')
+        .attr('transform', pyra_translation(pyra_pointB, pyra_h + 7))
+        .call(pyra_xAxisRight);
+
+    // DRAW BARS
+    pyra_leftBarGroup.selectAll('.pyraBar.left')
+        .data(pyra_schoolData)
+        .enter().append('rect')
+        .attr('class', 'pyraBar left')
+        .attr('x', 0)
+        .attr('y', function (d) {
+            return pyra_yScale(d.group) - 7;
+        })
+        .attr('width', function (d) {
+            return pyra_xScale(d.public);
+        })
+        .attr('height', 14)
+        // .attr('stroke', 'black')
+        // .attr('stroke-width', '1px')
+        .on('mouseover', function (d) {
+            var index = Math.floor(d.group.split("-")[0] / 10);
+            if (!publicRankFilter[index]) {
+                d3.select(this).style('fill', 'pink');
+            }
+        })
+        .on('mouseleave', function (d) {
+            var index = Math.floor(d.group.split("-")[0] / 10);
+            if (!publicRankFilter[index]) {
+                d3.select(this).style('fill', 'firebrick');
+            }
+        })
+        .on('click', function (d) {
+            var index = Math.floor(d.group.split("-")[0] / 10);
+            pyra_click(index, true);
+            if (publicRankFilter[index]) {
+                d3.select(this).style('fill', 'rgb(255, 254, 213)');
+            }
+            else {
+                d3.select(this).style('fill', 'pink');
+            }
+        });
+
+
+    pyra_rightBarGroup.selectAll('.pyraBar.right')
+        .data(pyra_schoolData)
+        .enter().append('rect')
+        .attr('class', 'pyraBar right')
+        .attr('x', 0)
+        .attr('y', function (d) {
+            return pyra_yScale(d.group) - 7;
+        })
+        .attr('width', function (d) {
+            return pyra_xScale(d.private);
+        })
+        .attr('height', 14)
+        // .attr('stroke', 'black')
+        // .attr('stroke-width', '1px')
+        .on('mouseover', function (d) {
+            var index = Math.floor(d.group.split("-")[0] / 10);
+            if (!privateRankFilter[index]) {
+                d3.select(this).style('fill', 'pink');
+            }
+        })
+        .on('mouseleave', function (d) {
+            var index = Math.floor(d.group.split("-")[0] / 10);
+            if (!privateRankFilter[index]) {
+                d3.select(this).style('fill', 'steelblue');
+            }
+        })
+        .on('click', function (d) {
+            var index = Math.floor(d.group.split("-")[0] / 10);
+            pyra_click(index, false);
+            if (privateRankFilter[index]) {
+                d3.select(this).style("fill", "rgb(255, 254, 213)");
+            }
+            else {
+                d3.select(this).style('fill', 'pink');
+            }
+        });
+
+
+    // so sick of string concatenation for translations
+    function pyra_translation(x, y) {
+        return 'translate(' + x + ',' + y + ')';
+    }
+
+    function pyra_click(res, public) {
+        if (public) {
+            publicRankFilter[res] = !publicRankFilter[res];
+        }
+        else {
+            privateRankFilter[res] = !privateRankFilter[res];
+        }
+        console.log("public:")
+        console.log(publicRankFilter);
+        console.log("private:")
+        console.log(privateRankFilter);
+        pyrageoMapupdate();
+
+    }
+
+
+    function changeRankFilter(option) {
+        if (option == 0) {
+            changeButtonColor("t50");
+        }
+        else if (option == 1) {
+            changeButtonColor("t100");
+        }
+        else if (option == 2) {
+            changeButtonColor("t150");
+        }
+        else if (option == 3) {
+            changeButtonColor("t231")
+        }
+        else if (option == 4) {
+            changeButtonColor("t300");
+        }
+        else {
+            changeButtonColor("t300+");
+        }
+        rankFilter[option] = !rankFilter[option];
+
+        pyrageoMapupdate();
+    }
+
+    // function publicDots() {
+    //     //pyrageoMapupdate(false)
+    //     control = 1;
+    //     pyrageoMapupdate();
+    // }
+
+    // function privateDots() {
+    //     //pyrageoMapupdate(false)
+    //     control = 2;
+    //     pyrageoMapupdate();
+    // }
+
+    //Width and height
+    var pyraGeoMapw = 1200;
+    var pyraGeoMaph = 600;
+    // Plot each university on the pyrageoMap
+    var pyraallUniv = [];
+    var pyradisplayUniv = [];
+    var pyracircleEnter;
+
+    var pyrazoomScale = 1;
+    var pyrafocused = false;
+    var pyrafocusedState = "";
+    // Filters
+
+    var publicRankFilter = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+    var privateRankFilter = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+
+    //Define map projection
+    var pyraProjection = d3.geoAlbersUsa()
+        .translate([pyraGeoMapw / 2, pyraGeoMaph / 2])
+        .scale([1500]);
+
+    //Define pyraPath generator
+    var pyraPath = d3.geoPath()
+        .projection(pyraProjection);
+
+    //Define quantize scale to sort data values into buckets of geoMapColor
+    var geoMapColor = d3.scaleSequential(d3.interpolateHcl("rgb(135,139,165)", "rgb(66, 69, 86)"))
+        .domain([30000,
+            80000]);
+    //Colors taken from colorbrewer.js, included in the D3 download
+    geoMapColor.domain([30000, 80000])        // hard code here, since the capital is
+
+
+    //Number formatting for population values
+    var formatAsThousands = d3.format(",");  //e.g. converts 123456 to "123,456"
+
+    //Create SVG element
+    var pyraGeoMapSVG = d3.select(".pyraGeoMap")
+    // .attr("width", pyraGeoMapw)
+    // .attr("height", pyraGeoMaph);
+
+    // //Define what to do when panning or pyraZooming
+    var pyraZooming = function () {
+
+        //Log out d3.event.transform, so you can see all the goodies inside
+        //console.log(d3.event.transform);
+
+        //New offset array
+        var offset = [d3.event.transform.x, d3.event.transform.y];
+
+        //Calculate new scale
+        var newScale = d3.event.transform.k * 2000;
+
+        //pyrageoMapupdate pyraProjectionion with new offset and scale
+        pyraProjection.translate(offset)
+            .scale(newScale);
+
+        //pyrageoMapupdate all paths and circles
+        pyraGeoMapSVG.selectAll(".pyraPath")
+            .transition()
+            .attr("d", pyraPath);
+
+        pyraGeoMapSVG.selectAll("circle")
+            .transition()
+            .attr("cx", function (d) {
+                return pyraProjection([d.Longitude, d.Latitude])[0];
+            })
+            .attr("cy", function (d) {
+                return pyraProjection([d.Longitude, d.Latitude])[1];
+            });
+
+    }
+
+    //Then define the pyraZoom behavior
+    var pyraZoom = d3.zoom()
+        .scaleExtent([0.6, 0.6])
+        .translateExtent([[0, 0], [0, 0]])
+        .on("zoom", pyraZooming);
+
+    //The pyrageoMapcenter of the country, roughly
+    var pyrageoMapcenter = pyraProjection([-93.3, 39.8]);
+    //Create a container in which all pyraZoom-able elements will live
+    var pyrageoMap = pyraGeoMapSVG.append("g")
+        .call(pyraZoom)  //Bind the pyraZoom behavior
+
+        // cancel pan
+        .on("mousedown.zoom", null)
+        .on("touchstart.zoom", null)
+        .on("touchmove.zoom", null)
+        .on("touchend.zoom", null)
+
+        .call(pyraZoom.transform, d3.zoomIdentity  //Then apply the initial transform
+            .translate(pyraGeoMapw / 1.2, pyraGeoMaph / 1.3)
+            .scale(0.6)
+            .translate(-pyrageoMapcenter[0], -pyrageoMapcenter[1]));
+
+
+    var pyrapathEnter;
+    var pyragdpState = {}
+    d3.csv("stateGDP.csv").then(function (data) {
+        for (var i = 0; i < data.length; i++) {
+            pyragdpState[data[i].State] = data[i].GDP;
+        }
+        d3.json("us-states.json").then(function (json) {
+            for (var j = 0; j < json.features.length; j++) {
+                json.features[j].properties.gdp = pyragdpState[json.features[j].properties.name]
+            }
+            pyrapathEnter = pyrageoMap.selectAll(".pyraPath")
+                .data(json.features)
+                .enter()
+                .append("path")
+                .attr("class", "pyraPath")
+                .attr("d", pyraPath)
+                .style("stroke", "grey")
+                .style("stroke-width", "1")
+                .style("fill", function (d) {
+                    var value = d.properties.gdp;
+
+                    if (value) {
+                        //If value exists…
+                        return geoMapColor(60000);
+                    }
+                    else {
+                        //If value is undefined…
+                        return "#ccc";
+                    }
+                })
+                .on("click", pyraselectState)
+                .on("mouseover", function (d) {
+                    d3.select(this).style("cursor", "pointer");
+                    d3.select(this)
+                        .style("fill", "pink");
+                })
+                .on("mouseout", function (d) {
+                    d3.select(this).style("cursor", "default");
+                    d3.select(this).style("fill", function (d) {
+                        var value = d.properties.gdp;
+
+                        if (value) {
+                            //If value exists…
+                            return geoMapColor(60000);
+                        }
+                        else {
+                            //If value is undefined…
+                            return "#ccc";
+                        }
+                    })
+
+                })
+                .append("svg:title").attr("class", "stateTitle")
+                .text(function (d) {
+                    return "State: " + d.properties.name + "\nGDP per capita: " + d.properties.gdp;
+                });
+
+            //Load in universities data
+            d3.csv("schoolInfo.csv", function (row) {
+                return {
+                    Name: row.displayName,
+                    Sat: +row.sat,
+                    Act: +row.act,
+                    Latitude: +row.lat,
+                    Longitude: +row.lng,
+                    Rank: +row.rank,
+                    HighSchoolGPA: +row.hsGPA,
+                    AcceptRate: +row.acceptRate,
+                    Overall: +row.overall,
+                    Business: +row.business,
+                    Engineering: +row.engineering,
+                    Tuition: +row.tuition,
+                    Enrollment: +row.enrollment,
+                    Control: row.control,
+                    key: row.displayName
+                };
+            })
+                .then(rows => {
+                    for (let i = 0; i < rows.length; i++) {
+                        pyraallUniv.push(rows[i]);
+                    }
+                    pyrageoMapupdate()
+                }).catch(error => {
+                console.log(error)
+            });
+        })
+    })
+
+    var pyrageoMapcircles;
+    var pyracircleEnter;
+
+    function pyrageoMapupdate() {
+        // filter rows
+        pyradisplayUniv = [];
+
+
+        for (let i = 0; i < pyraallUniv.length; i++) {
+            var univ = pyraallUniv[i];
+            if (univ.Rank - 1 > 200 || univ.Rank < 0) {
+                continue;
+            }
+            if (univ.Control == "public") {
+                //console.log((publicRankFilter[Math.floor(univ.Rank / 10)]))
+                if (publicRankFilter[Math.floor((univ.Rank - 1) / 10)]) {
+                    pyradisplayUniv.push(univ);
+                }
+            }
+            else {
+                //console.log((privateRankFilter[Math.floor(univ.Rank / 10)]));
+                if (privateRankFilter[Math.floor((univ.Rank - 1) / 10)]) {
+                    pyradisplayUniv.push(univ);
+                }
+            }
+        }
+
+        // console.log(pyradisplayUniv)
+        pyrageoMapcircles = d3.select(".pyraGeoMap g").selectAll("circle")
+            .data(pyradisplayUniv, function (d) {
+                return d.key;
+            });
+        pyracircleEnter = pyrageoMapcircles.enter()
+            .append("circle")
+            .attr("class", "univGeoCircles")
+            .attr("cx", function (d) {
+                return pyraProjection([d.Longitude, d.Latitude])[0];
+            })
+            .attr("cy", function (d) {
+                return pyraProjection([d.Longitude, d.Latitude])[1];
+            })
+            .attr("r", function (d) {
+                if (pyrafocused) {
+                    return 10 / pyrazoomScale;
+                }
+                else {
+                    return 4;
+                }
+            })
+            .style("fill", "rgb(255, 254, 213)")
+            // .style("stroke", "gray")
+            // .style("stroke-width", 0.25)
+            .style("opacity", 0.5)
+            .append("title")
+            .text(function (d) {
+                return pyragetSchoolInfo(d);
+            });
+
+        pyracircleEnter.merge(pyrageoMapcircles)
+            .transition().duration(1000)
+            .attr("cx", function (d) {
+                return pyraProjection([d.Longitude, d.Latitude])[0];
+            })
+            .attr("cy", function (d) {
+                return pyraProjection([d.Longitude, d.Latitude])[1];
+            })
+            .attr("r", function (d) {
+                if (pyrafocused) {
+                    return 10 / pyrazoomScale;
+                }
+                else {
+                    return 4;
+                }
+            })
+            .style("fill", "rgb(255, 254, 213)")
+            // .style("stroke", "gray")
+            // .style("stroke-width", 0.25)
+            .style("opacity", 0.5)
+        pyrageoMapcircles.exit().transition().duration(1000).attr("r", 0).remove();
+
+    }
+
+    // Cite: https://cse442-17s.github.io/Looking-Down-the-Barrel/final/#gun-laws/1
+    function pyraselectState(d) {
+        if (pyrafocusedState != d.properties.name) {
+            pyrafocused = true;
+            pyrafocusedState = d.properties.name
+            var bounds = pyraPath.bounds(d);
+            var dx = bounds[1][0] - bounds[0][0];
+            var dy = bounds[1][1] - bounds[0][1];
+            var x = (bounds[0][0] + bounds[1][0]) / 2;
+            var y = (bounds[0][1] + bounds[1][1]) / 2;
+            pyrazoomScale = .9 / Math.max(dx / pyraGeoMapw, dy / pyraGeoMaph);
+            var zoomTranslate = [pyraGeoMapw / 2 - pyrazoomScale * x, pyraGeoMaph / 2 - pyrazoomScale * y];
+            pyrageoMap.selectAll("circle").transition().duration(1000)
+                .attr("r", 10 / pyrazoomScale)
+
+            pyrageoMap.transition()
+                .duration(750)
+                .style("stroke-width", 1.5 / pyrazoomScale + "px")
+                .attr("transform", "translate(" + zoomTranslate + ")scale(" + pyrazoomScale + ")");
+        }
+        else {
+            pyrareset();
+        }
+    }
+
+    function pyrareset() {
+        pyrafocused = false;
+        pyrafocusedState = "";
+        pyrageoMap.transition()
+            .duration(750)
+            .style("stroke-width", "1.5px")
+            .attr("transform", "");
+        pyrazoomScale = 1;
+
+        pyrageoMap.selectAll("circle").transition("name").duration(1000)
+            .attr("r", 4 / pyrazoomScale)
+    }
+
+    function pyragetSchoolInfo(d) {
+        var realRank = "";
+        if (d.Rank == -1) {
+            realRank = "200~300";
+        }
+        else if (d.Rank == -2) {
+            realRank = "300~"
+        }
+        else {
+            realRank = d.Rank
+        }
+        var rate = d.AccpetRate ? d.AcceptRate : "Unknown";
+        var tui = d.Tuition ? d.Tuition : "Unknown";
+        var enroll = d.Enrollment ? d.Enrollment : "Unknown";
+        var over = d.Overall ? d.Overall : "Unknown";
+        var engin = d.Engineering ? d.Engineering : "Unknown";
+        var busi = d.Business ? d.Business : "Unknown";
+        return d.Name +
+            "\nNational Rank:    " + realRank +
+            "\nAccept Rate:  " + rate +
+            "\nTuition:  " + tui +
+            "\nEnrollment:    " + enroll +
+            "\nOverall Score:    " + over +
+            "\nEngineering Score:  " + engin +
+            "\nBusiness Score: " + busi +
+            "\nInstitutional Control: " + d.Control;
+    }
+
+</script>
+
+</body>
+</html>

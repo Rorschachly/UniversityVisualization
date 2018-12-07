@@ -1,0 +1,109 @@
+{
+  "name": "Tuition",
+  "children": [
+    {
+      "name": "Princeton University",
+      "tuition": 147140
+    },
+    {
+      "name": "Harvard University",
+      "tuition": 48949
+    },
+    {
+      "name": "University of Chicago",
+      "tuition": 54825
+    },
+    {
+      "name": "Yale University",
+      "tuition": 51400
+    },
+    {
+      "name": "Columbia University",
+      "tuition": 57208
+    },
+    {
+      "name": "Massachusetts Institute of Technology",
+      "tuition": 49892
+    },
+    {
+      "name": "Stanford University",
+      "tuition": 49617
+    },
+    {
+      "name": "University of Pennsylvania",
+      "tuition": 53534
+    },
+    {
+      "name": "Duke University",
+      "tuition": 53744
+    },
+    {
+      "name": "California Institute of Technology",
+      "tuition": 49908
+    },
+    {
+      "name": "Dartmouth College",
+      "tuition": 52950
+    },
+    {
+      "name": "Johns Hopkins University",
+      "tuition": 52170
+    },
+    {
+      "name": "Northwestern University",
+      "tuition": 52678
+    },
+    {
+      "name": "Brown University",
+      "tuition": 53419
+    },
+    {
+      "name": "Cornell University",
+      "tuition": 52853
+    },
+    {
+      "name": "Rice University",
+      "tuition": 45608
+    },
+    {
+      "name": "Vanderbilt University",
+      "tuition": 47664
+    },
+    {
+      "name": "University of Notre Dame",
+      "tuition": 51505
+    },
+    {
+      "name": "Washington University in St. Louis",
+      "tuition": 51533
+    },
+    {
+      "name": "Georgetown University",
+      "tuition": 52300
+    },
+    {
+      "name": "Emory University",
+      "tuition": 49392
+    },
+    {
+      "name": "University of California--Berkeley",
+      "tuition": 42112
+    },
+    {
+      "name": "University of California--Los Angeles",
+      "tuition": 41270
+    },
+    {
+      "name": "University of Southern California",
+      "tuition": 54259
+    },
+    {
+      "name": "Carnegie Mellon University",
+      "tuition": 53910
+    },
+    {
+      "name": "University of Virginia",
+      "tuition": 46975
+    }
+  ]
+}

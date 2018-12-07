@@ -1,0 +1,281 @@
+name,rank,score,control,tuition,patent,year,ratio
+Syracuse University,61,45.34,private,46755,338,2014,15.9
+Syracuse University,61,44.91,private,46755,392,2015,15.9
+Brown University,14,47.91,private,53419,101,2012,10.1
+Brown University,14,46.43,private,53419,101,2013,10.1
+Brown University,14,52.92,private,53419,170,2014,10.1
+Brown University,14,52.01,private,53419,200,2015,10.1
+Rice University,14,48.76,private,45608,101,2012,9.0
+Rice University,14,44.53,private,45608,81,2013,9.0
+Rice University,14,50.94,private,45608,61,2014,9.0
+Rice University,14,49.73,private,45608,76,2015,9.0
+University of Connecticut,56,47.35,public,36948,204,2014,13.0
+University of Connecticut,56,47.06,public,36948,186,2015,13.0
+University of Florida,42,48.8,public,28658,2,2012,18.7
+University of Florida,42,48.93,public,28658,9,2013,18.7
+University of Florida,42,54.76,public,28658,8,2014,18.7
+University of Florida,42,54.18,public,28658,5,2015,18.7
+University of Colorado Boulder,90,50.68,public,35079,101,2012,16.1
+University of Colorado Boulder,90,51.16,public,35079,101,2013,16.1
+University of Colorado Boulder,90,54.5,public,35079,128,2014,16.1
+University of Colorado Boulder,90,54.62,public,35079,133,2015,16.1
+University of Montana,207,44.81,public,24943,552,2014,15.2
+Florida International University,216,44.73,public,18956,637,2014,25.9
+Florida International University,216,44.5,public,18956,585,2015,25.9
+University of Idaho,171,44.73,public,23812,373,2014,21.5
+University of Idaho,171,44.42,public,23812,469,2015,21.5
+University of South Florida,140,48.65,public,17324,51,2014,21.5
+University of South Florida,140,47.66,public,17324,70,2015,21.5
+University of Wisconsin Madison,46,59.66,public,34782,21,2012,10.8
+University of Wisconsin Madison,46,64.51,public,34782,27,2015,10.8
+University of Pittsburgh,68,55.63,public,30642,50,2015,5.8
+University of Washington,56,52.25,public,35538,101,2012,11.8
+University of Washington,56,55.79,public,35538,51,2013,11.8
+University of Washington,56,60.28,public,35538,54,2014,11.8
+University of Washington,56,60.61,public,35538,40,2015,11.8
+University of California Riverside,124,47.53,public,41931,259,2014,22.0
+University of California Riverside,124,47.13,public,41931,194,2015,22.0
+University of Rochester,34,49.51,private,52020,62,2012,4.5
+University of Rochester,34,46.44,private,52020,51,2013,4.5
+University of Rochester,34,53.06,private,52020,76,2014,4.5
+University of Rochester,34,52.03,private,52020,64,2015,4.5
+University of Wisconsin Milwaukee,-1,44.99,public,19851,737,2014,18.4
+University of California Irvine,42,50.64,public,43530,65,2012,16.1
+University of California Irvine,42,47.52,public,43530,101,2013,16.1
+University of California Irvine,42,52.93,public,43530,138,2014,16.1
+University of California Irvine,42,51.51,public,43530,162,2015,16.1
+University of Alaska Fairbanks,207,44.77,public,23534,737,2014,8.2
+Temple University,115,45.59,public,27266,194,2014,13.3
+Temple University,115,45.29,public,27266,211,2015,13.3
+Boston University,37,48.31,private,52082,101,2012,8.6
+Boston University,37,48.96,private,52082,100,2013,8.6
+Boston University,37,53.96,private,52082,227,2014,8.6
+Boston University,37,53.43,private,52082,135,2015,8.6
+Emory University,21,45.47,private,49392,46,2012,4.5
+Emory University,21,44.53,private,49392,81,2013,4.5
+Emory University,21,53.01,private,49392,45,2014,4.5
+Emory University,21,51.85,private,49392,55,2015,4.5
+Texas Tech University,176,45.19,public,23011,552,2014,20.9
+Texas Tech University,176,44.87,public,23011,809,2015,20.9
+San Diego State University,140,45.88,public,19340,481,2014,31.7
+San Diego State University,140,45.41,public,19340,509,2015,31.7
+Washington State University,140,46.4,public,25817,170,2014,18.3
+Washington State University,140,45.29,public,25817,298,2015,18.3
+Wake Forest University,27,49.46,private,51400,128,2014,4.6
+Wake Forest University,27,48.52,private,51400,124,2015,4.6
+Oregon State University,145,46.82,public,29457,338,2014,16.8
+Oregon State University,145,46.42,public,29457,389,2015,16.8
+Yeshiva University,94,48.67,private,42000,138,2014,5.5
+Yeshiva University,94,48.11,private,42000,128,2015,5.5
+Florida Institute of Technology,151,44.44,private,41240,737,2014,13.7
+Florida Institute of Technology,151,44.21,private,41240,871,2015,13.7
+University of Cincinnati,133,48.6,public,26334,204,2014,15.7
+University of Cincinnati,133,48.56,public,26334,263,2015,15.7
+New York University,30,60.55,private,50464,62,2012,6.8
+New York University,30,63.99,private,50464,51,2013,6.8
+New York University,30,72.29,private,50464,48,2014,6.8
+New York University,30,68.39,private,50464,43,2015,6.8
+Harvard University,2,100,private,48949,5,2012,8.9
+Harvard University,2,100,private,48949,7,2013,8.9
+Harvard University,2,100,private,48949,2,2014,8.9
+Harvard University,2,100,private,48949,3,2015,8.9
+Tulane University,40,47.34,private,52960,194,2014,8.4
+Tulane University,40,46.31,private,52960,258,2015,8.4
+Colorado School of Mines,75,45.74,public,37436,637,2014,18.2
+Colorado School of Mines,75,45.39,public,37436,690,2015,18.2
+Drexel University,94,46.89,private,52002,89,2014,10.8
+Drexel University,94,46.43,private,52002,91,2015,10.8
+Boston College,32,46.06,private,53346,338,2014,17.4
+Boston College,32,45.65,private,53346,386,2015,17.4
+Howard University,110,44.72,private,25697,204,2014,6.8
+Howard University,110,44.33,private,25697,296,2015,6.8
+Wayne State University,223,48.07,public,28590,181,2014,10.7
+Wayne State University,223,47.67,public,28590,117,2015,10.7
+Georgetown University,20,50.28,private,52300,159,2014,8.5
+Georgetown University,20,49.92,private,52300,122,2015,8.5
+University of Pennsylvania,8,73.64,private,53534,9,2012,6.5
+University of Pennsylvania,8,77.24,private,53534,14,2013,6.5
+University of Pennsylvania,8,79.3,private,53534,28,2014,6.5
+University of Pennsylvania,8,77.6,private,53534,14,2015,6.5
+Brandeis University,34,47.31,private,53582,128,2014,12.6
+Brandeis University,34,46.29,private,53582,249,2015,12.6
+Vanderbilt University,14,48.44,private,47664,101,2012,3.6
+Vanderbilt University,14,47.8,private,47664,40,2013,3.6
+Vanderbilt University,14,53.69,private,47664,51,2014,3.6
+Vanderbilt University,14,53.05,private,47664,51,2015,3.6
+Georgia Institute of Technology,34,44.71,public,33014,40,2012,20.1
+Georgia Institute of Technology,34,44.26,public,33014,32,2013,20.1
+Georgia Institute of Technology,34,52.74,public,33014,24,2014,20.1
+Georgia Institute of Technology,34,52.08,public,33014,36,2015,20.1
+New Mexico State University,198,45.23,public,22701,737,2014,18.8
+New Mexico State University,198,44.71,public,22701,871,2015,18.8
+Kent State University,176,44.85,public,18376,481,2014,19.0
+Kent State University,176,44.58,public,18376,498,2015,19.0
+University of Nebraska Lincoln,124,46.02,public,23256,426,2014,16.4
+University of Nebraska Lincoln,124,45.8,public,23256,456,2015,16.4
+University of California San Diego,42,63.11,public,44197,22,2012,6.5
+University of California San Diego,42,63.12,public,44197,22,2013,6.5
+University of California San Diego,42,68.36,public,44197,13,2014,6.5
+University of California San Diego,42,66.59,public,44197,17,2015,6.5
+Rochester Institute of Technology,97,44.69,private,40068,373,2014,13.5
+Rochester Institute of Technology,97,44.35,private,40068,587,2015,13.5
+University of California Santa Cruz,81,48.89,public,42042,227,2014,22.7
+University of California Santa Cruz,81,48.59,public,42042,183,2015,22.7
+University of California Los Angeles,21,64.05,public,41270,13,2012,10.3
+University of California Los Angeles,21,67.84,public,41270,12,2013,10.3
+University of California Los Angeles,21,78.35,public,41270,10,2014,10.3
+University of California Los Angeles,21,76.91,public,41270,9,2015,10.3
+Iowa State University,115,48.47,public,22256,338,2014,17.4
+Iowa State University,115,47.71,public,22256,339,2015,17.4
+Johns Hopkins University,11,66.94,private,52170,7,2012,3.6
+Johns Hopkins University,11,65.64,private,52170,2,2013,3.6
+Johns Hopkins University,11,71.17,private,52170,3,2014,3.6
+Johns Hopkins University,11,71.6,private,52170,2,2015,3.6
+University of California Davis,46,51.06,public,42396,32,2012,13.9
+University of California Davis,46,49.16,public,42396,90,2013,13.9
+University of California Davis,46,55.18,public,42396,68,2014,13.9
+University of California Davis,46,54.85,public,42396,62,2015,13.9
+University of Houston,192,48.91,public,27337,89,2014,43.7
+University of Houston,192,47.83,public,27337,156,2015,43.7
+Stanford University,5,89.5,private,49617,15,2012,7.8
+Stanford University,5,93.94,private,49617,11,2013,7.8
+Stanford University,5,99.09,private,49617,6,2014,7.8
+Stanford University,5,98.66,private,49617,10,2015,7.8
+University of California Santa Barbara,37,52.15,public,42423,101,2012,27.3
+University of California Santa Barbara,37,51.67,public,42423,101,2013,27.3
+University of California Santa Barbara,37,54.76,public,42423,68,2014,27.3
+University of California Santa Barbara,37,53.63,public,42423,77,2015,27.3
+Oakland University,-1,44.44,public,24735,737,2014,19.8
+Oakland University,-1,44.13,public,24735,871,2015,19.8
+Lehigh University,46,46.91,private,50740,481,2014,11.3
+Lehigh University,46,46.4,private,50740,534,2015,11.3
+California Institute of Technology,10,85.21,private,49908,18,2012,6.9
+California Institute of Technology,10,77.59,private,49908,17,2013,6.9
+California Institute of Technology,10,85.5,private,49908,9,2014,6.9
+California Institute of Technology,10,84.4,private,49908,13,2015,6.9
+Saint Louis University,94,45.75,private,42166,227,2014,5.8
+Saint Louis University,94,45.39,private,42166,286,2015,5.8
+University of Southern Mississippi,-1,44.38,public,9854,737,2014,18.5
+University of Southern Mississippi,-1,44.13,public,9854,676,2015,18.5
+University of Southern California,21,51.38,private,54259,23,2012,12.9
+University of Southern California,21,51.56,private,54259,40,2013,12.9
+University of Southern California,21,55.7,private,54259,33,2014,12.9
+University of Southern California,21,55.12,private,54259,34,2015,12.9
+Columbia University,5,78.86,private,57208,5,2012,5.9
+Columbia University,5,88.21,private,57208,10,2013,5.9
+Columbia University,5,97.41,private,57208,4,2014,5.9
+Columbia University,5,96.14,private,57208,4,2015,5.9
+Washington University in St Louis,18,52.9,private,51533,14,2012,5.7
+Washington University in St Louis,18,47.72,private,51533,101,2013,5.7
+Washington University in St Louis,18,54.93,private,51533,181,2014,5.7
+Washington University in St Louis,18,55.03,private,51533,169,2015,5.7
+University of Miami,46,49.62,private,48484,78,2014,5.7
+University of Miami,46,49.09,private,48484,73,2015,5.7
+University of Virginia,25,45.2,public,46975,86,2012,10.2
+University of Virginia,25,46.92,public,46975,63,2013,10.2
+University of Virginia,25,58.6,public,46975,94,2014,10.2
+University of Virginia,25,56.73,public,46975,97,2015,10.2
+George Washington University,56,48.48,private,53518,307,2014,12.0
+George Washington University,56,47.46,private,53518,326,2015,12.0
+Case Western Reserve University,37,46.11,private,47500,101,2012,6.4
+Case Western Reserve University,37,51.27,private,47500,100,2014,6.4
+Case Western Reserve University,37,50.28,private,47500,111,2015,6.4
+Princeton University,1,82.5,private,47140,101,2012,8.4
+Princeton University,1,82.17,private,47140,101,2013,8.4
+Princeton University,1,88.56,private,47140,204,2014,8.4
+Princeton University,1,89.42,private,47140,225,2015,8.4
+University of Iowa,78,49.95,public,28813,115,2014,11.6
+University of Iowa,78,49.01,public,28813,121,2015,11.6
+University of Maryland College Park,61,47.69,public,33606,101,2012,8.4
+University of Maryland College Park,61,48.39,public,33606,101,2013,8.4
+University of Maryland College Park,61,53.46,public,33606,338,2014,8.4
+University of Maryland College Park,61,52.72,public,33606,280,2015,8.4
+Michigan State University,81,50.69,public,39405,128,2014,15.7
+Michigan State University,81,49.74,public,39405,136,2015,15.7
+Clemson University,67,45.09,public,35654,737,2014,17.1
+Clemson University,67,44.83,public,35654,510,2015,17.1
+Yale University,3,79.14,private,51400,66,2012,4.4
+Yale University,3,78.83,private,51400,42,2013,4.4
+Yale University,3,88.11,private,51400,45,2014,4.4
+Yale University,3,86.61,private,51400,49,2015,4.4
+University of Utah,110,52.64,public,26408,12,2012,16.9
+University of Utah,110,51.14,public,26408,27,2013,16.9
+University of Utah,110,54.67,public,26408,22,2014,16.9
+University of Utah,110,52.89,public,26408,19,2015,16.9
+Northeastern University,40,46.2,private,49497,115,2014,15.1
+Northeastern University,40,46.29,private,49497,86,2015,15.1
+University of Maryland Baltimore County,159,48.4,public,25654,280,2014,18.1
+University of Maryland Baltimore County,159,45.1,public,25654,373,2014,18.1
+University of Maryland Baltimore County,159,48.05,public,25654,180,2015,18.1
+University of Maryland Baltimore County,159,44.8,public,25654,423,2015,18.1
+University of Arizona,124,50.29,public,32449,27,2012,12.7
+University of Arizona,124,46.39,public,32449,101,2013,12.7
+University of Arizona,124,53.77,public,32449,307,2014,12.7
+University of Arizona,124,53.26,public,32449,235,2015,12.7
+Massachusetts Institute of Technology,5,91.67,private,49892,1,2012,9.0
+Massachusetts Institute of Technology,5,91.45,private,49892,1,2013,9.0
+Massachusetts Institute of Technology,5,98.69,private,49892,1,2014,9.0
+Massachusetts Institute of Technology,5,97.54,private,49892,1,2015,9.0
+Kansas State University,145,46.2,public,24775,259,2014,15.1
+Kansas State University,145,45.47,public,24775,294,2015,15.1
+University of Notre Dame,18,54.25,private,51505,307,2014,13.8
+University of Notre Dame,18,52.27,private,51505,352,2015,13.8
+Carnegie Mellon University,25,51.6,private,53910,101,2012,13.1
+Carnegie Mellon University,25,49.56,private,53910,101,2013,13.1
+Carnegie Mellon University,25,55.3,private,53910,170,2014,13.1
+Carnegie Mellon University,25,54,private,53910,165,2015,13.1
+New Jersey Institute of Technology,140,44.69,public,31034,426,2014,26.2
+New Jersey Institute of Technology,140,44.28,public,31034,391,2015,26.2
+Northwestern University,11,54.4,private,52678,35,2012,13.8
+Northwestern University,11,56.12,private,52678,30,2013,13.8
+Northwestern University,11,66.18,private,52678,61,2014,13.8
+Northwestern University,11,66.56,private,52678,42,2015,13.8
+Rensselaer Polytechnic Institute,42,47.2,private,52305,138,2014,15.0
+Rensselaer Polytechnic Institute,42,46.19,private,52305,210,2015,15.0
+University of California Berkeley,21,78.55,public,42112,16,2012,16.4
+University of California Berkeley,21,85.07,public,42112,19,2013,16.4
+University of California Berkeley,21,92.84,public,42112,28,2014,16.4
+University of California Berkeley,21,92.25,public,42112,29,2015,16.4
+University of South Carolina,103,45.95,public,32362,649,2015,16.3
+University of Oregon,103,45.89,public,34611,637,2014,20.2
+University of Oregon,103,45.55,public,34611,729,2015,20.2
+Ohio University,151,45.25,public,21360,280,2014,20.0
+Ohio University,151,44.91,public,21360,224,2015,20.0
+University of Delaware,81,47.16,public,32250,76,2014,15.9
+University of Delaware,81,46.21,public,32250,120,2015,15.9
+Auburn University,103,44.96,public,29640,373,2014,17.6
+Auburn University,103,44.63,public,29640,425,2015,17.6
+Florida State University,81,46.98,public,21673,338,2014,31.8
+Florida State University,81,46.53,public,21673,411,2015,31.8
+University of Chicago,3,73.82,private,54825,101,2012,6.9
+University of Chicago,3,79.16,private,54825,101,2013,6.9
+University of Chicago,3,92.03,private,54825,149,2014,6.9
+University of Chicago,3,90.7,private,54825,141,2015,6.9
+Colorado State University,124,46.88,public,29140,259,2014,19.0
+Cornell University,14,73.69,private,52853,10,2012,10.2
+Cornell University,14,76.99,private,52853,7,2013,10.2
+Cornell University,14,85.8,private,52853,12,2014,10.2
+Cornell University,14,86.79,private,52853,11,2015,10.2
+Georgia State University,223,45.07,public,29432,426,2014,20.4
+Georgia State University,223,44.74,public,29432,360,2015,20.4
+Montana State University,207,44.98,public,23042,637,2014,17.8
+Duke University,9,58.37,private,53744,20,2012,4.8
+Duke University,9,57.72,private,53744,24,2013,4.8
+Duke University,9,63.56,private,53744,42,2014,4.8
+Duke University,9,61.55,private,53744,33,2015,4.8
+Tufts University,29,44.91,private,54318,101,2012,10.0
+Tufts University,29,52.71,private,54318,84,2014,10.0
+Tufts University,29,51.22,private,54318,84,2015,10.0
+Portland State University,-1,44.68,public,21180,481,2014,22.2
+Portland State University,-1,44.41,public,21180,484,2015,22.2
+George Mason University,140,45.4,public,34370,637,2014,17.0
+George Mason University,140,45.13,public,34370,526,2015,17.0
+University of Georgia,54,47.75,public,30392,128,2014,19.9
+University of Georgia,54,47.5,public,30392,82,2015,19.9
+University of Toledo,-1,44.66,public,18578,373,2014,17.5
+University of Toledo,-1,44.53,public,18578,220,2015,17.5
+Dartmouth College,11,48.5,private,52950,92,2012,6.6
+Dartmouth College,11,46.04,private,52950,78,2013,6.6
+Dartmouth College,11,58,private,52950,74,2014,6.6
+Dartmouth College,11,56.35,private,52950,63,2015,6.6
+University of Arkansas,133,44.62,public,24308,409,2015,21.2

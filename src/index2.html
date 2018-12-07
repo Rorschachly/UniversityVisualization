@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>D3: Dynamic axes generated based on min/max values of randomized data</title>
+    <script type="text/javascript" src="./d3.js"></script>
+    <style>
+        h1 {
+            font-family: sans-serif;
+            text-align: center;
+        }
+        svg {
+            border: 0.5em solid lightgray;
+        }
+        svg .chart text {
+            font-size: 9.5pt;
+            font-family: sans-serif;
+            text-anchor: middle;
+            fill: black;
+        }
+        .toolTip {
+            position: absolute;
+            display: none;
+            min-width: 80px;
+            height: auto;
+            background: none repeat scroll 0 0 #ffffff;
+            border: 1px solid rgb(37, 113, 127);
+            padding: 14px;
+            text-align: center;
+        }
+        circle:hover {
+            stroke: salmon;
+            stroke-width: 5px;
+            transition: 300ms;
+        }
+        rect:hover {
+            stroke: salmon;
+            stroke-width: 3px;
+            transition: 200ms;
+        }
+    </style>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+
+<body>
+<div style="display: block; text-align: center;">
+    <h1>Video Game Sales by Company From 1999 to 2015</h1>
+    <h3>Press ← on keyboard to the prev year, press → on keyboard to the next year.</h3>
+    <h3>Click on any single bubble in the left graph or bar on the right graph to trace that publisher only. </h3>
+    <h3>When tracing, click on any single bar or bubble on screen to get all publishers on that year back. </h3>
+</div>
+<div style="text-align: center">
+    <div style="display: inline-flex;text-align: center;">
+        <div style="text-align: center">
+            <svg class="chart"></svg>
+            <p id="title1"><b>Public Reputation and Global Sales of Video Game Publishers From 1999 to 2015</b></p>
+        </div>
+
+        <!-- <div>
+            <aside class="controls" style="display: block;text-align: center;">
+                <button class="navigate-left enabled" aria-label="previous year" onClick="minus()"></button>
+                <button class="navigate-right enabled" aria-label="next year" onClick="plus()"></button>
+                <button onClick="getBack()">GetBack</button>
+            </aside>
+        </div> -->
+        <div style="text-align: center">
+            <svg id="sunbar"></svg>
+            <p id="title2"><b>Top 10 Publishers by Global Sales From 1999 to 2015</b></p>
+        </div>
+    </div>
+
+</div>
+
+<!-- <p id="title1">Public Reputation and Global Sales of Video Game Publishers From 1999 to 2015</p> -->
+
+
+<script type="text/javascript">
+    /* global d3 */
+    document.onkeydown = function (e) {
+        switch (e.keyCode) {
+            case 37:
+                minus();
+                break;
+            case 39:
+                plus();
+                break;
+        }
+    };
+    function hashCode(str) { // java String#hashCode
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return hash;
+    }
+    // assign rgb value (to each publisher)
+    function intToRGB(i) {
+        let c = (i & 0x00FFFFFF)
+            .toString(16)
+            .toUpperCase();
+        return "#" + "000000".substring(0, 6 - c.length) + c;
+    }
+    // basic parameters
+    let sunbarw = 700;
+    let sunbarh = 700;
+    let sunbarpadding = 25;
+    let sunbardata = new Map();
+    let sunbardata2 = new Map()
+    let sunbardataset = [];
+    let sunbarbarData = [];
+    let sunbarfocus = false;
+    let sunbarfocusedOn;
+    let tooltip = d3.select("body").append("div").attr("class", "toolTip");
+    for (let i = 1999; i <= 2015; i++) {
+        sunbardata.set(i, []);
+    }
+    for (let i = 1; i <= 3; i++) {
+        sunbardata2.set(i, []);
+    }
+    d3.csv("debtAndSalary.csv", function (row) {
+        return {
+            University: row.displayName,
+            tuition: +row.tuition,
+            debt: +row.debt,
+            salary: +row.salary,
+            range: +row.range,
+        };
+    }).then(rows => {
+        rows = rows.sort(function (a, b) {
+            return b.tuition - a.tuition;
+        });
+        for (let i = 0; i < rows.length; i++) {
+            var record = rows[i];
+            if (record.range == 30) {
+                // console.log(record);
+                sunbardata2.get(1).push(record);
+            } else if (record.range == 60) {
+                sunbardata2.get(2).push(record);
+            } else if (record.range == 90) {
+                sunbardata2.get(3).push(record);
+            }
+            // data.get(record.Year).push(record);
+        }
+        // console.log("tier 1 :"+data2.get(1).length)
+        // console.log("tier 2 :"+data2.get(2).length)
+        // console.log("tier 3 :"+data2.get(3).length)
+        sunbardataset = sunbardata2.get(1);
+        sunbardataset.sort(function (a, b) {
+            return b.tuition - a.tuition;
+        });
+        sunbarbarData = sunbardataset.slice(0, 30).reverse()
+        // console.log(barData)
+        makeChart(sunbarbarData)
+    }).catch(error => {
+        console.log(error)
+    });
+    // let key = function (d) {
+    //     return d.key;
+    // };
+    let sunbarx, sunbary, sunbarr, sunbarc;
+    let sunbarxAxis, sunbaryAxis;
+    var sunbarxScale = d3.scaleLinear().range([0, sunbarw]);
+    var sunbaryScale = d3.scaleBand();
+    // let year_label2 = d3.select("#sunbar").append("text")
+    //     .attr("class", "barYearLabel")
+    //     // .text(current_year)
+    //     .attr("x", 600)
+    //     .attr("y", 600)
+    //     .style("fill", "#8A7F7D")
+    //     .style("font-size", "130px")
+    //     .style("font-family", "sans-serif");
+    function makeChart(barData) {
+        sunbary = d3.scaleLinear()
+            .domain([0, 100])
+            .range([sunbarh - sunbarpadding, sunbarpadding]);
+        sunbarx = d3.scaleLinear()
+            .domain([0, 100])
+            .range([sunbarpadding, sunbarw - sunbarpadding]);
+        sunbarr = d3.scaleLinear()
+            .domain([0, 140])
+            .range([3, 80]);
+        // console.log(barData)
+        sunbarxScale.domain([0, 60000]);
+        sunbaryScale.domain(sunbarbarData.map(function (d) {
+            console.log(d.University)
+            return d.University
+        })).range([sunbarh, 100]).padding(0.1);
+        //famous
+        // console.log(barData)
+        sunbartest = []
+        for (let i = 0; i < sunbarbarData.length; i++){
+            sunbartest.push(sunbarbarData[i].University)
+        }
+        console.log(sunbartest)
+       // famous = ["Nintendo", "Electronic Arts", "Activision", "Take-Two Interactive", "Microsoft Game Studios", "Sony Computer Entertainment", "Ubisoft", "Bethesda Softworks", "Sega", "THQ", "Warner Bros. Interactive Entertainment", "Capcom", "Atari", "LucasArts"];
+        sunbarfamous = sunbartest
+        // famous.sort(function (a, b) {
+        //     return a.length - b.length
+        // })
+        sunbarfamousColor = [];
+        for (let i = 0; i < sunbarfamous.length; i++) {
+            sunbarfamousColor.push(intToRGB(hashCode(sunbarfamous[i])));
+        }
+        sunbarc = d3.scaleOrdinal()
+            .domain(sunbarfamous)
+            .range(sunbarfamousColor)
+        let sunbarcanvas = d3.select(".chart")
+            .style("width", sunbarw + 50)
+            .style("height", sunbarh)
+        //bar chart frame
+        let sunbarsvgBar = d3.select("#sunbar")
+            .attr("width", sunbarw + 300)
+            .attr("height", sunbarh);
+        sunbarg = sunbarsvgBar.append("g")
+            .attr("transform", "translate(" + 250 + "," + -30 + ")");
+        sunbarg.append("g")
+            .attr("class", "x_axis")
+            .attr("transform", "translate(0," + sunbarh + ")")
+            .call(d3.axisBottom(sunbarxScale).ticks(10))
+            .append("text")
+            // .text("Global Sales")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("x", sunbarh - 15)
+            .attr("dy", -10)
+            .style("text-anchor", "end");
+        sunbarg.append("g")
+            .attr("class", "y_axis")
+            .call(d3.axisLeft(sunbaryScale));
+        update();
+    }
+    function update() {
+        //console.log(barData)
+        let sunbarUniversity = [];
+        for (let i = 0; i < sunbarbarData.length; i++) {
+            sunbarUniversity.push(sunbarbarData[i].University);
+        }
+        //console.log(Companies);
+        sunbaryScale.domain(sunbarbarData.map(function (d) {
+            return d.University
+        })).range([sunbarh, 100]).padding(0.1);
+        let sunbarmyYaxis = d3.axisLeft()
+            .scale(sunbaryScale);
+        let sunbarticks = d3.selectAll(".y_axis");
+        //ticks.call(myYaxis);
+        // console.log(ticks);
+        // console.log(ticks._groups[0][0]);
+        let sunbarbar = d3.select("#sunbar").selectAll("rect")
+            .data(sunbarbarData);
+        let sunbarupdatedTicks = sunbarticks.enter()
+            .attr("font-size", "15px");
+        sunbarupdatedTicks.merge(sunbarticks).transition().duration(2000)
+            .call(sunbarmyYaxis).attr("font-size", "15px");
+        sunbarupdatedTicks.exit().transition().duration(2000).remove();
+        let sunbarenterBar = sunbarbar.enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", 0)
+            .attr("height", sunbaryScale.bandwidth())
+            .attr("y", function (d) {
+                return sunbaryScale(d.University);
+            })
+            .attr("width", function (d) {
+                return sunbarxScale(d.tuition);
+            })
+            .attr('fill', function (d) {
+                return intToRGB(hashCode(d.University));
+            })
+            .attr("transform", "translate(251, -30)")
+            .on("click", function (d) {
+                sunbarfocus = !sunbarfocus;
+                if (sunbarfocus) {
+  
+                    sunbarfocusedOn = d.University;
+                    update();
+                }
+                else {
+                    d3.select(".chart").selectAll("circle").style("fill-opacity", 0.75);
+                    update();
+                }
+            })
+            .on("mouseover", function (d) {
+                tooltip
+                    .style("left", d3.event.pageX - 50 + "px")
+                    .style("top", d3.event.pageY - 70 + "px")
+                    .style("display", "inline-block")
+                    .html((d.University) + "<br>" + (d.tuition) + " Millions");
+            })
+            .on("mouseout", function (d) {
+                tooltip.style("display", "none");
+            });
+        sunbarenterBar.merge(sunbarbar).transition().duration(2000)
+            .attr("class", "bar")
+            .attr("id", function (d) {
+                return "a" + hashCode(d.University);
+            })
+            .attr("x", 0)
+            .attr("height", sunbaryScale.bandwidth())
+            .attr("y", function (d) {
+                return sunbaryScale(d.University);
+            })
+            .attr("width", function (d) {
+                return sunbarxScale(d.tuition);
+            })
+            .attr('fill', function (d) {
+                return intToRGB(hashCode(d.University));
+            })
+            .attr("transform", "translate(251, -30)")
+        sunbarbar.exit().transition().duration(2000)
+            .attr("width", 0)
+            .attr("height", 0)
+            .remove();
+    }
+    // function plus() {
+    //     if (current_year != 2015) {
+    //         current_year++;
+    //         d3.select("text").text('tuition');
+    //         // d3.select(".barYearLabel").text(current_year);
+    //         dataset = data2.get(2);
+    //         dataset.sort(function (a, b) {
+    //             return b.GlobalSales - a.GlobalSales;
+    //         });
+    //         barData = dataset.slice(0, 30).reverse();
+    //         update();
+    //     }
+    // }
+    // function minus() {
+    //     if (current_year != 1999) {
+    //         current_year--;
+    //         d3.select("text").text('tuition');
+    //         // d3.select(".barYearLabel").text(current_year);
+    //         dataset = data2.get(1);
+    //         // dataset.sort(function (a, b) {
+    //         //     return b.GlobalSales - a.GlobalSales;
+    //         // });
+    //         barData = dataset.slice(0, 30).reverse()
+    //         update();
+    //     }
+    // }
+    // function getBack() {
+    //     focus = false;
+    //     focusedOn = "";
+    //     update();
+    // }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,448 @@
+UniversityName,tuition,patent,score,year
+Syracuse University,46755,338,45.34,2014
+Syracuse University,46755,392,44.91,2015
+Brown University,53419,101,47.91,2012
+Brown University,53419,101,46.43,2013
+Brown University,53419,170,52.92,2014
+Brown University,53419,200,52.01,2015
+Michigan Technological University,32318,481,44.53,2014
+Michigan Technological University,32318,581,44.25,2015
+Rice University,45608,101,48.76,2012
+Rice University,45608,81,44.53,2013
+Rice University,45608,61,50.94,2014
+Rice University,45608,76,49.73,2015
+University of Connecticut,36948,204,47.35,2014
+University of Connecticut,36948,186,47.06,2015
+University of Florida,28658,2,48.8,2012
+University of Florida,28658,9,48.93,2013
+University of Florida,28658,8,54.76,2014
+University of Florida,28658,5,54.18,2015
+Wright State University,17350,737,44.49,2014
+Wright State University,17350,824,44.2,2015
+University of Massachusetts--Boston,32985,737,44.45,2014
+University of Massachusetts--Boston,32985,824,44.21,2015
+Purdue University--West Lafayette,28804,19,51.66,2012
+Purdue University--West Lafayette,28804,36,51.59,2013
+Purdue University--West Lafayette,28804,20,55.67,2014
+Purdue University--West Lafayette,28804,28,56.39,2015
+University of Texas--Dallas,33654,307,49.47,2014
+University of Texas--Dallas,33654,313,49.05,2015
+University of Colorado--Boulder,35079,101,50.68,2012
+University of Colorado--Boulder,35079,101,51.16,2013
+University of Colorado--Boulder,35079,128,54.5,2014
+University of Colorado--Boulder,35079,133,54.62,2015
+University of Memphis,21413,338,44.62,2014
+University of Memphis,21413,394,44.3,2015
+Louisiana State University--Baton Rouge,28051,481,47.67,2014
+Louisiana State University--Baton Rouge,28051,458,45.61,2015
+University of Alabama--Huntsville,21480,737,44.6,2014
+University of Alabama--Huntsville,21480,805,44.3,2015
+University of Montana,24943,552,44.81,2014
+Florida International University,18956,637,44.73,2014
+Florida International University,18956,585,44.5,2015
+University of Idaho,23812,373,44.73,2014
+University of Idaho,23812,469,44.42,2015
+Louisiana Tech University,18438,737,44.73,2014
+Louisiana Tech University,18438,792,44.47,2015
+University of Tennessee,31160,481,47.45,2014
+University of Tennessee,31160,449,46.96,2015
+Rutgers University--New Brunswick,30023,96,51.09,2013
+Rutgers University--New Brunswick,30023,54,60,2014
+Rutgers University--New Brunswick,30023,61,55.23,2015
+Western Michigan University,14699,737,44.3,2014
+University of South Florida,17324,51,48.65,2014
+University of South Florida,17324,70,47.66,2015
+University of Wisconsin--Madison,34782,21,59.66,2012
+University of Wisconsin--Madison,34782,27,64.51,2015
+University of Pittsburgh,30642,50,55.63,2015
+University of Washington,35538,101,52.25,2012
+University of Washington,35538,51,55.79,2013
+University of Washington,35538,54,60.28,2014
+University of Washington,35538,40,60.61,2015
+University of California--Riverside,41931,259,47.53,2014
+University of California--Riverside,41931,194,47.13,2015
+University of Rochester,52020,62,49.51,2012
+University of Rochester,52020,51,46.44,2013
+University of Rochester,52020,76,53.06,2014
+University of Rochester,52020,64,52.03,2015
+University of Wisconsin--Milwaukee,19851,737,44.99,2014
+University of Nebraska--Omaha,22035,737,45.22,2014
+University of California--Irvine,43530,65,50.64,2012
+University of California--Irvine,43530,101,47.52,2013
+University of California--Irvine,43530,138,52.93,2014
+University of California--Irvine,43530,162,51.51,2015
+University of Missouri--Kansas City,25999,687,44.61,2015
+University of Alaska--Fairbanks,23534,737,44.77,2014
+University of Kentucky,28046,338,46.9,2014
+University of Kentucky,28046,447,46.37,2015
+Southern Methodist University,52498,737,48.69,2014
+Southern Methodist University,52498,824,48.99,2015
+University of Hawaii--Manoa,33764,373,45.22,2014
+University of Hawaii--Manoa,33764,490,44.82,2015
+Temple University,27266,194,45.59,2014
+Temple University,27266,211,45.29,2015
+Brigham Young University--Provo,5460,149,45.47,2014
+Brigham Young University--Provo,5460,134,45.15,2015
+Boston University,52082,101,48.31,2012
+Boston University,52082,100,48.96,2013
+Boston University,52082,227,53.96,2014
+Boston University,52082,135,53.43,2015
+Emory University,49392,46,45.47,2012
+Emory University,49392,81,44.53,2013
+Emory University,49392,45,53.01,2014
+Emory University,49392,55,51.85,2015
+Texas Tech University,23011,552,45.19,2014
+Texas Tech University,23011,809,44.87,2015
+Mississippi State University,22358,481,45.11,2014
+Mississippi State University,22358,566,44.5,2015
+University of Central Florida,22467,149,45.55,2014
+University of Central Florida,22467,159,45.18,2015
+San Diego State University,19340,481,45.88,2014
+San Diego State University,19340,509,45.41,2015
+Washington State University,25817,170,46.4,2014
+Washington State University,25817,298,45.29,2015
+Wake Forest University,51400,128,49.46,2014
+Wake Forest University,51400,124,48.52,2015
+Baylor University,43790,637,45.21,2014
+Baylor University,43790,630,44.59,2015
+Oregon State University,29457,338,46.82,2014
+Oregon State University,29457,389,46.42,2015
+Yeshiva University,42000,138,48.67,2014
+Yeshiva University,42000,128,48.11,2015
+Florida Institute of Technology,41240,737,44.44,2014
+Florida Institute of Technology,41240,871,44.21,2015
+University of Cincinnati,26334,204,48.6,2014
+University of Cincinnati,26334,263,48.56,2015
+New York University,50464,62,60.55,2012
+New York University,50464,51,63.99,2013
+New York University,50464,48,72.29,2014
+New York University,50464,43,68.39,2015
+University of Michigan--Ann Arbor,47476,8,53.72,2012
+University of Michigan--Ann Arbor,47476,6,55.77,2013
+University of Michigan--Ann Arbor,47476,19,68.27,2014
+University of Michigan--Ann Arbor,47476,12,68.36,2015
+Harvard University,48949,5,100,2012
+Harvard University,48949,7,100,2013
+Harvard University,48949,2,100,2014
+Harvard University,48949,3,100,2015
+Florida Atlantic University,21595,737,44.42,2014
+Florida Atlantic University,21595,714,44.17,2015
+Tulane University,52960,194,47.34,2014
+Tulane University,52960,258,46.31,2015
+Colorado School of Mines,37436,637,45.74,2014
+Colorado School of Mines,37436,690,45.39,2015
+Drexel University,52002,89,46.89,2014
+Drexel University,52002,91,46.43,2015
+Boston College,53346,338,46.06,2014
+Boston College,53346,386,45.65,2015
+Marquette University,39900,737,44.64,2014
+Marquette University,39900,682,44.34,2015
+Howard University,25697,204,44.72,2014
+Howard University,25697,296,44.33,2015
+Indiana University-Purdue University--Indianapolis,29806,79,48.28,2015
+Wayne State University,28590,181,48.07,2014
+Wayne State University,28590,117,47.67,2015
+University of Akron,21863,121,45.18,2014
+University of Akron,21863,166,44.65,2015
+Georgetown University,52300,159,50.28,2014
+Georgetown University,52300,122,49.92,2015
+University of Pennsylvania,53534,9,73.64,2012
+University of Pennsylvania,53534,14,77.24,2013
+University of Pennsylvania,53534,28,79.3,2014
+University of Pennsylvania,53534,14,77.6,2015
+Brandeis University,53582,128,47.31,2014
+Brandeis University,53582,249,46.29,2015
+Vanderbilt University,47664,101,48.44,2012
+Vanderbilt University,47664,40,47.8,2013
+Vanderbilt University,47664,51,53.69,2014
+Vanderbilt University,47664,51,53.05,2015
+Georgia Institute of Technology,33014,40,44.71,2012
+Georgia Institute of Technology,33014,32,44.26,2013
+Georgia Institute of Technology,33014,24,52.74,2014
+Georgia Institute of Technology,33014,36,52.08,2015
+New Mexico State University,22701,737,45.23,2014
+New Mexico State University,22701,871,44.71,2015
+Kent State University,18376,481,44.85,2014
+Kent State University,18376,498,44.58,2015
+University of Illinois--Urbana-Champaign,31988,64,62.89,2014
+University of Illinois--Urbana-Champaign,31988,65,59.94,2015
+Miami University--Oxford,32768,737,45.37,2014
+Miami University--Oxford,32768,871,45,2015
+College of William and Mary,43099,637,45.77,2014
+College of William and Mary,43099,809,45.42,2015
+University of Louisville,26286,138,46.15,2014
+University of Louisville,26286,105,45.97,2015
+University of Nebraska--Lincoln,23256,426,46.02,2014
+University of Nebraska--Lincoln,23256,456,45.8,2015
+University of New Hampshire,32637,637,45.53,2014
+University of New Hampshire,32637,596,45.42,2015
+University of California--San Diego,44197,22,63.11,2012
+University of California--San Diego,44197,22,63.12,2013
+University of California--San Diego,44197,13,68.36,2014
+University of California--San Diego,44197,17,66.59,2015
+Rochester Institute of Technology,40068,373,44.69,2014
+Rochester Institute of Technology,40068,587,44.35,2015
+University of North Dakota,21462,426,44.43,2014
+University of North Dakota,21462,606,44.12,2015
+East Carolina University,23420,481,44.62,2014
+East Carolina University,23420,639,44.28,2015
+University of California--Santa Cruz,42042,227,48.89,2014
+University of California--Santa Cruz,42042,183,48.59,2015
+University of California--Los Angeles,41270,13,64.05,2012
+University of California--Los Angeles,41270,12,67.84,2013
+University of California--Los Angeles,41270,10,78.35,2014
+University of California--Los Angeles,41270,9,76.91,2015
+Iowa State University,22256,338,48.47,2014
+Iowa State University,22256,339,47.71,2015
+Pennsylvania State University--University Park,33664,99,48.15,2012
+Pennsylvania State University--University Park,33664,67,49.84,2013
+Pennsylvania State University--University Park,33664,100,57.19,2014
+Pennsylvania State University--University Park,33664,92,55.54,2015
+Johns Hopkins University,52170,7,66.94,2012
+Johns Hopkins University,52170,2,65.64,2013
+Johns Hopkins University,52170,3,71.17,2014
+Johns Hopkins University,52170,2,71.6,2015
+University of North Carolina--Greensboro,22410,552,44.43,2014
+University of North Carolina--Greensboro,22410,575,44.13,2015
+University of Wyoming,16827,426,45.18,2014
+University of Wyoming,16827,380,44.89,2015
+University of Colorado--Denver,31209,78,49.79,2014
+University of Colorado--Denver,31209,72,49.48,2015
+University of California--Davis,42396,32,51.06,2012
+University of California--Davis,42396,90,49.16,2013
+University of California--Davis,42396,68,55.18,2014
+University of California--Davis,42396,62,54.85,2015
+University of Houston,27337,89,48.91,2014
+University of Houston,27337,156,47.83,2015
+Arizona State University--Tempe,27372,49,45.7,2012
+Arizona State University--Tempe,27372,20,46.72,2013
+Arizona State University--Tempe,27372,34,51.14,2014
+Arizona State University--Tempe,27372,21,51.13,2015
+Stanford University,49617,15,89.5,2012
+Stanford University,49617,11,93.94,2013
+Stanford University,49617,6,99.09,2014
+Stanford University,49617,10,98.66,2015
+University of California--Santa Barbara,42423,101,52.15,2012
+University of California--Santa Barbara,42423,101,51.67,2013
+University of California--Santa Barbara,42423,68,54.76,2014
+University of California--Santa Barbara,42423,77,53.63,2015
+Oakland University,24735,737,44.44,2014
+Oakland University,24735,871,44.13,2015
+University of South Alabama,19586,307,44.56,2014
+University of South Alabama,19586,464,44.19,2015
+Loyola University Chicago,42828,737,45.36,2014
+Loyola University Chicago,42828,713,45.03,2015
+Lehigh University,50740,481,46.91,2014
+Lehigh University,50740,534,46.4,2015
+California Institute of Technology,49908,18,85.21,2012
+California Institute of Technology,49908,17,77.59,2013
+California Institute of Technology,49908,9,85.5,2014
+California Institute of Technology,49908,13,84.4,2015
+North Carolina State University--Raleigh,27406,181,47.43,2014
+North Carolina State University--Raleigh,27406,161,46.89,2015
+Clarkson University,47950,552,44.57,2014
+Clarkson University,47950,685,44.19,2015
+Saint Louis University,42166,227,45.75,2014
+Saint Louis University,42166,286,45.39,2015
+University of Texas--San Antonio,23379,227,46.95,2014
+University of Texas--San Antonio,23379,254,46.1,2015
+University of North Carolina--Charlotte,20268,637,44.61,2014
+University of North Carolina--Charlotte,20268,593,44.25,2015
+University of Nevada--Reno,21787,637,45.26,2014
+University of Nevada--Reno,21787,708,44.93,2015
+University of Southern Mississippi,9854,737,44.38,2014
+University of Southern Mississippi,9854,676,44.13,2015
+University of Southern California,54259,23,51.38,2012
+University of Southern California,54259,40,51.56,2013
+University of Southern California,54259,33,55.7,2014
+University of Southern California,54259,34,55.12,2015
+Columbia University,57208,5,78.86,2012
+Columbia University,57208,10,88.21,2013
+Columbia University,57208,4,97.41,2014
+Columbia University,57208,4,96.14,2015
+Washington University in St. Louis,51533,14,52.9,2012
+Washington University in St. Louis,51533,101,47.72,2013
+Washington University in St. Louis,51533,181,54.93,2014
+Washington University in St. Louis,51533,169,55.03,2015
+University of Miami,48484,78,49.62,2014
+University of Miami,48484,73,49.09,2015
+University of New Orleans,13530,737,44.78,2014
+University of New Orleans,13530,871,44.5,2015
+University of North Carolina--Chapel Hill,34588,29,53.09,2012
+University of North Carolina--Chapel Hill,34588,42,52.87,2013
+University of North Carolina--Chapel Hill,34588,38,57.51,2014
+University of North Carolina--Chapel Hill,34588,41,57.09,2015
+University of Texas--Austin,35766,57,56.18,2012
+University of Texas--Austin,35766,20,57.71,2013
+University of Texas--Austin,35766,45,62.57,2014
+University of Texas--Austin,35766,38,61.14,2015
+Illinois Institute of Technology,45864,737,45.15,2014
+Illinois Institute of Technology,45864,861,44.85,2015
+University of Virginia,46975,86,45.2,2012
+University of Virginia,46975,63,46.92,2013
+University of Virginia,46975,94,58.6,2014
+University of Virginia,46975,97,56.73,2015
+The Catholic University of America,44060,552,44.58,2014
+The Catholic University of America,44060,674,44.2,2015
+George Washington University,53518,307,48.48,2014
+George Washington University,53518,326,47.46,2015
+Case Western Reserve University,47500,101,46.11,2012
+Case Western Reserve University,47500,100,51.27,2014
+Case Western Reserve University,47500,111,50.28,2015
+Princeton University,47140,101,82.5,2012
+Princeton University,47140,101,82.17,2013
+Princeton University,47140,204,88.56,2014
+Princeton University,47140,225,89.42,2015
+University of Iowa,28813,115,49.95,2014
+University of Iowa,28813,121,49.01,2015
+University of Maryland--College Park,33606,101,47.69,2012
+University of Maryland--College Park,33606,101,48.39,2013
+University of Maryland--College Park,33606,338,53.46,2014
+University of Maryland--College Park,33606,280,52.72,2015
+Old Dominion University,28200,426,44.68,2014
+Old Dominion University,28200,379,44.42,2015
+University of Massachusetts--Amherst,33662,373,47.74,2014
+University of Massachusetts--Amherst,33662,356,47.05,2015
+Michigan State University,39405,128,50.69,2014
+Michigan State University,39405,136,49.74,2015
+University of Vermont,41356,373,46.2,2014
+University of Vermont,41356,397,45.7,2015
+Ohio State University--Columbus,29659,54,49.54,2012
+Ohio State University--Columbus,29659,60,49.41,2013
+Ohio State University--Columbus,29659,38,57.01,2014
+Ohio State University--Columbus,29659,44,55.39,2015
+Northern Arizona University,24841,552,44.55,2014
+Northern Arizona University,24841,609,44.28,2015
+Clemson University,35654,737,45.09,2014
+Clemson University,35654,510,44.83,2015
+Yale University,51400,66,79.14,2012
+Yale University,51400,42,78.83,2013
+Yale University,51400,45,88.11,2014
+Yale University,51400,49,86.61,2015
+University of Utah,26408,12,52.64,2012
+University of Utah,26408,27,51.14,2013
+University of Utah,26408,22,54.67,2014
+University of Utah,26408,19,52.89,2015
+Northeastern University,49497,115,46.2,2014
+Northeastern University,49497,86,46.29,2015
+Virginia Commonwealth University,32942,149,47.26,2014
+Virginia Commonwealth University,32942,206,46.43,2015
+University of Rhode Island,28874,737,44.7,2014
+University of Rhode Island,28874,472,44.5,2015
+University of Maryland--Baltimore County,25654,280,48.4,2014
+University of Maryland--Baltimore County,25654,373,45.1,2014
+University of Maryland--Baltimore County,25654,180,48.05,2015
+University of Maryland--Baltimore County,25654,423,44.8,2015
+Utah State University,20726,307,45.03,2014
+Utah State University,20726,371,44.59,2015
+University of Arizona,32449,27,50.29,2012
+University of Arizona,32449,101,46.39,2013
+University of Arizona,32449,307,53.77,2014
+University of Arizona,32449,235,53.26,2015
+North Dakota State University,20571,737,44.59,2014
+University of Dayton,41750,552,44.99,2014
+University of Dayton,41750,675,44.99,2015
+University of Nevada--Las Vegas,21498,737,44.67,2014
+University of Nevada--Las Vegas,21498,861,44.38,2015
+Massachusetts Institute of Technology,49892,1,91.67,2012
+Massachusetts Institute of Technology,49892,1,91.45,2013
+Massachusetts Institute of Technology,49892,1,98.69,2014
+Massachusetts Institute of Technology,49892,1,97.54,2015
+Kansas State University,24775,259,46.2,2014
+Kansas State University,24775,294,45.47,2015
+University of Notre Dame,51505,307,54.25,2014
+University of Notre Dame,51505,352,52.27,2015
+University of Minnesota--Twin Cities,26603,84,50.3,2012
+University of Minnesota--Twin Cities,26603,67,50.98,2013
+University of Minnesota--Twin Cities,26603,68,56.13,2014
+University of Minnesota--Twin Cities,26603,59,55.51,2015
+University of Texas--El Paso,21396,737,44.45,2014
+University of Texas--El Paso,21396,706,44.1,2015
+Carnegie Mellon University,53910,101,51.6,2012
+Carnegie Mellon University,53910,101,49.56,2013
+Carnegie Mellon University,53910,170,55.3,2014
+Carnegie Mellon University,53910,165,54,2015
+University of Kansas,26592,194,47.82,2014
+University of Kansas,26592,127,47.52,2015
+New Jersey Institute of Technology,31034,426,44.69,2014
+New Jersey Institute of Technology,31034,391,44.28,2015
+Northwestern University,52678,35,54.4,2012
+Northwestern University,52678,30,56.12,2013
+Northwestern University,52678,61,66.18,2014
+Northwestern University,52678,42,66.56,2015
+Rensselaer Polytechnic Institute,52305,138,47.2,2014
+Rensselaer Polytechnic Institute,52305,210,46.19,2015
+University of California--Berkeley,42112,16,78.55,2012
+University of California--Berkeley,42112,19,85.07,2013
+University of California--Berkeley,42112,28,92.84,2014
+University of California--Berkeley,42112,29,92.25,2015
+University of South Carolina,32362,649,45.95,2015
+University of Texas--Arlington,25152,637,44.67,2014
+University of Texas--Arlington,25152,462,44.47,2015
+University of Oregon,34611,637,45.89,2014
+University of Oregon,34611,729,45.55,2015
+University of Alabama--Birmingham,23790,194,48.88,2014
+University of Alabama--Birmingham,23790,130,48.79,2015
+Bowling Green State University,18593,737,44.54,2014
+Bowling Green State University,18593,824,44.23,2015
+Ohio University,21360,280,45.25,2014
+Ohio University,21360,224,44.91,2015
+University of Delaware,32250,76,47.16,2014
+University of Delaware,32250,120,46.21,2015
+Auburn University,29640,373,44.96,2014
+Auburn University,29640,425,44.63,2015
+San Francisco State University,19134,737,44.62,2014
+San Francisco State University,19134,871,44.35,2015
+Florida State University,21673,338,46.98,2014
+Florida State University,21673,411,46.53,2015
+University of Chicago,54825,101,73.82,2012
+University of Chicago,54825,101,79.16,2013
+University of Chicago,54825,149,92.03,2014
+University of Chicago,54825,141,90.7,2015
+Colorado State University,29140,259,46.88,2014
+Indiana University--Bloomington,34845,101,45.71,2013
+Indiana University--Bloomington,34845,204,50.53,2014
+Indiana University--Bloomington,34845,178,50.26,2015
+Cornell University,52853,10,73.69,2012
+Cornell University,52853,7,76.99,2013
+Cornell University,52853,12,85.8,2014
+Cornell University,52853,11,86.79,2015
+Georgia State University,29432,426,45.07,2014
+Georgia State University,29432,360,44.74,2015
+Montana State University,23042,637,44.98,2014
+Duke University,53744,20,58.37,2012
+Duke University,53744,24,57.72,2013
+Duke University,53744,42,63.56,2014
+Duke University,53744,33,61.55,2015
+Tufts University,54318,101,44.91,2012
+Tufts University,54318,84,52.71,2014
+Tufts University,54318,84,51.22,2015
+Portland State University,21180,481,44.68,2014
+Portland State University,21180,484,44.41,2015
+George Mason University,34370,637,45.4,2014
+George Mason University,34370,526,45.13,2015
+University of Georgia,30392,128,47.75,2014
+University of Georgia,30392,82,47.5,2015
+Northern Illinois University,23817,481,44.82,2014
+Northern Illinois University,23817,621,44.44,2015
+West Virginia University,23616,637,45.39,2014
+West Virginia University,23616,617,45.02,2015
+University of Denver,48669,552,45.16,2014
+University of Denver,48669,760,45.08,2015
+University of Toledo,18578,373,44.66,2014
+University of Toledo,18578,220,44.53,2015
+University of New Mexico,22412,149,48.36,2014
+University of New Mexico,22412,100,47.95,2015
+University of California--Merced,41612,338,44.37,2014
+University of California--Merced,41612,491,44.09,2015
+Dartmouth College,52950,92,48.5,2012
+Dartmouth College,52950,78,46.04,2013
+Dartmouth College,52950,74,58,2014
+Dartmouth College,52950,63,56.35,2015
+University of Illinois--Chicago,27672,170,47.63,2014
+University of Illinois--Chicago,27672,129,47.39,2015
+Southern Illinois University--Carbondale,13936,588,44.53,2015
+University of North Texas,23716,426,44.59,2014
+University of North Texas,23716,554,44.27,2015
+University of Missouri--St. Louis,27327,552,44.62,2014
+University of Arkansas,24308,409,44.62,2015

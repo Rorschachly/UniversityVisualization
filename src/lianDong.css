@@ -1,0 +1,41 @@
+        /* LianDong buttons css */
+        circle:hover {
+            stroke: salmon;
+            stroke-width: 5px;
+            transition: 100ms;
+        }
+
+        #lianDongButton {
+            background-color: rgba(0, 0, 0, 0.2);
+            border: none;
+            border-radius: 0.8em;
+            color: white;
+            padding: 20px;
+            width: 100px;
+            text-align: center;
+            -webkit-transition-duration: 0.4s; 
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        #lianDongButton:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        #lianDongButton:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s;
+        }

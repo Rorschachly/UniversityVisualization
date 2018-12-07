@@ -1,0 +1,601 @@
+School,EarlyPay
+Harvey Mudd College,85600
+Massachusetts Institute of Technology,83600
+United States Naval Academy,78600
+Stanford University,76500
+California Institute of Technology,83400
+Albany College of Pharmacy and Health Sciences,80200
+Harvard University,72600
+United States Military Academy,79300
+Princeton University,72700
+SUNY Maritime College,73300
+Colorado School of Mines,74100
+Babson College,69300
+Santa Clara University,66800
+Stevens Institute of Technology,73600
+Dartmouth College,68900
+Colgate University,65000
+United States Air Force Academy,74000
+United States Merchant Marine Academy,80800
+University of Pennsylvania,70100
+Lehigh University,67200
+Williams College,64000
+Yale University,68300
+Webb Institute,79100
+Franklin W Olin College of Engineering,81900
+Rice University,69200
+Duke University,68700
+Worcester Polytechnic Institute,71700
+University of California-Berkeley,68300
+Georgia Institute of Technology-Main Campus,70800
+Rensselaer Polytechnic Institute,69600
+Brown University,65400
+University of Notre Dame,64700
+Haverford College,56100
+Carnegie Mellon University,73600
+Washington and Lee University,63200
+Rose-Hulman Institute of Technology,73400
+Swarthmore College,63800
+California State University Maritime Academy,67500
+Cooper Union for the Advancement of Science and Art,65900
+Georgetown University,63700
+Clarkson University,65100
+Columbia University in the City of New York,69200
+Claremont McKenna College,66800
+Cornell University,68200
+University of California-San Diego,61300
+Bucknell University,64800
+Manhattan College,62600
+Charles R Drew University of Medicine and Science,82900
+Amherst College,62300
+Samuel Merritt University,91400
+The King's University,61900
+University of Southern California,62000
+Union College (New York),60900
+University of California-Irvine,57700
+Virginia Military Institute,63900
+New Mexico Institute of Mining and Technology,62500
+University of California-Santa Barbara,57300
+Lafayette College,64200
+New Jersey Institute of Technology,62800
+College of the Holy Cross,58800
+New York University,60800
+Tufts University,63200
+Hobart William Smith Colleges,53600
+Kettering University,69000
+MCPHS University,63700
+Bates College,57500
+University of Virginia-Main Campus,62300
+Pomona College,60500
+Maine Maritime Academy,66700
+George Washington University,59000
+Fairfield University,59600
+Wake Forest University,58200
+University of California-Los Angeles,60000
+Vanderbilt University,63800
+Brandeis University,58000
+California Polytechnic State University-San Luis Obispo,63500
+Villanova University,63600
+Boston College,61600
+University of Chicago,61600
+University of the Sciences,55900
+Missouri University of Science and Technology,66700
+Loyola Marymount University,56000
+Davidson College,55000
+Bentley University,64600
+Wabash College,60200
+Bowdoin College,59700
+Texas A & M University-College Station,59000
+Illinois Institute of Technology,62800
+Northwestern University,61500
+Embry-Riddle Aeronautical University-Prescott,63500
+Loyola University Maryland,57500
+Boston University,58900
+Carleton College,56100
+Franklin and Marshall College,54600
+Wesleyan University,59300
+Massachusetts Maritime Academy,67200
+Hampden-Sydney College,55800
+Fordham University,56400
+Case Western Reserve University,65100
+University of Illinois at Urbana-Champaign,61000
+University of California-Davis,59400
+South Dakota School of Mines and Technology,65800
+Menlo College,59100
+Gettysburg College,55900
+College of William and Mary,57100
+Hofstra University,55000
+Johns Hopkins University,65500
+Washington University in St Louis,62700
+Virginia Polytechnic Institute and State University,60900
+Middlebury College,58400
+San Jose State University,61300
+Drexel University,60700
+University of Washington-Seattle Campus,59900
+Emory University,59900
+Yeshiva University,61700
+Rutgers University-New Brunswick,57800
+Milwaukee School of Engineering,65000
+California State Polytechnic University-Pomona,56000
+Trinity College,57600
+Wentworth Institute of Technology,61300
+Kenyon College,52700
+University of Colorado Boulder,55600
+Saint Mary's College of California,57700
+The University of Texas at Austin,59100
+Seattle University,59400
+Binghamton University,58900
+Occidental College,54100
+Saint Johns University,57400
+United States Coast Guard Academy,66400
+University of San Francisco,58600
+Capitol Technology University,65700
+Southern Methodist University,57200
+University of San Diego,56600
+University of Rochester,58900
+University of the Pacific,57700
+Michigan Technological University,64600
+Stony Brook University,57000
+Wittenberg University,49800
+Reed College,53900
+University of Maryland-College Park,60000
+St John's University-New York,53200
+University of California-Riverside,54000
+Brigham Young University-Provo,57400
+Whitman College,52200
+University of Richmond,57900
+Tulane University of Louisiana,54600
+University of St Thomas (Minnesota),55600
+St. John's College (Maryland),54900
+Bryant University,58700
+Barnard College,56800
+Westmont College,52400
+Denison University,52400
+Miami University-Oxford,55400
+Gonzaga University,56300
+University of Michigan-Ann Arbor,62000
+Lake Forest College,53700
+CUNY Bernard M Baruch College,57100
+Seattle Pacific University,51500
+Rhodes College,49400
+Providence College,56900
+Pace University-New York,57700
+Golden Gate University-San Francisco,58900
+University of Massachusetts-Lowell,57400
+Citadel Military College of South Carolina,58800
+Montana Tech of the University of Montana,61900
+La Salle University,53700
+American University,53700
+Iona College,53800
+Lawrence Technological University,56700
+Marquette University,56400
+George Mason University,57200
+The New School,52100
+Catholic University of America,55700
+Embry-Riddle Aeronautical University-Daytona Beach,61900
+Clark University,50200
+Northeastern University,61200
+Polytechnic University of Puerto Rico-Miami,61500
+Purdue University-Main Campus,60200
+University of Delaware,56700
+Saint Joseph's University,55300
+Wagner College,56400
+Syracuse University,56200
+Pratt Institute-Main,52100
+Stonehill College,54000
+New York Institute of Technology,54300
+Pepperdine University,56400
+North Carolina State University at Raleigh,55800
+Bradley University,54100
+University of California-Santa Cruz,56100
+University of Dayton,56100
+St Lawrence University,53800
+Texas Tech University,55700
+California State University-Chico,55100
+University of Washington-Bothell Campus,58200
+Clemson University,56300
+Trinity University,53400
+Ohio Wesleyan University,48800
+Albion College,50200
+Wellesley College,56600
+DePaul University,53800
+SUNY at Albany,51500
+University of Portland,57400
+Siena College,52100
+University of Tulsa,58500
+Ithaca College,50600
+James Madison University,55800
+Pennsylvania State University-Main Campus,57300
+Furman,49600
+Merrimack College,54700
+Lawrence University,48500
+DePauw University,54900
+Auburn University,52800
+San Diego State University,53400
+Hampshire College,44800
+Ursinus College,52100
+University of Connecticut,57700
+Willamette University,49900
+Rochester Institute of Technology,60400
+Bismarck State College,61100
+University of Puerto Rico-Mayaguez,62800
+Sewanee-The University of the South,51100
+University of Maryland-Baltimore County,56800
+Washington State University,54600
+West Virginia University Institute of Technology,55800
+Saint Michael's College,51200
+Resurrection University,64000
+University of Illinois at Chicago,55000
+SUNY Downstate Medical Center,67100
+Florida Institute of Technology,57600
+St Olaf College,51900
+University of Massachusetts-Amherst,55800
+Colby College,57800
+University of Wisconsin-Madison,55700
+Baylor University,53900
+Art Center College of Design,62800
+Muhlenberg College,51700
+Fashion Institute of Technology,52200
+Butler University,50000
+University of Redlands,53300
+University of Utah,53400
+California State University-Long Beach,51100
+University of Denver,54000
+University of Minnesota-Twin Cities,55800
+Ohio Northern University,53500
+University of Puget Sound,52900
+St. John's College-Department of Nursing,52900
+University of Florida,54200
+Oregon State University,54800
+Wheaton College (Illinois),51500
+Wheaton College (Massachusetts),51300
+Louisiana State University and Agricultural & Mechanical College,53500
+University of Scranton,54400
+Marist College,54000
+The College of New Jersey,57200
+Macalester College,51300
+Oregon Institute of Technology,60500
+University of Houston,55000
+Smith College,51100
+Drake University,51600
+Southern California Institute of Architecture,51300
+Dickinson College,54200
+Touro College,57700
+University of Alabama in Huntsville,56200
+University of Hartford,53700
+Oberlin College,51400
+Universidad Metropolitana,47600
+Wofford College,49300
+Marlboro College,51300
+Saint Peter's University,51800
+Loma Linda University,70300
+University of Iowa,52500
+California State University-Sacramento,53000
+University of Georgia,52600
+California State University-Fullerton,49400
+Seton Hall University,56000
+Felician University,52100
+University of Rhode Island,53000
+Michigan State University,53900
+Hartwick College,51100
+Rutgers University-Newark,57000
+University of Vermont,51600
+University of Dallas,51300
+University of New Hampshire-Main Campus,52600
+Kalamazoo College,49900
+John Carroll University,49800
+LIU Brooklyn,55400
+Skidmore College,52700
+Western Washington University,53000
+California College of the Arts,56600
+Taylor University,46800
+Vassar College,54200
+University of Oklahoma-Norman Campus,53500
+California State University-East Bay,55600
+West Virginia University,52900
+University of Arizona,55000
+University of Missouri-Columbia,50800
+Westminster College (Missouri),47700
+Iowa State University,54900
+Arizona State University-Tempe,53200
+Howard University,54400
+Rhode Island School of Design,53300
+The University of Texas at Dallas,55500
+Saint Anselm College,54900
+Rush University,66600
+University of Alaska Anchorage,55600
+Sarah Lawrence College,49700
+Whittier College,49300
+San Francisco State University,55200
+Colorado College,51100
+McDaniel College,49500
+University of Oklahoma-Health Sciences Center,57200
+Grove City College,52600
+Rider University,50200
+Sacred Heart University,53700
+Western New England University,55000
+University of Kansas,51500
+Otis College of Art and Design,52100
+Oklahoma State University-Main Campus,51700
+Hendrix College,46000
+California State University-Northridge,49600
+University of North Carolina at Chapel Hill,53500
+University of Pittsburgh-Pittsburgh Campus,54600
+The Juilliard School,52600
+Spring Hill College,43300
+Fairleigh Dickinson University-Florham Campus,52500
+Fairleigh Dickinson University-Florham Campus,52500
+CUNY Brooklyn College,50100
+The University of Texas at Arlington,54400
+Chapman University,51900
+Montclair State University,49100
+The University of Texas Health Science Center at Houston,66900
+University of Alaska Fairbanks,58500
+Texas Christian University,54700
+LIU Post,51200
+Pacific Lutheran University,52300
+Indiana University-Bloomington,52200
+Emerson College,48400
+Polytechnic University of Puerto Rico-Orlando,58500
+The University of Texas Medical Branch,62600
+Grinnell College,51200
+CUNY Queens College,50900
+Lebanon Valley College,47800
+Linfield College-School of Nursing,62800
+California Lutheran University,50600
+California State University-Fresno,49800
+Gustavus Adolphus College,49700
+Louisiana Tech University,52100
+New Mexico State University-Main Campus,49700
+Widener University,54500
+St. Mary's University,50500
+Lamar University,52500
+University of Arkansas,51400
+Valparaiso University,52600
+Lewis & Clark College,47400
+Manhattanville College,54500
+Pitzer College,51000
+Pennsylvania State University-Penn State Harrisburg,54000
+Allegheny College,48700
+Oregon Health & Science University,67500
+Hamilton College,61000
+Ramapo College of New Jersey,50100
+University of Maryland-University College,55000
+Linfield College-Online and Continuing Education,47500
+University of Miami,55100
+John F. Kennedy University,49700
+Sonoma State University,52100
+Gordon College,47800
+Mount St. Mary's University,47700
+Christian Brothers University,50000
+University of Wyoming,51700
+Pacific University,48600
+Quinnipiac University,54600
+Susquehanna University,48900
+Notre Dame de Namur University,54800
+Scripps College,53700
+North Dakota State University-Main Campus,53200
+University of Mary Washington,52600
+University of Michigan-Dearborn,54400
+Ohio State University-Mansfield Campus,43000
+University of Oregon,50300
+CUNY New York City College of Technology,50600
+Walla Walla University,52500
+Colorado State University-Fort Collins,52000
+University of Wisconsin-Platteville,56000
+University of Idaho,51300
+Ohio State University-Main Campus,54000
+Morehouse College,54800
+College of Staten Island CUNY,51100
+Assumption College,52100
+St Bonaventure University,46200
+Newman University,48100
+Washington Adventist University,56100
+University of Cincinnati-Main Campus,52500
+SUNY College of Environmental Science and Forestry,51800
+Northern Illinois University,51400
+Loyola University Chicago,51900
+Knox College,47900
+California State University-Stanislaus,48000
+Suffolk University,50900
+University of Nebraska-Lincoln,50600
+University at Buffalo,52600
+University of Kentucky,50500
+Kansas State University,51600
+Benedictine College,47400
+The University of Texas MD Anderson Cancer Center,59500
+Norwich University,56800
+Bennington College,46300
+Mount Holyoke College,50500
+Prairie View A & M University,57300
+Brigham Young University-Idaho,52700
+Monmouth University,50800
+Marietta College,49700
+California State University-San Marcos,50400
+Thomas Jefferson University,66600
+Goucher College,48500
+University of Colorado Denver/Anschutz Medical Campus,51900
+The University of Alabama,51200
+University of New Mexico-Main Campus,47100
+University of Houston-Clear Lake,49800
+Mount Saint Mary's University,52800
+Montana State University,52400
+Kennesaw State University,50900
+Connecticut College,55700
+University of Minnesota-Duluth,51600
+SUNY College at Old Westbury,48100
+Texas A & M University-Kingsville,52200
+Illinois State University,49700
+CUNY City College,53000
+SUNY College at Geneseo,49800
+Excelsior College,55300
+Hawaii Pacific University,51200
+Florida State University,49000
+Loras College,46400
+Temple University,50800
+Simmons College,52800
+St Mary's College of Maryland,52300
+Illinois Wesleyan University,51100
+Duquesne University,51800
+Texas Tech University Health Sciences Center,61300
+Thomas Edison State University,52100
+Brigham Young University-Hawaii,49900
+North Central College,49200
+Creighton University,52400
+Mount Carmel College of Nursing,58000
+Jefferson (Philadelphia University + Thomas Jefferson University),47800
+Laguna College of Art and Design,51700
+University of Massachusetts-Dartmouth,52100
+Adelphi University,53400
+Universidad Politecnica de Puerto Rico,52200
+Utah State University,50800
+University of Nevada-Reno,51700
+Carroll College,46100
+Rutgers University-Camden,50300
+Dunwoody College of Technology,51400
+Fairleigh Dickinson University-Metropolitan Campus,49700
+Saint Luke's College of Health Sciences,56700
+Elon University,52300
+The University of Tennessee-Knoxville,50200
+William Jewell College,50100
+City University of Seattle,49700
+Drew University,51000
+Trine University,54600
+Central Washington University,51300
+New England Institute of Technology,50300
+Principia College,51300
+Mississippi State University,50000
+Saint Louis University,53100
+Juniata College,50100
+St Francis College,50300
+Farmingdale State College,51200
+Centenary College of Louisiana,43900
+University of Massachusetts-Boston,52200
+Stevenson University,49200
+University of North Dakota,52600
+Molloy College,58900
+Biola University,48700
+Towson University,49800
+Xavier University,50700
+University of Mount Union,47200
+Moravian College,51100
+Lycoming College,46200
+Presbyterian College,46800
+Westminster College (Utah),50700
+California State University-Los Angeles,49200
+St. Thomas Aquinas College,48400
+Bellarmine University,47600
+Cornell College,48900
+LeTourneau University,56800
+Washington & Jefferson College,48300
+Saint Mary's University of Minnesota,51500
+University of Wisconsin-Eau Claire,51100
+New College of Florida,45800
+The University of Texas at El Paso,47700
+University of Bridgeport,48300
+University of Louisiana at Lafayette,47500
+Le Moyne College,49000
+CUNY Hunter College,50900
+Central Connecticut State University,52200
+University of New Haven,51100
+Ohio University-Main Campus,50200
+Wilkes University,49600
+West Chester University of Pennsylvania,48500
+Abilene Christian University,48300
+Western Michigan University,49800
+Calvin College,49000
+University of Connecticut-Stamford,51300
+The University of Texas Health Science Center at San Antonio,60700
+St Vincent's College,46900
+Nichols College,50200
+Bloomsburg University of Pennsylvania,48000
+Embry-Riddle Aeronautical University-Worldwide,57300
+University of St Thomas (Texas),49500
+Thomas More College,49100
+Messiah College,50100
+University of North Carolina at Charlotte,51500
+Tennessee Technological University,52600
+Pacific Union College,53900
+University of Louisiana at Monroe,47600
+Framingham State University,48400
+The College of Wooster,47800
+Pennsylvania State University-Penn State Erie-Behrend College,58200
+Concordia University-Irvine,48700
+University of Maine,50800
+Salisbury University,49300
+"University of Maryland, Baltimore",59400
+Woodbury University,48600
+Manhattan School of Music,49700
+Texas State University,48600
+California State University-Bakersfield,49600
+Boston Architectural College,47500
+Pennsylvania State University-Penn State York,51600
+Austin College,50600
+The University of Tampa,47900
+University of South Florida-Main Campus,48500
+University of New England,49900
+Xavier University of Louisiana,43800
+California State University-Monterey Bay,48700
+Hamline University,46800
+Oakland University,50500
+New England College,43900
+Kettering College,56100
+Elizabethtown College,48600
+Alfred University,50000
+Weber State University,53300
+Samford University,47300
+Hope College,47600
+Pacific Northwest College of Art,43400
+William Paterson University of New Jersey,49300
+Lynchburg College,46600
+Ottawa University-Online,49800
+Florida International University,48100
+Saint Xavier University,48200
+Holy Names University,49600
+National University,54000
+Louisiana State University Health Sciences Center-New Orleans,51500
+Holy Family University,50200
+North Carolina A & T State University,51800
+Upstate Medical University,57900
+Jefferson College of Health Sciences,56300
+University of North Texas,48800
+Idaho State University,50300
+California State University-Channel Islands,49300
+Southwestern University,51600
+Humboldt State University,45900
+Clarkson College,50800
+The New England Conservatory of Music,43600
+Southwestern Oklahoma State University,47000
+Pennsylvania State University-Penn State Brandywine,53100
+Linfield College-McMinnville Campus,50900
+Canisius College,46500
+Houston Baptist University,49000
+Saint Cloud State University,50300
+Alderson Broaddus University,49900
+Kean University,47100
+Amberton University,53100
+Florida Atlantic University,48300
+California Institute of Integral Studies,53000
+Bloomfield College,46700
+University of Pittsburgh-Johnstown,47900
+Shippensburg University of Pennsylvania,48000
+Rowan University,50100
+Georgia State University,49400
+University of Hawaii at Manoa,50100
+Whitworth University,48500
+Marymount University,51000
+Westminster College (Pennsylvania),45800
+Saint Edward's University,47500
+Herzing University-Birmingham,47900
+Regis University,55700
+Bryn Mawr College,52900
+Hampton University,51700
+Tuskegee University,54500
+Emmanuel College (Massachusetts),48600
+SUNY at Purchase College,48100
+Western Governors University,53900
+Sierra Nevada College,51800
+College of Mount Saint Vincent,50600
+SUNY Oneonta,45200
+St. John's College (New Mexico),49700
+Rockhurst University,54600

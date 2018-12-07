@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>D3: Dynamic axes generated based on min/max values of randomized schoolByYearChartData</title>
+    <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+
+</head>
+
+<body>
+<!-- <div style="display: block; text-align: center;">
+    <h1>University Information from 2012 to 2015</h1>
+    <h3>Press ← on keyboard to the prev year, press → on keyboard to the next year.</h3>
+    <h3>Click on any single bubble in the left graph or bar on the right graph to trace that publisher only. </h3>
+    <h3>When tracing, click on any single bar or bubble on screen to get all publishers on that year back. </h3>
+</div> -->
+<div style="text-align: center">
+    <div style="display: inline-flex;text-align: center;">
+        
+        <div style="text-align: center">
+            <span style="font-size: 48px; color: rgb(112, 112, 112);">
+                    <i class="fas fa-arrow-left" onclick="schoolByYearChartminus()"></i>    
+                    <i class="fas fa-arrow-right" onclick="schoolByYearChartplus()"></i>  
+            </span>
+            <svg class="schoolByYearChart"></svg>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- <p id="title1">Public Reputation and Global Sales of Video Game Publishers From 1999 to 2015</p> -->
+
+
+<script type="text/javascript">
+    /* global d3 */
+    // document.onkeydown = function (e) {
+    //     switch (e.keyCode) {
+    //         case 37:
+    //             schoolByYearChartminus();
+    //             break;
+    //         case 39:
+    //             schoolByYearChartplus();
+    //             break;
+    //     }
+    // };
+
+    function schoolByYearhashCode(str) { // java String#hashCode
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return hash;
+    }
+
+    // assign rgb value (to each publisher)
+    function schoolByYearintToRGB(i) {
+        let schoolByYearChartC = (i & 0x00FFFFFF)
+            .toString(16)
+            .toUpperCase();
+        return "#" + "000000".substring(0, 6 - schoolByYearChartC.length) + schoolByYearChartC;
+    }
+
+    // basic parameters
+    let schoolByYearChartW = 500;
+    let schoolByYearChartH = 500;
+    let schoolByYearChartpadding = 25;
+    let schoolByYearChartData = new Map();
+    let schoolByYearChartDataset = [];
+    let schoolByYearChartCurrent_year = 2012;
+    for (let i = 2012; i <= 2015; i++) {
+        schoolByYearChartData.set(i, []);
+    }
+    d3.csv("schoolByYear.csv", function (row) {
+        return {
+            school: row.name,
+            tuition: +row.tuition,
+            patent: +row.patent,
+            score: +row.score,
+            year: +row.year,
+            control: row.control,
+            ratio: +row.ratio,
+            schoolByYearChartyKey: row.name
+        };
+    }).then(rows => {
+        for (let i = 0; i < rows.length; i++) {
+            let record = rows[i];
+            if (!Number.isNaN(record.year)){
+                schoolByYearChartData.get(record.year).push(record);
+
+            }
+        }
+        schoolByYearChartDataset = schoolByYearChartData.get(schoolByYearChartCurrent_year);
+        schoolByYearChartmakeChart()
+
+    }).catch(error => {
+        console.log(error)
+    });
+    let schoolByYearChartyKey = function (d) {
+        return d.schoolByYearChartyKey;
+    };
+    let schoolByYearChartX, schoolByYearChartY, schoolByYearChartR, schoolByYearChartC;
+    let schoolByYearChartxAxis, schoolByYearChartyAxis;
+
+    let year_label = d3.select(".schoolByYearChart").append("text")
+    .text(schoolByYearChartCurrent_year)
+    .attr("schoolByYearChartX",100)
+    .attr("schoolByYearChartY", 100)
+    .style("fill", "gray")
+    .style("font-size", "100px")
+    .style("font-family", "'Lato', sans-serif");
+
+    function schoolByYearChartmakeChart() {
+        schoolByYearChartY = d3.scaleLinear()
+            .domain([40, 100])
+            .range([schoolByYearChartH - schoolByYearChartpadding, schoolByYearChartpadding]);
+        schoolByYearChartX = d3.scaleLinear()
+            .domain([0, 60000])
+            .range([schoolByYearChartpadding, schoolByYearChartW - schoolByYearChartpadding]);
+        // schoolByYearChartR = d3.scaleLinear()
+        //     .domain([0, 140])
+        //     .range([3, 80]);
+
+        // schoolByYearChartC = d3.scaleOrdinal()
+        //     .domain(famous)
+        //     .range(famousColor)
+        let canvas = d3.select(".schoolByYearChart")
+            .style("width", schoolByYearChartW + 50)
+            .style("height", schoolByYearChartH)
+
+        // bubble schoolByYearChart frame
+        schoolByYearChartxAxis = d3.axisBottom()
+            .scale(schoolByYearChartX)
+            .ticks(5);
+        schoolByYearChartyAxis = d3.axisLeft()
+            .scale(schoolByYearChartY)
+            .ticks(5);
+        let yAxisGroup = canvas.append("g")
+            .attr("class", "axis")
+            .attr("id", "schoolByYearChartyAxis")
+            .attr("transform", "translate(60,0)")
+            .call(schoolByYearChartyAxis);
+        
+        yAxisGroup.selectAll("text")
+            .attr("transform", "translate(-5,0)");
+        yAxisGroup.append("text")
+            .text("Score")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("transform", "rotate(-90)")
+            .attr("schoolByYearChartY", 15)
+            .attr("dx", -10)
+            .style("text-anchor", "end");
+        canvas.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(35," + (schoolByYearChartH - 25) + ")")
+            .call(schoolByYearChartxAxis)
+            .append("text")
+            .text("Tuition")
+            .attr("fill", "black")
+            .attr("font-size", "15px")
+            .attr("schoolByYearChartX", schoolByYearChartH - 15)
+            .attr("dy", -10)
+            .style("text-anchor", "end");
+        schoolByYearChartupdate();
+    }
+
+    function schoolByYearChartupdate() {
+
+        // scatter
+        let scatter = d3.select(".schoolByYearChart").selectAll("circle")
+            .schoolByYearChartData(schoolByYearChartDataset, schoolByYearChartyKey);
+        let enter = scatter.enter().append("circle")
+            .attr("class", "circles")
+            .attr("cx", function (d) {
+                return schoolByYearChartX(d.tuition);
+            })
+            .attr("cy", function (d) {
+                return schoolByYearChartY(d.score);
+            })
+            .attr("schoolByYearChartR", function (d) {
+                return 5;
+            })
+            .attr('fill', function (d) {
+                if(d.control == "public") {
+                    return "rgb(25, 97, 112)";
+                }else{
+                    return "rgb(214, 37, 79)";
+                }
+            })
+            .attr("fill-opacity", function (d) {
+                return 3.6/d.ratio;
+            })
+            // .attr("fill-opacity", 0.75);
+            // .on("click", function (d) {
+            //     // Determine if current line is visible
+            //     focus = !focus;
+            //     if (focus) {
+            //         focusedOn = d.Publisher;
+            //         console.log("=========================")
+            //         console.log(d)
+            //         console.log(barData)
+            //         if (barData.includes(d)) {
+            //             console.log("try to highlight")
+            //             d3.select("#a" + hashCode(d.Publisher)).attr("stroke", "salmon").attr("stroke-width", "3px");
+            //         }
+            //         schoolByYearChartupdate();
+            //     }
+            //     else {
+            //         d3.select("#a" + hashCode(d.Publisher)).attr("stroke", "salmon").attr("stroke-width", "0px");
+            //         d3.select(".schoolByYearChart").selectAll("circle").style("fill-opacity", 0.75);
+            //         schoolByYearChartupdate();
+            //     }
+
+            // });
+
+        enter.append("svg:title")
+            .text(function (d) {
+                return schoolByYearChartgetInfo(d);
+            });
+        ;
+        // ENTER + schoolByYearChartupdate
+        enter.merge(scatter).transition().duration(1000)
+            .attr("cx", function (d) {
+                return schoolByYearChartX(d.tuition);
+            })
+            .attr("cy", function (d) {
+                return schoolByYearChartY(d.score);
+            })
+            .attr("schoolByYearChartR", function (d) {
+                return 5;
+            })
+            .attr('fill', function (d) {
+                if(d.control == "public") {
+                    return "rgb(25, 97, 112)";
+                }else{
+                    return "rgb(214, 37, 79)";
+                }
+            })
+            .attr("fill-opacity", function (d) {
+                return 3.6/d.ratio;
+            })
+            //.attr("fill-opacity", 0.75)
+            .select("title")
+            .text(function (d) {
+                return schoolByYearChartgetInfo(d);
+            });
+        // EXIT
+        scatter.exit().transition().duration(1000)
+        .attr("cx", 0)
+        .attr("cy", 0)
+        .attr("schoolByYearChartR", 0)
+        .attr("fill-opacity", 0)
+            .remove();
+    }
+
+    function schoolByYearChartgetInfo(d) {
+        console.log("OK?")
+        return d.school + "\nTuition " + d.tuition + 
+            "\nScore " + d.score +
+            "\nPatent " + d.patent;
+    }
+
+    function schoolByYearChartplus() {
+        if (schoolByYearChartCurrent_year != 2015) {
+            schoolByYearChartCurrent_year++;
+            schoolByYearChartDataset = schoolByYearChartData.get(schoolByYearChartCurrent_year);
+            d3.select("text").text(schoolByYearChartCurrent_year);
+
+            schoolByYearChartupdate();
+        }
+    }
+
+    function schoolByYearChartminus() {
+        if (schoolByYearChartCurrent_year != 2012) {
+            schoolByYearChartCurrent_year--;
+            schoolByYearChartDataset = schoolByYearChartData.get(schoolByYearChartCurrent_year);
+            d3.select("text").text(schoolByYearChartCurrent_year);
+
+            schoolByYearChartupdate();
+        }
+    }
+
+
+</script>
+</body>
+
+</html>

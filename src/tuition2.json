@@ -1,0 +1,113 @@
+{
+  "name": "Tuition",
+  "children": [
+    {
+    "name": "Wake Forest University",
+    "tuition": 51400
+  },
+  {
+    "name": "University of Michigan--Ann Arbor",
+    "tuition": 47476
+  },
+  {
+    "name": "Tufts University",
+    "tuition": 54318
+  },
+  {
+    "name": "New York University",
+    "tuition": 50464
+  },
+  {
+    "name": "University of North Carolina--Chapel Hill",
+    "tuition": 34588
+  },
+  {
+    "name": "Boston College",
+    "tuition": 53346
+  },
+  {
+    "name": "College of William and Mary",
+    "tuition": 43099
+  },
+  {
+    "name": "Brandeis University",
+    "tuition": 53582
+  },
+  {
+    "name": "Georgia Institute of Technology",
+    "tuition": 33014
+  },
+  {
+    "name": "University of Rochester",
+    "tuition": 52020
+  },
+  {
+    "name": "Boston University",
+    "tuition": 52082
+  },
+  {
+    "name": "Case Western Reserve University",
+    "tuition": 47500
+  },
+  {
+    "name": "University of California--Santa Barbara",
+    "tuition": 42423
+  },
+  {
+    "name": "Northeastern University",
+    "tuition": 49497
+  },
+  {
+    "name": "Tulane University",
+    "tuition": 52960
+  },
+  {
+    "name": "Rensselaer Polytechnic Institute",
+    "tuition": 52305
+  },
+  {
+    "name": "University of California--Irvine",
+    "tuition": 43530
+  },
+  {
+    "name": "University of California--San Diego",
+    "tuition": 44197
+  },
+  {
+    "name": "University of Florida",
+    "tuition": 28658
+  },
+  {
+    "name": "Lehigh University",
+    "tuition": 50740
+  },
+  {
+    "name": "Pepperdine University",
+    "tuition": 51992
+  },
+  {
+    "name": "University of California--Davis",
+    "tuition": 42396
+  },
+  {
+    "name": "University of Miami",
+    "tuition": 48484
+  },
+  {
+    "name": "University of Wisconsin--Madison",
+    "tuition": 34782
+  },
+  {
+    "name": "Villanova University",
+    "tuition": 51434
+  },
+  {
+    "name": "Pennsylvania State University--University Park",
+    "tuition": 33664
+  },
+  {
+    "name": "University of Illinois--Urbana-Champaign",
+    "tuition": 31988
+  }
+  ]
+}

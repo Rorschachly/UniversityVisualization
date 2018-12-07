@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+font: 10px sans-serif;
+position: relative;
+}
+
+.node {
+box-sizing: border-box;
+position: absolute;
+overflow: hidden;
+}
+
+.node-label {
+padding: 4px;
+line-height: 1em;
+white-space: pre;
+}
+
+.node-value {
+color: rgba(0,0,0,0.8);
+font-size: 15px;
+margin-top: 1px;
+}
+
+#treemap {
+  position: relative;
+  left:20%;
+}
+
+</style>
+<body>
+  <h1>Happy test</h1>
+  <div id = "treemap"></div>
+  <button id = "button">fade out</button>
+  <button id = "button2">fade in</button>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+<script>
+
+var width = 480,
+  height = 700;
+
+var format = d3.format(",d");
+
+var color = d3.scaleOrdinal()
+  .range(d3.schemeCategory10
+      .map(function(c) { c = d3.rgb(c); c.opacity = 0.6; return c; }));
+
+var stratify = d3.stratify()
+  .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
+
+var treemap = d3.treemap()
+  .size([width, height])
+  .padding(1)
+  .round(true);
+
+
+
+var data = {
+"name": "Tuition",
+"children": [
+  {
+    "name": "Princeton University",
+    "tuition": 47140
+  },
+  {
+    "name": "Harvard University",
+    "tuition": 48949
+  },
+  {
+    "name": "University of Chicago",
+    "tuition": 54825
+  },
+  {
+    "name": "Yale University",
+    "tuition": 51400
+  },
+  {
+    "name": "Columbia University",
+    "tuition": 57208
+  },
+  {
+    "name": "Massachusetts Institute of Technology",
+    "tuition": 49892
+  },
+  {
+    "name": "Stanford University",
+    "tuition": 49617
+  },
+  {
+    "name": "University of Pennsylvania",
+    "tuition": 53534
+  },
+  {
+    "name": "Duke University",
+    "tuition": 53744
+  },
+  {
+    "name": "California Institute of Technology",
+    "tuition": 49908
+  },
+  {
+    "name": "Dartmouth College",
+    "tuition": 52950
+  },
+  {
+    "name": "Johns Hopkins University",
+    "tuition": 52170
+  },
+  {
+    "name": "Northwestern University",
+    "tuition": 52678
+  },
+  {
+    "name": "Brown University",
+    "tuition": 53419
+  },
+  {
+    "name": "Cornell University",
+    "tuition": 52853
+  },
+  {
+    "name": "Rice University",
+    "tuition": 45608
+  },
+  {
+    "name": "Vanderbilt University",
+    "tuition": 47664
+  },
+  {
+    "name": "University of Notre Dame",
+    "tuition": 51505
+  },
+  {
+    "name": "Washington University in St. Louis",
+    "tuition": 51533
+  },
+  {
+    "name": "Georgetown University",
+    "tuition": 52300
+  },
+  {
+    "name": "Emory University",
+    "tuition": 49392
+  },
+  {
+    "name": "University of California--Berkeley",
+    "tuition": 42112
+  },
+  {
+    "name": "University of California--Los Angeles",
+    "tuition": 41270
+  },
+  {
+    "name": "University of Southern California",
+    "tuition": 54259
+  },
+  {
+    "name": "Carnegie Mellon University",
+    "tuition": 53910
+  },
+  {
+    "name": "University of Virginia",
+    "tuition": 46975
+  }
+]
+};
+
+data2 = {
+"name": "Tuition",
+"children": [
+  {
+  "name": "Wake Forest University",
+  "tuition": 51400
+},
+{
+  "name": "University of Michigan--Ann Arbor",
+  "tuition": 47476
+},
+{
+  "name": "Tufts University",
+  "tuition": 54318
+},
+{
+  "name": "New York University",
+  "tuition": 50464
+},
+{
+  "name": "University of North Carolina--Chapel Hill",
+  "tuition": 34588
+},
+{
+  "name": "Boston College",
+  "tuition": 53346
+},
+{
+  "name": "College of William and Mary",
+  "tuition": 43099
+},
+{
+  "name": "Brandeis University",
+  "tuition": 53582
+},
+{
+  "name": "Georgia Institute of Technology",
+  "tuition": 33014
+},
+{
+  "name": "University of Rochester",
+  "tuition": 52020
+},
+{
+  "name": "Boston University",
+  "tuition": 52082
+},
+{
+  "name": "Case Western Reserve University",
+  "tuition": 47500
+},
+{
+  "name": "University of California--Santa Barbara",
+  "tuition": 42423
+},
+{
+  "name": "Northeastern University",
+  "tuition": 49497
+},
+{
+  "name": "Tulane University",
+  "tuition": 52960
+},
+{
+  "name": "Rensselaer Polytechnic Institute",
+  "tuition": 52305
+},
+{
+  "name": "University of California--Irvine",
+  "tuition": 43530
+},
+{
+  "name": "University of California--San Diego",
+  "tuition": 44197
+},
+{
+  "name": "University of Florida",
+  "tuition": 28658
+},
+{
+  "name": "Lehigh University",
+  "tuition": 50740
+},
+{
+  "name": "Pepperdine University",
+  "tuition": 51992
+},
+{
+  "name": "University of California--Davis",
+  "tuition": 42396
+},
+{
+  "name": "University of Miami",
+  "tuition": 48484
+},
+{
+  "name": "University of Wisconsin--Madison",
+  "tuition": 34782
+},
+{
+  "name": "Villanova University",
+  "tuition": 51434
+},
+{
+  "name": "Pennsylvania State University--University Park",
+  "tuition": 33664
+},
+{
+  "name": "University of Illinois--Urbana-Champaign",
+  "tuition": 31988
+}
+]
+};
+//var test = d3.csv("flare.csv");
+
+
+// d3.json("tuition.json", function(error, data) {
+//     if (error) throw error;
+
+function update() {
+  let node =  d3.select("#treemap")
+      .selectAll(".node")
+      .data(root.leaves(), function(d) {
+        return d.name;
+      })
+
+  let enter = node.enter().append("div")
+      .attr("class", "node")
+
+      // .attr("title", function(d) { return d.id + "\n" + format(d.value); })
+      .style("left", function(d) { return d.x0 + "px"; })
+      .style("top", function(d) { return d.y0 + "px"; })
+      .style("width", function(d) { return d.x1 - d.x0 + "px"; })
+      .style("height", function(d) { return d.y1 - d.y0 + "px"; })
+      .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.data.name); })
+      .append("div")
+      .attr("class", "node-label")
+      .text(function(d) { return d.data.name; })
+      .append("div")
+      .attr("class", "node-value")
+      .text(function(d) { return d.data.tuition; });
+
+  enter.merge(node).transition().duration(1000)
+      .attr("class", "node")
+
+    // .attr("title", function(d) { return d.id + "\n" + format(d.value); })
+      .style("left", function(d) { return d.x0 + "px"; })
+      .style("top", function(d) { return d.y0 + "px"; })
+      .style("width", function(d) { return d.x1 - d.x0 + "px"; })
+      .style("height", function(d) { return d.y1 - d.y0 + "px"; })
+      .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.data.name); })
+      // .append("div")
+      // .attr("class", "node-label")
+      // .text(function(d) { return d.data.name; })
+      // .append("div")
+      // .attr("class", "node-value")
+      // .text(function(d) { return d.data.tuition; });
+
+  enter.exit().remove();
+}
+
+var root = d3.hierarchy(data, (d) => d.children)
+          .sum(d => d.tuition);
+
+  // console.log(data)
+  treemap(root);
+  update();
+  // console.log(root.leaves());
+  //console.log(ok);
+// });
+
+document.getElementById("button").onclick = function() {
+  // document.getElementsByTagName("h1")[0].innerHTML = "it works";
+  $("#treemap").fadeOut("slow", "linear");
+}
+d3.selectAll("#button2").on("click", function() {
+  // document.getElementsByTagName("h1")[0].innerHTML = "it works";
+  $("#treemap").fadeIn("slow", "linear");
+  root = d3.hierarchy(data2, function(d) {
+          console.log("loading");
+          return d.children;
+          })
+          .sum(d => d.tuition);
+  console.log("finish loading")
+  treemap(root);
+  update();
+  //console.log(root2.leaves());
+  // console.log(root2.leaves())
+  // var first = d3.selectAll(".node");
+  // first.exit().remove();
+
+  //  node =  d3.select("#treemap")
+  //     .selectAll(".node")
+  //     .data(root.leaves())
+  //     .enter().append("div")
+  //     .attr("class", "node")
+  //     .append("div")
+  //     .attr("class", "node-label")
+  //     .text(function(d) { return d.data.name; })
+  //     .append("div")
+  //     .attr("class", "node-value")
+  //     .text(function(d) { return d.data.tuition; });
+
+  // console.log(node);
+  // first.merge(node.leaves()).transition().duration(1000).style("left", function(d) { return d.x0 + "px"; })
+  //                                 .style("top", function(d) { return d.y0 + "px"; })
+  //                                 .style("width", function(d) { return d.x1 - d.x0 + "px"; })
+  //                                 .style("height", function(d) { return d.y1 - d.y0 + "px"; })
+  //                                 .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.data.name); })
+
+  // first.exit().remove();
+});
+function type(d) {
+  d.value = +d.value;
+  return d;
+}
+
+</script>

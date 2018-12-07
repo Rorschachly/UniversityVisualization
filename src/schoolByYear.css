@@ -1,0 +1,45 @@
+
+
+        svg .schoolByYearChart text {
+            font-size: 9.5pt;
+            font-family: sans-serif;
+            text-anchor: middle;
+            fill: black;
+        }
+
+        
+        /* buttons css */
+        .fas {
+            position: relative;
+            border: none;
+            border-radius: 0.8em;
+            padding: 10px;
+            text-align: center;
+            -webkit-transition-duration: 0.4s; 
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+            font-size: 50px;
+        }
+
+        .fas:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .fas:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s;
+        }
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>public private school comp</title>
+    <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<div>
+    <svg class="pubpriv"></svg>
+</div>
+
+<script type="text/javascript">
+
+    const width = 900;
+    const height = 900;
+
+    let margin = 20;
+
+    let svg = d3.select(".pubpriv")
+        .attr("width", width)
+        .attr("height", height);
+
+    let allUniv = [];
+
+    let scaleX = d3.scaleLinear()
+        .domain([0, 70000])
+        .range([0, width]);
+
+    d3.csv("schoolInfo.csv", function (row) {
+        return {
+            Name: row.displayName,
+            Sat: +row.sat,
+            Act: +row.act,
+            Latitude: +row.lat,
+            Longitude: +row.lng,
+            Rank: +row.rank,
+            HighSchoolGPA: +row.hsGPA,
+            AcceptRate: +row.acceptRate,
+            Overall: +row.overall,
+            Business: +row.business,
+            Engineering: +row.engineering,
+            Tuition: +row.tuition,
+            Enrollment: +row.enrollment,
+            Control: row.control,
+            key: row.displayName
+        };
+    }).then(rows => {
+        for (let i = 0; i < 100; i++) {
+            // if(0 < i && i <= 200)
+            allUniv.push(rows[i]);
+        }
+
+        drawPubPriv(svg);
+
+    }).catch(error => {
+        console.log(error)
+    });
+
+    function drawPubPriv(svg) {
+        let g = svg.append("g");
+
+        g.selectAll("rect").data(allUniv).enter().append("rect")
+            .style("fill", function (o) {
+                if (o.Control === "private" || o.Control === "proprietary") {
+                    return "#cc4764"
+                }
+                else {
+                    return "#707070"
+                }
+            })
+            // .attr("width", function (d) {
+            //     return scaleX(d.Tuition);
+            // })
+            .attr("height", ((height - margin * 2) / allUniv.length) - 0.5)
+            .attr("y", function (d, i) {
+                return i * ((height - margin * 2) / allUniv.length) + margin;
+            })
+            .attr("x", margin)
+            .append("title")
+            .text(function (d) {
+                return getSchoolInfo(d);
+            });
+
+        g.selectAll("rect")
+            .transition()
+            .duration(1000)
+            .attr("width", function (d) {
+                return scaleX(d.Tuition);
+            });
+
+    }
+
+
+    function getSchoolInfo(d) {
+        var realRank = "";
+        if (d.Rank === -1) {
+            realRank = "200~300";
+        }
+        else if (d.Rank === -2) {
+            realRank = "300~"
+        }
+        else {
+            realRank = d.Rank
+        }
+        var rate = d.AccpetRate ? d.AcceptRate : "Unknown";
+        var tui = d.Tuition ? d.Tuition : "Unknown";
+        var enroll = d.Enrollment ? d.Enrollment : "Unknown";
+        var over = d.Overall ? d.Overall : "Unknown";
+        var engin = d.Engineering ? d.Engineering : "Unknown";
+        var busi = d.Business ? d.Business : "Unknown";
+        return d.Name +
+            "\nNational Rank:    " + realRank +
+            "\nAccept Rate:  " + rate +
+            "\nTuition:  " + tui +
+            "\nEnrollment:    " + enroll +
+            "\nOverall Score:    " + over +
+            "\nEngineering Score:  " + engin +
+            "\nBusiness Score: " + busi +
+            "\nInstitutional Control: " + d.Control;
+    }
+
+
+</script>
+
+</body>
+</html>
